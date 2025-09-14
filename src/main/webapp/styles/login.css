@@ -66,7 +66,7 @@ body {
 }
 .texto_google{
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 80px;
     font-size: 16px;
     color: black;

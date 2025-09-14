@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PuraQuality</title>
-    <link rel="icon" href="/img/LogoPura.png"/>
-    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="icon" href="img/LogoPura.png"/>
+    <link rel="stylesheet" href="styles/index.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,10 +17,10 @@
 <body>
     <main class="corpo">
         <!-- BACKGROUND -->
-            <img class="bola_cromo" src="/img/bola_cromo.png" alt="">
-            <img class="bola_cromo2" src="/img/bola_cromo2.png" alt="">
-            <img class="celular" src="/img/celula.png" alt="">
-            <img class="faixa" src="/img/faixa_cima.png" alt="">
+            <img class="bola_cromo" src="img/bola_cromo.png" alt="">
+            <img class="bola_cromo2" src="img/bola_cromo2.png" alt="">
+            <img class="celular" src="img/celula.png" alt="">
+            <img class="faixa" src="img/faixa_cima.png" alt="">
             <div class="led-glow-container">
                 <div class="led-glow pulsing"></div>
               </div>
@@ -30,7 +30,7 @@
         <!-- CABEÇALHO DO SITE -->
         <header class="cabecalho">
             <div class="logo-cont">
-                <img class="logo" src="/img/LogoPura.png" alt="PuraQuality">
+                <img class="logo" src="img/LogoPura.png" alt="PuraQuality">
             </div>
             <div class="navegacao-cont">
                 <nav class="navegacao">
@@ -38,7 +38,7 @@
                     <a class="sobre_link" href="#"><div class="sb">Sobre</div></a>
                 </nav>
             </div>
-                <a class="login_link" href="/LoginSingUp/login.jsp"><div class="lb">Login</div></a>
+                <a class="login_link" href="LoginSingUp/login.jsp"><div class="lb">Login</div></a>
         </header>
         <!-- CORPO DO SITE -->
         <section class="cont1">
@@ -50,7 +50,7 @@
             
         </section>
         <section id="planos_pg" class="planos_pg">
-            <div class="plano1"><img class="teste" src="/img/bola_cromo2.png" alt=""></div>
+            <div class="plano1"><img class="teste" src="img/bola_cromo2.png" alt=""></div>
             <div class="plano2">muito caro</div>
             <div class="plano3">caro pra </div>
         </section>

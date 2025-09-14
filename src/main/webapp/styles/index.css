@@ -1,0 +1,398 @@
+body{
+    margin: 0;
+    top: 0;
+    padding: 0;
+    z-index: 2  ;
+    background-color: #1c0018;
+}
+/* -------------------CORPO DO SITE------------------- */
+main{
+    margin: 0;
+    padding: 0;
+    max-width: 1550px;
+    background-color: #1c0018;
+}
+.cont1 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh; /* mesma altura da viewport */
+    background-position: top center; ;
+    background-color: #1c0018;
+}
+.cont2 {
+    position: absolute;
+    height: 100vh; /* mesma altura da viewport */
+    background-color: rgb(18, 0, 26); /* cor leve para visualização */
+    width: 90%;
+    border-radius: 50px;
+    margin-top: 680px; /* sobrepõe a seção anterior */
+    margin-left: 5%;
+    z-index: 3;
+}   
+main.corpo {
+    margin: 0;
+    padding: 0;
+}
+section {
+    margin: 0;
+    padding: 0;
+}
+.planos_pg{
+    position: absolute;
+    background-image: url('/img/planos_pg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    top: 1500px;
+    z-index: 3;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+}
+.footer{
+    position: absolute;
+    bottom: -1700px;
+    width: 100%;
+    height: 200px;
+    background-color: #15001b;
+    z-index: 4;
+}
+/* -------------------Coisinha bonitinha------------------- */
+.bola_cromo{
+    position: absolute;
+    bottom: -320px;
+    left: -250px;
+    width: 45%;
+    z-index: 2;
+}
+.bola_cromo2{
+    position: absolute;
+    top: -290px;
+    left: -200px;
+    width: 45%; 
+    z-index: 2;
+}
+.celular{
+    position: absolute;
+    top: 120px;
+    right: 120px;
+    width: 40%;
+    z-index: 4;
+}
+.faixa{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 55%;
+    z-index: 2;
+}
+.led-glow-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 4;
+    top: -50px;
+    right:  0px;
+    z-index: 1;
+}
+/* O led criado como um gradiente radial */
+.led-glow {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    width: 600px;
+    height: 600px;
+    background:
+      radial-gradient(
+        circle at 35% 55%,
+        rgba(67, 150, 187, 0.9) 0%, /* azul claro */
+        rgb(171, 36, 255) 60%
+      ),
+      radial-gradient(
+        circle at 65% 45%,
+        rgb(130, 60, 170) 0%, /* violeta */
+        rgb(140, 40, 157) 70%
+      );
+    filter: blur(80px);
+    transform: rotate(25deg);
+}
+.led-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    /* Para centralizar conteúdo, se houver */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+/* O led criado como um gradiente radial */
+.led {
+    position: absolute;
+    top: 150px;
+    left:  0px;
+    width: 600px;
+    height: 600px;
+    background:
+      radial-gradient(
+        circle at 35% 55%,
+        rgba(15, 109, 153, 0.9) 0%, /* azul claro */
+        rgba(157, 0, 255, 0.262) 60%
+      ),
+      radial-gradient(
+        circle at 65% 45%,
+        rgba(60, 113, 170, 0.9) 0%,
+        rgb(40, 62, 157) 70%
+      );
+    filter: blur(80px);
+    fill: brightness(0.5);
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 1;
+    transform: rotate(25deg);
+}
+/* -------------------CABEÇALHO------------------- */
+.cabecalho{
+    display: flex;
+    position: fixed;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    width: 80%;
+    align-items: center; /* centraliza verticalmente */
+    justify-content: space-between; /* distribui os elementos com espaçamento */
+    padding: 5px 20px;
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background-color: rgba(62, 1, 87, 0.53);
+    border-radius: 25px;
+    z-index: 10;
+}
+.logo{
+    position: relative;
+    border-radius: 100%;
+    width: 60px;
+    padding: 5px;
+    flex-shrink: 0;
+    left: 15px; 
+    top: 2.5px;
+}
+.navegacao {
+    position: relative;
+    right: 350px;
+    top: 50%;
+    display: flex;
+    gap: 30px; /* espaçamento entre os links */
+    
+}
+/* -------------------botoes------------------- */
+.lb{
+    position: relative;
+    right: 50px;
+    background-color: white;
+    padding: 5px 25px;
+    border-radius: 15px;
+    transition: 0.2s ease;
+}
+.lb, .pb, .sb, .login_link, .planos_link, .sobre_link{
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+.pb{
+    background-color: white;
+    padding: 5px 25px;
+    border-radius: 15px;
+    transition: 0.2s ease;
+}
+.sb{
+    background-color: white;
+    padding: 5px 25px;
+    border-radius: 15px;
+    transition: 0.2s ease;
+}
+.botao-inicio{
+    position: absolute;
+    left: 280px;
+    top: 430px;
+    background-color: #9a03ff;
+    border-radius: 20px;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s ease;
+    z-index: 2;
+}
+.sb:hover{
+    background-color: rgb(200, 200, 200);
+    transition: 0.2s ease;
+}
+.lb:hover{
+    background-color: rgb(200, 200, 200);
+    transition: 0.2s ease;
+}
+.pb:hover{
+    background-color: rgb(200, 200, 200);
+    transition: 0.2s ease;
+}
+/* ------------------- Planos página ------------------- */
+.plano1{
+    position: absolute;
+    background-image: url('/img/plano1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    top: 20%;
+    width: 400px;
+    left: 2.5%;
+    border-radius: 80px;
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background-color: rgba(62, 1, 87, 0.53);
+    border: #0090bc 5px solid;
+    transition: 0.5s ease;
+}
+.plano2{
+    position: absolute;
+    background-image: url('/img/plano1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+    height: 500px;
+    top: 20%;
+    width: 400px;
+    left: 36%;
+    border-radius: 80px;
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background-color: rgba(62, 1, 87, 0.53);
+    border: #0021dd 5px solid;
+    transition: 0.5s ease;
+}
+.plano3{
+    position: absolute;
+    background-image: url('/img/plano1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    top: 20%;
+    width: 400px;
+    left: 70%;
+    border-radius: 80px;
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background-color: rgba(62, 1, 87, 0.53);
+    border: #6f00a2 5px solid;
+    transition: 0.5s ease;
+}
+/* -------------------titulos/textos------------------- */
+.titulo-pura{
+    position: absolute;
+    top: 220px;
+    left: 85px;
+    font-weight: 600;
+    font-size: 80px;
+    /* Gradiente de cores */
+    background: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
+    
+    /* Visualização do degradê no texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    background-clip: text; /* para navegadores não-webkit */
+    color: transparent;
+    z-index: 2;
+    filter: brightness(1.5);
+}
+.texto-inicio{
+    position: absolute;
+    top: 380px;
+    left: 200px;
+    color: white;
+    z-index: 2;
+}
+/* -------------------Hovers------------------- */
+.botao-inicio:hover{
+    background-color:  #bd64f8;
+    transition: 0.5s ease;
+}
+.plano3:hover, .plano2:hover, .plano1:hover{
+    transform: scale(1.15);
+    transition: 0.5s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    .teste{
+        width: 50%;
+        transform: scale(1.1);
+        transition: 0.5s ease;
+    }
+}
+.teste{
+    width: 0%;
+    transition: 0.5s ease;
+}
+/* -------------------Media Querry------------------- */
+@media (max-width: 768px) {
+    .cabecalho{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20px;
+    }
+    .navegacao {
+        position: relative;
+        right: 0px;
+        top: 0px;
+        display: flex;
+        gap: 20px; /* espaçamento entre os links */
+    }
+    .logo{
+        position: relative;
+        border-radius: 100%;
+        width: 50px;
+        padding: 5px;
+        flex-shrink: 0;
+        left: 0px; 
+        top: 0px;
+    }
+    .titulo-pura{
+        position: absolute;
+        top: 150px;
+        left: 20px;
+        font-size: 50px;
+        z-index: 2;
+    }
+    .texto-inicio{
+        position: absolute;
+        top: 300px;
+        left: 20px;
+        right: 20px;
+        color: white;
+        z-index: 2;
+    }
+    .botao-inicio{
+        position: absolute;
+        left: 20px;
+        top: 400px;
+        background-color: #9a03ff;
+        border-radius: 20px;
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        z-index: 2;
+    }
+    .celular{
+        position: absolute;
+        top: 200px;
+        right: -100px;
+        width: 55%;
+        z-index: 3;
+    }
+}

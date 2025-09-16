@@ -40,7 +40,7 @@ section {
 }
 .planos_pg{
     position: absolute;
-    background-image: url('/img/planos_pg.png');
+    background-image: url("../img/planos_pg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -241,7 +241,7 @@ section {
 /* ------------------- Planos página ------------------- */
 .plano1{
     position: absolute;
-    background-image: url('/img/plano1.png');
+    background-image: url("../img/planos_pg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -258,7 +258,7 @@ section {
 }
 .plano2{
     position: absolute;
-    background-image: url('/img/plano1.png');
+    background-image: url("../img/planos_pg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;   
@@ -275,7 +275,7 @@ section {
 }
 .plano3{
     position: absolute;
-    background-image: url('/img/plano1.png');
+    background-image: url("../img/planos_pg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

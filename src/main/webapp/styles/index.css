@@ -241,10 +241,6 @@ section {
 /* ------------------- Planos página ------------------- */
 .plano1{
     position: absolute;
-    background-image: url("../img/planos_pg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     height: 500px;
     top: 20%;
     width: 400px;
@@ -258,10 +254,6 @@ section {
 }
 .plano2{
     position: absolute;
-    background-image: url("../img/planos_pg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;   
     height: 500px;
     top: 20%;
     width: 400px;
@@ -275,10 +267,6 @@ section {
 }
 .plano3{
     position: absolute;
-    background-image: url("../img/planos_pg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     height: 500px;
     top: 20%;
     width: 400px;

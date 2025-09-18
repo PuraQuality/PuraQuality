@@ -1,4 +1,4 @@
-package dao;
+package repository;
 
 //Importação Dotenv
 import io.github.cdimascio.dotenv.Dotenv;

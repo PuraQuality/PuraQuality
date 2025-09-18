@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="icon" href="../img/LogoPura.png">
-    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="icon" href="../../img/LogoPura.png">
+    <link rel="stylesheet" href="../../styles/login.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,12 +17,12 @@
 <body>
   <!-- CORPO DO SITE -->
     <div class="container-geral">
-      <a class="link_pura" href="../index.jsp">
+      <a class="link_pura" href="../../index.jsp">
         <h1 class="texto_pura">PuraQuality</h1>
       </a>
       <h1 class="texto_bv" >Bem-vindo de volta</h1>
       <button class="google_button">
-        <img class="img_google" src="../img/google_logo.png" alt="google">
+        <img class="img_google" src="../../img/google_logo.png" alt="google">
         <p class="texto_google">Entrar com o google</p>
       </button>
       <div class="divider-container">
@@ -40,9 +40,9 @@
           </div>
           </form>
       </div>
-      <img class="notebook" src="../img/notebook.png" alt="notebook">
-      <img class="bola_cromo" src="../img/bola_cromo.png" alt="bola_cromo">
-      <img class="bola_cromo2" src="../img/bola_cromo3.png" alt="bola_cromo2">
+      <img class="notebook" src="../../img/notebook.png" alt="notebook">
+      <img class="bola_cromo" src="../../img/bola_cromo.png" alt="bola_cromo">
+      <img class="bola_cromo2" src="../../img/bola_cromo3.png" alt="bola_cromo2">
     <!-- JAVA SCRIPT -->
       <script>
         function validarFormulario() {

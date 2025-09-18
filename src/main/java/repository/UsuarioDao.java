@@ -1,7 +1,7 @@
-package dao;
+package repository;
 
 //package
-import model.Empresa;
+import model.Usuario;
 
 //sql
 import java.sql.Connection;
@@ -12,12 +12,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpresaDao extends Dao<Empresa> {
+public class UsuarioDao extends Dao<Usuario> {
 
-    public void save(Empresa empresa){
+    public void save(Usuario usuario){
 
         //Comando sql
-        String sql = "INSERT INTO empresa (nome, setor, cnpj) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO usuario (email, senha, plano_id) VALUES(?, ?, ?)";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -29,9 +29,9 @@ public class EmpresaDao extends Dao<Empresa> {
             pstm = conn.prepareStatement(sql);
 
             //Instanciando
-            pstm.setString(1,empresa.getNome());
-            pstm.setString(2,empresa.getSetor());
-            pstm.setString(3,empresa.getCnpj());
+            pstm.setString(1,usuario.getEmail());
+            pstm.setString(2,usuario.getSenha());
+            pstm.setInt(3,usuario.getPlanoId());
 
             //Executando
             pstm.execute();
@@ -47,55 +47,55 @@ public class EmpresaDao extends Dao<Empresa> {
         }
     }
 
-    public List<Empresa> select(){
-
-        //Criando a lista
-        List<Empresa> empresas = new ArrayList<Empresa>();
+    public List<Usuario> select(){
+        //Criando uma lista de usuarios
+        List<Usuario> usuarios = new ArrayList<Usuario>();
 
         //Comando sql
-        String sql = "SELECT * FROM empresa";
+        String sql = "SELECT * FROM usuario";
 
-        //Atribuição dos valores null
+        //atribuindo valores null
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
 
         try{
-            //Fazendo a conexão e passando o comando sql
+            //Conectando e passando o comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
             rset = pstm.executeQuery();
 
             //Percorre as linhas do comando sql
             while (rset.next()){
-                //Cria o objeto para ser armazenado na lista
-                Empresa empresa = new Empresa();
+                //Criando usuario para ser armazenado na lista
+                Usuario usuario1 = new Usuario();
 
                 //Instanciando
-                empresa.setId(rset.getInt("id"));
-                empresa.setNome(rset.getString("nome"));
-                empresa.setSetor(rset.getString("setor"));
-                empresa.setCnpj(rset.getString("cnpj"));
+                usuario1.setId(rset.getInt("id"));
+                usuario1.setEmail(rset.getString("email"));
+                usuario1.setSenha(rset.getString("senha"));
+                usuario1.setPlanoId(rset.getInt("plano_id"));
 
-                //Armazenando dentro da lista
-                empresas.add(empresa);
+                //add na lista
+                usuarios.add(usuario1);
             }
 
         }catch (Exception e){
+            //Printando erros
             e.printStackTrace();
         }finally {
-            //Fechando conexões
+            //Fechando conexão e métodos
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);
             Dao.fecharRset(rset);
         }
-        return empresas;
+        return usuarios;
     }
 
-    public void update(Empresa empresa){
+    public void update(Usuario usuario){
 
         //String sql
-        String sql = "UPDATE empresa SET nome = ?, setor = ?, cnpj = ? WHERE id = ?";
+        String sql = "UPDATE usuario SET email = ?, senha = ?, plano_id = ? WHERE id = ?";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -107,10 +107,10 @@ public class EmpresaDao extends Dao<Empresa> {
             pstm = conn.prepareStatement(sql);
 
             //instanciando o pstm
-            pstm.setString(1, empresa.getNome());
-            pstm.setString(2, empresa.getSetor());
-            pstm.setString(3,empresa.getCnpj());
-            pstm.setInt(4,empresa.getId());
+            pstm.setString(1, usuario.getEmail());
+            pstm.setString(2, usuario.getSenha());
+            pstm.setInt(3,usuario.getPlanoId());
+            pstm.setInt(4,usuario.getId());
 
             //executando
             pstm.execute();
@@ -129,7 +129,7 @@ public class EmpresaDao extends Dao<Empresa> {
     public void deleteById(int id){
 
         //comando sql
-        String sql = "DELETE FROM empresa WHERE id = ?";
+        String sql = "DELETE FROM usuario WHERE id = ?";
 
         //Atribuição dos valores null
         Connection conn = null;

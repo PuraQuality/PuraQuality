@@ -1,36 +1,38 @@
-package dao;
+package repository;
 
-import model.RespostaIa;
+//package
+import model.Feedback;
 
 //sql
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 
 //util
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class RespostaIaDao {
-    public void save(RespostaIa respostaIa) {
+public class FeedbackDao {
+
+    public void save(Feedback feedback) {
+
 //        Comando sql
-        String sql = "INSERT INTO resposta_ia (data_hora_geracao, texto_gerado, producao_id) VALUES (?,?,?)";
+        String sql = "INSERT INTO feedback (nota, comentario, usuario_id, resposta_id) VALUES (?, ?, ?, ?)";
 
-//        Atribuindo null para conn e pstm
+//        Atribuindo null para o conn e pstm
         Connection conn = null;
         PreparedStatement pstm = null;
 
         try {
-//           Fazendo a conexao e passando o comando sql
+            //Fazendo a conexao e passando o comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
 //            Instanciando
-            pstm.setTimestamp(1,new Timestamp(respostaIa.getData().getTime()));
-            pstm.setString(2, respostaIa.getTextoGerado());
-            pstm.setInt(3, respostaIa.getProducaoId());
+            pstm.setDouble(1, feedback.getNota());
+            pstm.setString(2, feedback.getComentario());
+            pstm.setInt(3, feedback.getUsuarioId());
+            pstm.setInt(4, feedback.getRespostaId());
 
 //            Executando
             pstm.execute();
@@ -44,30 +46,31 @@ public class RespostaIaDao {
         }
     }
 
-    public void update(RespostaIa respostaIa) {
+    public void update(Feedback feedback) {
 //        Comando sql
-        String sql = "UPDATE resposta_ia SET data_hora_geracao = ?, texto_gerado = ?, producao_id = ? WHERE id = ?";
+        String sql = "UPDATE feedback SET nota = ?, comentario = ?, usuario_id = ?, resposta_id = ? WHERE id = ?";
 
-//        Atribuindo null para conn e pstm
+//        Passando null para conn e pstm
         Connection conn = null;
         PreparedStatement pstm = null;
 
         try {
-//            Fazendo conexao e passando comando sql
+//            Fazendo a conexao e passando o comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
 //            Instanciando
-            pstm.setTimestamp(1, new Timestamp(respostaIa.getData().getTime()));
-            pstm.setString(2, respostaIa.getTextoGerado());
-            pstm.setInt(3, respostaIa.getProducaoId());
-            pstm.setInt(4, respostaIa.getId());
+            pstm.setDouble(1, feedback.getNota());
+            pstm.setString(2, feedback.getComentario());
+            pstm.setInt(3, feedback.getUsuarioId());
+            pstm.setInt(4, feedback.getRespostaId());
+            pstm.setInt(5, feedback.getId());
 
 //            Executando
             pstm.execute();
-            System.out.println("Salvo com sucesso");
+            System.out.println("salvo com sucesso");
 
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
         } finally {
             ConnectionFactory.fecharConnection(conn);
@@ -77,22 +80,22 @@ public class RespostaIaDao {
 
     public void deleteById(int id) {
 //        Comando sql
-        String sql = "DELETE FROM resposta_ia WHERE id = ?";
+        String sql = "DELETE FROM feedback WHERE id = ?";
 
 //        Passando null para conn e pstm
         Connection conn = null;
         PreparedStatement pstm = null;
 
-        try{
-//            Fazendo a conexao e passado o comando sql
+        try {
+//            Fazendo a conexao e passando o comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
-//            Passando o id
+//            Passando o ID
             pstm.setInt(1, id);
 
+//            Executando
             pstm.execute();
-            System.out.println("Deletado com sucesso");
 
         } catch (Exception e){
             e.printStackTrace();
@@ -102,45 +105,44 @@ public class RespostaIaDao {
         }
     }
 
-    public List<RespostaIa> select() {
-//        Criando lista da resposta da IA
-        List<RespostaIa> respostaIa = new ArrayList<RespostaIa>();
-
+    public List<Feedback> select() {
+//        Criando a lista do Feedback
+        List<Feedback> feedbacks = new ArrayList<Feedback>();
 //        Comando sql
-        String sql = "SELECT * FROM resposta_ia";
+        String sql = "SELECT * FROM feedback";
 
-//        Passando null para conn, pstm e rset
+//        Atribuindo null para conn, pstm e rset
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
 
         try {
-//            Fazendo a conexao e passando o comando sql
+//            Fazendo a conexão e passando o comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
             rset = pstm.executeQuery();
 
             while (rset.next()) {
-//                Criando objeto para ser armazenado na lista
-                RespostaIa resp = new RespostaIa();
+//                Criando o objeto para ser armazenado na lista
+                Feedback feedback = new Feedback();
 
 //                Instanciando
-                resp.setId(rset.getInt("id"));
-                resp.setData(rset.getTimestamp("data_hora_geracao"));
-                resp.setTextoGerado(rset.getString("texto_gerado"));
-                resp.setProducaoId(rset.getInt("producao_id"));
+                feedback.setId(rset.getInt("id"));
+                feedback.setNota(rset.getDouble("nota"));
+                feedback.setComentario(rset.getString("comentario"));
+                feedback.setUsuarioId(rset.getInt("usuario_id"));
+                feedback.setRespostaId(rset.getInt("resposta_id"));
 
-                respostaIa.add(resp);
+                feedbacks.add(feedback);
             }
 
         } catch (Exception e){
             e.printStackTrace();
         } finally {
-            //
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);
             Dao.fecharRset(rset);
         }
-        return respostaIa;
+        return feedbacks;
     }
 }

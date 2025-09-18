@@ -1,4 +1,4 @@
-package dao;
+package repository;
 
 //Importação do meu pacote
 import model.Plano;

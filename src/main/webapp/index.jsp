@@ -38,7 +38,7 @@
                     <a class="sobre_link" href="#"><div class="sb">Sobre</div></a>
                 </nav>
             </div>
-                <a class="login_link" href="LoginSingUp/login.jsp"><div class="lb">Login</div></a>
+                <a class="login_link" href="WEB-INF/views/login.jsp"><div class="lb">Login</div></a>
         </header>
         <!-- CORPO DO SITE -->
         <section class="cont1">

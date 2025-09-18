@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,9 +51,9 @@
             
         </section>
         <section id="planos_pg" class="planos_pg">
-            <div class="plano1"><img class="teste" src="img/bola_cromo2.png" alt=""></div>
-            <div class="plano2">muito caro</div>
-            <div class="plano3">caro pra </div>
+            <div class="plano1"></div>
+            <div class="plano2"></div>
+            <div class="plano3"></div>
         </section>
     </main>
     <footer class="footer">

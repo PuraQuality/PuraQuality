@@ -43,7 +43,7 @@
               </form>
             </div>
       </div>
-      <img class="notebook" src="../img/notebook.png" alt="notebook">
+      <img class="celular" src="../img/celular02.png" alt="notebook">
       <img class="bola_cromo" src="../img/bola_cromo.png" alt="bola_cromo">
       <img class="bola_cromo2" src="../img/bola_cromo3.png" alt="bola_cromo2">
     <!-- JAVA SCRIPT -->

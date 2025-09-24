@@ -1,5 +1,6 @@
 package com.repository;
 
+import com.conexao.ConnectionFactory;
 import com.model.HistoricoPagamentos;
 
 import java.sql.Connection;

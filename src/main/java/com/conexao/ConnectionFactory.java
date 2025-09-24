@@ -1,4 +1,4 @@
-package com.repository;
+package com.conexao;
 
 //Importação Dotenv
 import io.github.cdimascio.dotenv.Dotenv;

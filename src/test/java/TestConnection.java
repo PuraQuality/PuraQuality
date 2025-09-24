@@ -1,4 +1,4 @@
-import com.repository.ConnectionFactory;
+import com.conexao.ConnectionFactory;
 
 import java.sql.Connection;
 

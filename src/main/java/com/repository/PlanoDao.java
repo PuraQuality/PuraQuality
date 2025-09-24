@@ -1,6 +1,7 @@
 package com.repository;
 
 //Importação do meu pacote
+import com.conexao.ConnectionFactory;
 import com.model.Plano;
 
 //Importações de sql

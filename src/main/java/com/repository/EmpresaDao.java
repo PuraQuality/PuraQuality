@@ -1,6 +1,7 @@
 package com.repository;
 
 //package
+import com.conexao.ConnectionFactory;
 import com.model.Empresa;
 
 //sql

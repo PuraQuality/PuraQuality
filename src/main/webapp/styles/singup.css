@@ -1,5 +1,5 @@
 /* Reset básico e estilo geral */
-body {
+body{
     background-image: url("../img/bg_login.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -166,12 +166,11 @@ input::-webkit-input-placeholder{
     left: 35.5%;
 }
 /* ------------ coisinhas bonitinhas ------------ */
-.notebook{
+.celular{
     position: absolute;
-    width: 50%;
+    width: 60%;
     top: 12.5px;
-    right: 50px;
-    transform: rotateY(180deg);
+    right: -100px;
     z-index: 2;
 }
 .bola_cromo{

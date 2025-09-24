@@ -1,4 +1,4 @@
-package repository;
+package com.repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

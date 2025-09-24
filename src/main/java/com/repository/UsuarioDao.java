@@ -1,7 +1,7 @@
-package repository;
+package com.repository;
 
 //package
-import model.Usuario;
+import com.model.Usuario;
 
 //sql
 import java.sql.Connection;
@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDao extends Dao<Usuario> {
-
     public void save(Usuario usuario){
 
         //Comando sql

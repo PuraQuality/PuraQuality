@@ -1,7 +1,7 @@
-package repository;
+package com.repository;
 
 //package
-import model.UsuarioEmpresa;
+import com.model.UsuarioEmpresa;
 
 //sql
 import java.sql.Connection;

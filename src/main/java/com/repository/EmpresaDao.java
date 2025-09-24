@@ -1,42 +1,39 @@
-package repository;
+package com.repository;
 
-//Importação do meu pacote
-import model.Plano;
+//package
+import com.model.Empresa;
 
-//Importações de sql
+//sql
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-//importações do pacote util
+//pacote util
 import java.util.ArrayList;
 import java.util.List;
 
+public class EmpresaDao extends Dao<Empresa> {
 
-public class PlanoDao extends Dao <Plano>{
+    public void save(Empresa empresa){
 
-    //Create
-    public void save(Plano plano){
+        //Comando sql
+        String sql = "INSERT INTO empresa (nome, setor, cnpj) VALUES(?, ?, ?)";
 
-        //Comando SQL
-        String sql = "INSERT INTO plano (id, nome, preco, limite_de_funcionalidades) VALUES(?, ?, ?, ?)";
-
-        //atribuição dos valores null
+        //Atribuição dos valores null
         Connection conn = null;
         PreparedStatement pstm = null;
 
         try{
-            //Fazendo a conexão e a passagem do comando sql
+            //Conexão e passagemm do comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
-            //instanciando o pstm
-            pstm.setInt(1, plano.getId());
-            pstm.setString(2, plano.getNome());
-            pstm.setDouble(3, plano.getPreco());
-            pstm.setInt(4, plano.getLimiteFuncionalidades());
+            //Instanciando
+            pstm.setString(1,empresa.getNome());
+            pstm.setString(2,empresa.getSetor());
+            pstm.setString(3,empresa.getCnpj());
 
-            //Executando o comando
+            //Executando
             pstm.execute();
             System.out.println("Salvo com sucesso!");
 
@@ -46,18 +43,17 @@ public class PlanoDao extends Dao <Plano>{
         }finally {
             //Fechando conexão e métodos
             ConnectionFactory.fecharConnection(conn);
-            PlanoDao.fecharPstm(pstm);
+            Dao.fecharPstm(pstm);
         }
     }
 
+    public List<Empresa> select(){
 
-    //Read
-    public List<Plano> select(){
-        //Cria uma lista dos planos
-        List<Plano> planos = new ArrayList<Plano>();
+        //Criando a lista
+        List<Empresa> empresas = new ArrayList<Empresa>();
 
         //Comando sql
-        String sql = "SELECT * FROM plano";
+        String sql = "SELECT * FROM empresa";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -65,60 +61,58 @@ public class PlanoDao extends Dao <Plano>{
         ResultSet rset = null;
 
         try{
-            //Fazendo a conexão e a passagem do comando sql
+            //Fazendo a conexão e passando o comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
             rset = pstm.executeQuery();
 
             //Percorre as linhas do comando sql
-            while(rset.next()){
-                //Criando objeto plano
-                Plano plano = new Plano();
+            while (rset.next()){
+                //Cria o objeto para ser armazenado na lista
+                Empresa empresa = new Empresa();
 
                 //Instanciando
-                plano.setId(rset.getInt("id"));
-                plano.setNome(rset.getString("nome"));
-                plano.setPreco(rset.getDouble("preco"));
-                plano.setLimiteFuncionalidades(rset.getInt("limite_de_funcionalidades"));
+                empresa.setId(rset.getInt("id"));
+                empresa.setNome(rset.getString("nome"));
+                empresa.setSetor(rset.getString("setor"));
+                empresa.setCnpj(rset.getString("cnpj"));
 
-                //Salvando na lista
-                planos.add(plano);
+                //Armazenando dentro da lista
+                empresas.add(empresa);
             }
+
         }catch (Exception e){
-            //printando erros
             e.printStackTrace();
         }finally {
-            //Fechando conexão e métodos
+            //Fechando conexões
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);
             Dao.fecharRset(rset);
         }
-        return planos;
+        return empresas;
     }
 
+    public void update(Empresa empresa){
 
-    //Update
-    public void update(Plano plano){
+        //String sql
+        String sql = "UPDATE empresa SET nome = ?, setor = ?, cnpj = ? WHERE id = ?";
 
-        //Comando sql
-        String sql = "UPDATE plano SET nome = ?, preco = ?, limite_de_funcionalidades = ? WHERE id = ? ";
-
-        //Atribuição de null
+        //Atribuição dos valores null
         Connection conn = null;
         PreparedStatement pstm = null;
 
         try{
-            //Faz a conexão e a passagem do comando sql
+            //faz a conexão e a passagem do comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
-            //Instanciando o pstm
-            pstm.setString(1,plano.getNome());
-            pstm.setDouble(2,plano.getPreco());
-            pstm.setInt(3,plano.getLimiteFuncionalidades());
-            pstm.setInt(4,plano.getId());
+            //instanciando o pstm
+            pstm.setString(1, empresa.getNome());
+            pstm.setString(2, empresa.getSetor());
+            pstm.setString(3,empresa.getCnpj());
+            pstm.setInt(4,empresa.getId());
 
-            //Executando query
+            //executando
             pstm.execute();
             System.out.println("Salvo com sucesso!");
 
@@ -132,25 +126,24 @@ public class PlanoDao extends Dao <Plano>{
         }
     }
 
-
-    //Delete
     public void deleteById(int id){
 
-        //Comando SQL
-        String sql = "DELETE FROM plano WHERE id = ?";
+        //comando sql
+        String sql = "DELETE FROM empresa WHERE id = ?";
 
         //Atribuição dos valores null
         Connection conn = null;
         PreparedStatement pstm = null;
 
         try{
-            //Conectando e passando comando sql
+            //faz a conexão e a passagem do comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
-            //Passando o id e executando
+            //Instanciando
             pstm.setInt(1,id);
 
+            //executando
             pstm.execute();
             System.out.println("Deletado com sucesso!");
 
@@ -162,5 +155,6 @@ public class PlanoDao extends Dao <Plano>{
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);
         }
+
     }
 }

@@ -1,6 +1,6 @@
-package repository;
+package com.repository;
 
-import model.HistoricoPagamentos;
+import com.model.HistoricoPagamentos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,6 +1,6 @@
-package repository;
+package com.repository;
 
-import model.HistoricoAnalise;
+import com.model.HistoricoAnalise;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

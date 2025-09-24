@@ -1,7 +1,7 @@
-package repository;
+package com.repository;
 
 //package
-import model.DadosProducao;
+import com.model.DadosProducao;
 
 
 //sql

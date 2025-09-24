@@ -1,7 +1,7 @@
-package repository;
+package com.repository;
 
 //package
-import model.Feedback;
+import com.model.Feedback;
 
 //sql
 import java.sql.Connection;

@@ -1,6 +1,6 @@
-package repository;
+package com.repository;
 
-import model.RespostaIa;
+import com.model.RespostaIa;
 
 //sql
 import java.sql.Connection;

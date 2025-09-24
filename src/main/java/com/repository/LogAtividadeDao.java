@@ -1,6 +1,6 @@
-package repository;
+package com.repository;
 
-import model.LogAtividade;
+import com.model.LogAtividade;
 
 import java.sql.*;
 import java.util.ArrayList;

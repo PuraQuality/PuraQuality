@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
-    <link rel="icon" href="../../img/LogoPura.png">
-    <link rel="stylesheet" href="../../styles/singup.css">
+    <link rel="icon" href="img/LogoPura.png">
+    <link rel="stylesheet" href="styles/singup.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,13 +18,13 @@
 <body>
   <!-- CORPO DO SITE -->
     <div class="container-geral">
-      <a class="link_pura" href="../../index.jsp">
+      <a class="link_pura" href="index.jsp">
         <h1 class="texto_pura">PuraQuality</h1>
       </a>
       <h1 class="texto_bv">Comece agora conosco</h1>
       <div class="container-form">
           <button class="google_button">
-            <img class="img_google" src="../../img/google_logo.png" alt="google">
+            <img class="img_google" src="img/google_logo.png" alt="google">
             <p class="texto_google">Entrar com o google</p>
           </button>
           <div class="divider-container">
@@ -43,24 +43,18 @@
               </form>
             </div>
       </div>
-      <img class="notebook" src="../../img/notebook.png" alt="notebook">
-      <img class="bola_cromo" src="../../img/bola_cromo.png" alt="bola_cromo">
-      <img class="bola_cromo2" src="../../img/bola_cromo3.png" alt="bola_cromo2">
+      <img class="notebook" src="img/notebook.png" alt="notebook">
+      <img class="bola_cromo" src="img/bola_cromo.png" alt="bola_cromo">
+      <img class="bola_cromo2" src="img/bola_cromo3.png" alt="bola_cromo2">
     <!-- JAVA SCRIPT -->
       <script>
         function validarFormulario() {
-          const email = document.getElementById('email').value.trim();
           const senha = document.getElementById('senha').value.trim();
           const confirm_senha = document.getElementById('confirm_senha').value.trim();
-          if (!email || !senha) {
-            alert('Por favor, preencha o email e a senha.');
-            return false;
-          }
-          return true;
           if(senha === confirm_senha){
             return true;
           } else{
-            alert('algumas das informações não coincidem.');
+            alert('As senhas não coincidem.');
             return false;
           } // Permite o envio do formulário
         }

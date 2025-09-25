@@ -31,7 +31,7 @@
         <!-- CABEÇALHO DO SITE -->
         <header class="cabecalho">
             <div class="logo-cont">
-                <img class="logo" src="img/LogoPura.png" alt="PuraQuality">
+                <img class="logo" src="img/logoOFC.png" alt="PuraQuality">
             </div>
             <div class="navegacao-cont">
                 <nav class="navegacao">
@@ -51,13 +51,68 @@
             
         </section>
         <section id="planos_pg" class="planos_pg">
-            <div class="plano1"></div>
-            <div class="plano2"></div>
-            <div class="plano3"></div>
+            <div class="plano1">
+                <h2 class="quality">Quality</h2>
+                <p class="quality_p">R$999,00/mês</p>
+                <a class="quality_link" id="quality_link" href="">
+                    <div class="quality_div">???</div>
+                </a>
+                <ul type="none">
+                    <li>Análise completa de processos</li>
+                    <li>Relatórios detalhados</li>
+                    <li>Suporte 24/7</li>
+                    <li>Dashboard interativo</li>
+                    <li>Integração com sistemas</li>
+                    <li>Backup automático</li>
+                    <li>Atualizações mensais</li>
+                    <li>Treinamento da equipe</li>
+                </ul>
+            </div>
+            <div class="plano2">
+                <h2 class="quality2">FullQuality</h2>
+                <p class="quality_p2">R$2490,90/mês</p>
+                <a class="quality_link2" id="quality_link" href="">
+                    <div class="quality_div2">???</div>
+                </a>
+                <ul type="none">
+                    <li>Análise completa de processos</li>
+                    <li>Relatórios detalhados</li>
+                    <li>Suporte 24/7</li>
+                    <li>Dashboard interativo</li>
+                    <li>Integração com sistemas</li>
+                    <li>Backup automático</li>
+                    <li>Atualizações mensais</li>
+                    <li>Treinamento da equipe</li>
+                </ul>
+            </div>
+            </div>
+            <div class="plano3">
+                <h2 class="quality3">PuraQuality</h2>
+                <p class="quality_p3">R$4290,90/mês</p>
+                <a class="quality_link3" id="quality_link" href="">
+                    <div class="quality_div3">???</div>
+                </a>
+                <ul type="none">
+                    <li>Análise completa de processos</li>
+                    <li>Relatórios detalhados</li>
+                    <li>Suporte 24/7</li>
+                    <li>Dashboard interativo</li>
+                    <li>Integração com sistemas</li>
+                    <li>Backup automático</li>
+                    <li>Atualizações mensais</li>
+                    <li>Treinamento da equipe</li>
+                </ul>
+            </div>
         </section>
     </main>
     <footer class="footer">
         preto
     </footer>
+    <script>
+        const quality_link = document.getElementById('quality_link');
+        quality_link.addEventListener('click', () => {
+            window.location.href = '/LoginSingUp/login.html';
+        });
+    </script>
 </body>
 </html>

@@ -8,6 +8,17 @@ public class Usuario {
     private String senha;
     private int planoId;
 
+    //Construtor
+    public Usuario() {
+
+    }
+
+    public Usuario(String email,String senha,int planoId) {
+        this.email = email;
+        this.senha = senha;
+        this.planoId = planoId;
+    }
+
     //Getters
     public int getId() {
         return id;

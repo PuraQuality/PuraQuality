@@ -33,7 +33,7 @@
             <form class="form" action="#" method="post" onsubmit="return validarFormulario()">
               <div class="form-group">
                   <div class="inputs">
-                    <input type="email" id="email" name="email" placeholder="Digite seu CNPJ" required />
+                    <input type="tel" id="email" name="email" placeholder="Digite seu CNPJ (00.000.000/0000-00)" maxlength="18" required />
                     <input type="email" id="email_empresa" name="empresa" placeholder="Digite o email da sua empresa" required />
                     <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
                     <input type="password" id="confirm_senha" name="senha" placeholder="Confirme sua senha" required />

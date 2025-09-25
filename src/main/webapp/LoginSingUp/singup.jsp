@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
     <link rel="icon" href="../img/LogoPura.png">
-    <link rel="stylesheet" href="../styles/singup.css">
+    <link rel="stylesheet" href="../styles/signup.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

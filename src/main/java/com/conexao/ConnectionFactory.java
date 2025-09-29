@@ -20,8 +20,8 @@ public class ConnectionFactory {
         //Atribuindo os valores do arquivo .env para criar a conexão
 
         final String caminho = dotenv.get("DB_URL");
-        final String usuario = dotenv.get("DB_USER");
-        final String password = dotenv.get("DB_PASSWORD");
+        final String usuario = dotenv.get("DB_USUARIO");
+        final String password = dotenv.get("DB_SENHA");
 
         try {
             Class.forName("org.postgresql.Driver");

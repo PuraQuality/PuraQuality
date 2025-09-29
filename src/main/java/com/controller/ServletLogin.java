@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import com.repository.UsuarioDao;
@@ -16,21 +17,30 @@ public class ServletLogin extends HttpServlet {
     public void init() {
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        boolean validarEmail = false;
+        boolean validarSenha = false;
+        int posicao = -1;
         UsuarioDao usuarioDao = new UsuarioDao();
         List<Usuario> usuarios = usuarioDao.select();
-        for (Usuario usuario : usuarios) {
-            if (email.equals(usuario.getEmail())) {
-
+        for (int i = 0; i < usuarios.size(); i++) {
+            if(usuarios.get(i).getEmail().equals(email)){
+                validarEmail = true;
+                posicao = i;
+                break;
             }
         }
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<head><title>PuraQuality</title></head>");
-        out.println("<body>");
-
+        if(posicao != -1 && senha.equals(usuarios.get(posicao).getSenha())){
+            validarSenha = true;
+        }
+        if(validarEmail && validarSenha){
+            request.getRequestDispatcher("/home.jsp").forward(request, response);
+        }
+        else{
+            request.getRequestDispatcher("LoginSignUp/login.jsp").forward(request, response);
+        }
     }
 
     public void destroy() {

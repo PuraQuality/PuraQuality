@@ -37,7 +37,7 @@
                 <input type="password" id="confirm_senha" name="senha" placeholder="Confirme sua senha" required />
               </div>
               <button class="botao" type="submit">Entrar</button>
-              <p class="sing_up">Ainda não tem uma conta? <a class="sing_A" href="singup.jsp">cadastre-se</a></p>
+              <p class="sing_up">Ainda não tem uma conta? <a class="sing_A" href="signup.jsp">cadastre-se</a></p>
           </div>
           </form>
       </div>

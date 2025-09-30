@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDao extends Dao<Usuario> {
-    public void save(Usuario usuario){
+    public boolean save(Usuario usuario){
 
         //Comando sql
         String sql = "INSERT INTO usuario (email, senha, plano_id) VALUES(?, ?, ?)";
@@ -34,12 +34,13 @@ public class UsuarioDao extends Dao<Usuario> {
             pstm.setInt(3,usuario.getPlanoId());
 
             //Executando
-            pstm.execute();
             System.out.println("Salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         }catch (Exception e){
             //Printando erros
             e.printStackTrace();
+            return false;
         }finally {
             //Fechando conexão e métodos
             ConnectionFactory.fecharConnection(conn);

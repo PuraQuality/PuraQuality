@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HistoricoAnaliseDao extends Dao<HistoricoAnalise>{
 
-    public void save(HistoricoAnalise historicoAnalise) {
+    public boolean save(HistoricoAnalise historicoAnalise) {
 //        Comando sql
         String sql = "INSERT INTO historico_analise (data_hora_geracao, resposta_id, producao_id) VALUES (?,?,?)";
 
@@ -30,11 +30,12 @@ public class HistoricoAnaliseDao extends Dao<HistoricoAnalise>{
             pstm.setInt(3, historicoAnalise.getProducaoId());
 
 //            Executando
-            pstm.execute();
             System.out.println("Salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         } finally {
 //            Fechando conexoes
             ConnectionFactory.fecharConnection(conn);

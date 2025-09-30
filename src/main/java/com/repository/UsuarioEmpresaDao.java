@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UsuarioEmpresaDao{
 
-    public void save(UsuarioEmpresa usuarioEmpresa){
+    public boolean save(UsuarioEmpresa usuarioEmpresa){
 
         //Comando sql
         String sql = "INSERT INTO usuario_empresa (usuario_id, empresa_id) VALUES(?, ?)";
@@ -34,12 +34,13 @@ public class UsuarioEmpresaDao{
             pstm.setInt(2, usuarioEmpresa.getEmpresaId());
 
             //Executando
-            pstm.execute();
             System.out.println("Relacionamento salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         }catch (Exception e){
             //Printando erros
             e.printStackTrace();
+            return false;
         }finally {
             //Fechando conexão e métodos
             ConnectionFactory.fecharConnection(conn);

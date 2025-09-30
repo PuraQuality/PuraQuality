@@ -15,7 +15,7 @@ import java.util.List;
 
 public class EmpresaDao extends Dao<Empresa> {
 
-    public void save(Empresa empresa){
+    public boolean save(Empresa empresa){
 
         //Comando sql
         String sql = "INSERT INTO empresa (nome, setor, cnpj) VALUES(?, ?, ?)";
@@ -35,12 +35,13 @@ public class EmpresaDao extends Dao<Empresa> {
             pstm.setString(3,empresa.getCnpj());
 
             //Executando
-            pstm.execute();
             System.out.println("Salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         }catch (Exception e){
             //Printando erros
             e.printStackTrace();
+            return false;
         }finally {
             //Fechando conexão e métodos
             ConnectionFactory.fecharConnection(conn);

@@ -17,7 +17,7 @@ import java.util.List;
 public class PlanoDao extends Dao <Plano>{
 
     //Create
-    public void save(Plano plano){
+    public boolean save(Plano plano){
 
         //Comando SQL
         String sql = "INSERT INTO plano (id, nome, preco, limite_de_funcionalidades) VALUES(?, ?, ?, ?)";
@@ -38,12 +38,13 @@ public class PlanoDao extends Dao <Plano>{
             pstm.setInt(4, plano.getLimiteFuncionalidades());
 
             //Executando o comando
-            pstm.execute();
             System.out.println("Salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         }catch (Exception e){
             //Printando erros
             e.printStackTrace();
+            return false;
         }finally {
             //Fechando conexão e métodos
             ConnectionFactory.fecharConnection(conn);

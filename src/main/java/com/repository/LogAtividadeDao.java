@@ -10,7 +10,7 @@ import java.util.List;
 public class LogAtividadeDao extends Dao<LogAtividade>{
 
     // CREATE
-    public void save(LogAtividade logAtividade) {
+    public boolean save(LogAtividade logAtividade) {
 //        Comando sql
         String sql = "INSERT INTO log_atividade (ip_usuario, data_hora, descricao, acao, dispositivo, usuario_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
@@ -33,11 +33,12 @@ public class LogAtividadeDao extends Dao<LogAtividade>{
             pstm.setInt(6, logAtividade.getIdUsuario());
 
 //            Executando
-            pstm.executeUpdate();
             System.out.println("Log salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         } finally {
 //            Fechando conexoes
             ConnectionFactory.fecharConnection(conn);

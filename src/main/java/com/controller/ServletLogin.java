@@ -35,6 +35,8 @@ public class ServletLogin extends HttpServlet {
         if(posicao != -1 && senha.equals(usuarios.get(posicao).getSenha())){
             validarSenha = true;
         }
+        request.setAttribute("email", validarEmail);
+        request.setAttribute("senha", validarSenha);
         if(validarEmail && validarSenha){
             request.getRequestDispatcher("/home.jsp").forward(request, response);
         }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HistoricoPagamentosDao extends Dao<HistoricoPagamentos>{
 
-    public void save(HistoricoPagamentos historicoPagamento) {
+    public boolean save(HistoricoPagamentos historicoPagamento) {
 
 //        Comando sql
         String sql = "INSERT INTO historico_pagamentos (valor_pago, forma_pagamento, usuario_id, data_pagamento) VALUES (?,?,?,?)";
@@ -34,11 +34,12 @@ public class HistoricoPagamentosDao extends Dao<HistoricoPagamentos>{
             pstm.setTimestamp(4, historicoPagamento.getDataPagamento());
 
 //            Executar a query
-            pstm.executeUpdate();
             System.out.println("Salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         } finally {
 //            Fechando conexoes
             ConnectionFactory.fecharConnection(conn);

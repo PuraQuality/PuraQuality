@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RespostaIaDao {
-    public void save(RespostaIa respostaIa) {
+    public boolean save(RespostaIa respostaIa) {
 //        Comando sql
         String sql = "INSERT INTO resposta_ia (data_hora_geracao, texto_gerado, producao_id) VALUES (?,?,?)";
 
@@ -33,11 +33,12 @@ public class RespostaIaDao {
             pstm.setInt(3, respostaIa.getProducaoId());
 
 //            Executando
-            pstm.execute();
             System.out.println("Salvo com sucesso");
+            return pstm.executeUpdate() > 0;
 
         } catch (Exception e){
             e.printStackTrace();
+            return false;
         } finally {
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);

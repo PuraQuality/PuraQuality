@@ -7,7 +7,7 @@ import java.util.List;
 public abstract class Dao <T> {
 
     //Create
-    public abstract void save(T entidade);
+    public abstract boolean save(T entidade);
 
     //Read
     public abstract List<T> select();

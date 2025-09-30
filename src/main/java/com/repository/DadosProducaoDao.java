@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DadosProducaoDao extends Dao<DadosProducao>{
 
-    public void save(DadosProducao dadosProducao){
+    public boolean save(DadosProducao dadosProducao){
 
         //Código sql
         String sql = "INSERT INTO dados_producao (descricao, data_envio, empresa_id, usuario_id) VALUES (?, ?, ?, ?)";
@@ -35,11 +35,11 @@ public class DadosProducaoDao extends Dao<DadosProducao>{
             pstm.setInt(4,dadosProducao.getUsuarioId());
 
             //Executando
-            pstm.execute();
             System.out.println("Salvo com sucesso!");
-
+            return pstm.executeUpdate() > 0;
         }catch (SQLException e){
             e.printStackTrace();
+            return false;
         }finally {
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);

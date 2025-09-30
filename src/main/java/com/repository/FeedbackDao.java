@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FeedbackDao {
 
-    public void save(Feedback feedback) {
+    public boolean save(Feedback feedback) {
 
 //        Comando sql
         String sql = "INSERT INTO feedback (nota, comentario, usuario_id, resposta_id) VALUES (?, ?, ?, ?)";
@@ -36,11 +36,12 @@ public class FeedbackDao {
             pstm.setInt(4, feedback.getRespostaId());
 
 //            Executando
-            pstm.execute();
-            System.out.println("Salvo com sucesso");
+            System.out.println("Salvo com sucesso!");
+            return pstm.executeUpdate() > 0;
 
         } catch (Exception e){
             e.printStackTrace();
+            return false;
         } finally {
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);

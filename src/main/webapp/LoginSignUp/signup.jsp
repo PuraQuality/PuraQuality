@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
-    <link rel="icon" href="../img/LogoPura.png">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/LogoPura.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/signup.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
                     <input type="tel" id="email" name="cnpj" placeholder="Digite seu CNPJ (00.000.000/0000-00)" maxlength="18" required />
                     <input type="email" id="email_empresa" name="email" placeholder="Digite o email da sua empresa" required />
                     <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
-                    <input type="password" id="confirm_senha" name="senha" placeholder="Confirme sua senha" required />
+                    <input type="password" id="confirm_senha" name="confirm_senha" placeholder="Confirme sua senha" required />
                   </div>
                   <button class="botao" type="submit">Entrar</button>
               </div>

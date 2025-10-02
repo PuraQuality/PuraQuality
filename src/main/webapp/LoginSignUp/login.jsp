@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="icon" href="../img/LogoPura.png">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/LogoPura.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/login.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,6 @@
               <div class="inputs">
                 <input type="email" id="email" name="email" placeholder="Digite seu email" required />
                 <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
-                <input type="password" id="confirm_senha" name="senha" placeholder="Confirme sua senha" required />
               </div>
               <button class="botao" type="submit">Entrar</button>
               <p class="sing_up">Ainda não tem uma conta? <a class="sing_A" href="signup.jsp">cadastre-se</a></p>
@@ -44,18 +43,5 @@
       <img class="notebook" src="${pageContext.request.contextPath}/img/notebook.png" alt="notebook">
       <img class="bola_cromo" src="${pageContext.request.contextPath}/img/bola_cromo.png" alt="bola_cromo">
       <img class="bola_cromo2" src="${pageContext.request.contextPath}/img/bola_cromo3.png" alt="bola_cromo2">
-    <!-- JAVA SCRIPT -->
-      <script>
-        function validarFormulario() {
-          const senha = document.getElementById('senha').value.trim();
-          const confirm_senha = document.getElementById('confirm_senha').value.trim();
-          if(senha === confirm_senha){
-            return true;
-          } else{
-            alert('algumas das informações não coincidem.');
-            return false;
-          } // Permite o envio do formulário
-        }
-      </script>
 </body>
 </html>

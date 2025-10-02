@@ -85,7 +85,6 @@
                     <li>Treinamento da equipe</li>
                 </ul>
             </div>
-            </div>
             <div class="plano3">
                 <h2 class="quality3">PuraQuality</h2>
                 <p class="quality_p3">R$4290,90/mês</p>

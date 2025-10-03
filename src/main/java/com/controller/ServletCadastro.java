@@ -1,13 +1,12 @@
 package com.controller;
 
 import java.io.*;
-import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import com.repository.UsuarioDao;
-import com.model.Usuario;
+import com.repository.FuncionarioDao;
+import com.model.Funcionario;
 
 @WebServlet(name = "servletCadastro", value = "/servletCadastro")
 public class ServletCadastro extends HttpServlet {
@@ -19,8 +18,8 @@ public class ServletCadastro extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        UsuarioDao usuarioDao = new UsuarioDao();
-        Usuario usuario = new Usuario(email,senha,10);
+        FuncionarioDao usuarioDao = new FuncionarioDao();
+        Funcionario usuario = new Funcionario(email,senha,1,true);
         if(usuarioDao.save(usuario)) {
             request.getRequestDispatcher("LoginSignUp/login.jsp").forward(request, response);
         }

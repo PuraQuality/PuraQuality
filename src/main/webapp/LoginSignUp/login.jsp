@@ -32,7 +32,7 @@
     <div class="divider-container">
     <div class="divider divider2"></div><p class="divider_text">or<p><div class="divider"></div>
     </div>
-      <form class="form" action="#" method="post" onsubmit="return validarFormulario()">
+      <form class="form" action="${pageContext.request.contextPath}/servletLogin" method="post" onsubmit="return validarFormulario()">
         <div class="form-group">
             <div class="inputs">
               <input class="inputUser" type="email" id="email" name="email" placeholder=" " required />

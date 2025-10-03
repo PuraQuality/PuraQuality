@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>Login feito com sucesso</h1>
+    <h1>Área de trabalho</h1>
 </body>
 </html>

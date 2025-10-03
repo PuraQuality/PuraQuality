@@ -1,19 +1,18 @@
 package com.controller;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
+import com.model.Empresa;
+import com.repository.EmpresaDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import com.repository.UsuarioDao;
-import com.model.Usuario;
+import com.repository.FuncionarioDao;
+import com.model.Funcionario;
 
 @WebServlet(name = "servletLogin", value = "/servletLogin")
 public class ServletLogin extends HttpServlet {
-    private String message;
-
     public void init() {
     }
 
@@ -23,22 +22,62 @@ public class ServletLogin extends HttpServlet {
         boolean validarEmail = false;
         boolean validarSenha = false;
         int posicao = -1;
-        UsuarioDao usuarioDao = new UsuarioDao();
-        List<Usuario> usuarios = usuarioDao.select();
-        for (int i = 0; i < usuarios.size(); i++) {
-            if(usuarios.get(i).getEmail().equals(email)){
+        boolean prioridade = false;
+        boolean validarEmpresa = false;
+
+        FuncionarioDao usuarioDao = new FuncionarioDao();
+        EmpresaDao empresaDao = new EmpresaDao();
+        List<Funcionario> usuarios = usuarioDao.select();
+        List<Empresa> empresas = empresaDao.select();
+        for (int i = 0; i < empresas.size(); i++) {
+            if (empresas.get(i).getEmail().equals(email)) {
                 validarEmail = true;
+                validarEmpresa = true;
                 posicao = i;
                 break;
             }
         }
-        if(posicao != -1 && senha.equals(usuarios.get(posicao).getSenha())){
-            validarSenha = true;
+        if(!validarEmail) {
+            System.out.println("Email Invalido");
+            for (int i = 0; i < usuarios.size(); i++) {
+                if(usuarios.get(i).getEmail().equals(email)){
+                    validarEmail = true;
+                    prioridade = usuarios.get(i).isPrioridade();
+                    posicao = i;
+                    System.out.println("Prioridade Invalido");
+                    break;
+                }
+            }
+        }
+        if(posicao != -1) {
+            if(validarEmpresa) {
+                if (senha.equals(empresas.get(posicao).getSenha())){
+                    validarSenha = true;
+                }
+            }
+            else{
+                System.out.println("Senha normal");
+                if (senha.equals(usuarios.get(posicao).getSenha())){
+                    System.out.println("Senha correta");
+                    validarSenha = true;
+                }
+            }
         }
         request.setAttribute("email", validarEmail);
         request.setAttribute("senha", validarSenha);
-        if(validarEmail && validarSenha){
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
+        if(validarSenha){
+            if(validarEmpresa) {
+                request.getRequestDispatcher("PaginaAposLogin/empresa.jsp").forward(request, response);
+            }
+            else{
+                System.out.println("Não empresa");
+                if(prioridade){
+                    request.getRequestDispatcher("PaginaAposLogin/crud.jsp").forward(request, response);
+                }
+                else{
+                    request.getRequestDispatcher("PaginaAposLogin/home.jsp").forward(request, response);
+                }
+            }
         }
         else{
             request.getRequestDispatcher("LoginSignUp/login.jsp").forward(request, response);

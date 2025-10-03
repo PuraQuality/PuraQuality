@@ -18,7 +18,7 @@ public class EmpresaDao extends Dao<Empresa> {
     public boolean save(Empresa empresa){
 
         //Comando sql
-        String sql = "INSERT INTO empresa (nome, setor, cnpj) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO empresa (nome, setor, cnpj, email, senha, plano_id) VALUES(?, ?, ?, ?, ?, ?)";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -33,6 +33,10 @@ public class EmpresaDao extends Dao<Empresa> {
             pstm.setString(1,empresa.getNome());
             pstm.setString(2,empresa.getSetor());
             pstm.setString(3,empresa.getCnpj());
+            pstm.setString(3,empresa.getEmail());
+            pstm.setString(3,empresa.getSenha());
+            pstm.setInt(3,empresa.getPlanoId());
+
 
             //Executando
             System.out.println("Salvo com sucesso!");
@@ -78,6 +82,10 @@ public class EmpresaDao extends Dao<Empresa> {
                 empresa.setNome(rset.getString("nome"));
                 empresa.setSetor(rset.getString("setor"));
                 empresa.setCnpj(rset.getString("cnpj"));
+                empresa.setEmail(rset.getString("email"));
+                empresa.setSenha(rset.getString("senha"));
+                empresa.setPlanoId(rset.getInt("plano_id"));
+
 
                 //Armazenando dentro da lista
                 empresas.add(empresa);
@@ -97,7 +105,7 @@ public class EmpresaDao extends Dao<Empresa> {
     public void update(Empresa empresa){
 
         //String sql
-        String sql = "UPDATE empresa SET nome = ?, setor = ?, cnpj = ? WHERE id = ?";
+        String sql = "UPDATE empresa SET nome = ?, setor = ?, email = ?, senha = ?, plano_id = ? WHERE id = ?";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -111,8 +119,11 @@ public class EmpresaDao extends Dao<Empresa> {
             //instanciando o pstm
             pstm.setString(1, empresa.getNome());
             pstm.setString(2, empresa.getSetor());
-            pstm.setString(3,empresa.getCnpj());
-            pstm.setInt(4,empresa.getId());
+            pstm.setString(3, empresa.getEmail());
+            pstm.setString(4, empresa.getSenha());
+            pstm.setInt(5, empresa.getPlanoId());
+            pstm.setInt(6,empresa.getId());
+
 
             //executando
             pstm.execute();
@@ -129,8 +140,7 @@ public class EmpresaDao extends Dao<Empresa> {
     }
 
     public void deleteById(int id){
-
-        //comando sql
+        //Comando sql
         String sql = "DELETE FROM empresa WHERE id = ?";
 
         //Atribuição dos valores null

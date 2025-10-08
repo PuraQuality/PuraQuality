@@ -98,7 +98,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
     public void update(Funcionario funcionario){
 
         //String sql
-        String sql = "UPDATE funcionario SET email = ?, senha = ?, prioridade = ? WHERE id = ?";
+        String sql = "UPDATE funcionario SET email = ?, senha = ?, permissao = ? WHERE id = ?";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -115,8 +115,9 @@ public class FuncionarioDao extends Dao<Funcionario> {
             pstm.setBoolean(3,funcionario.isPrioridade());
             pstm.setInt(4,funcionario.getId());
 
+            System.out.println(funcionario);
             //executando
-            pstm.execute();
+            pstm.executeUpdate();
             System.out.println("Salvo com sucesso!");
 
         }catch (Exception e){

@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/LoginSignUp/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/LoginSignUp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/LoginSingUp/singup.jsp" value="file://$PROJECT_DIR$/src/main/webapp/LoginSingUp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/PaginaAposLogin/crud.jsp" value="file://$PROJECT_DIR$/src/main/webapp/PaginaAposLogin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>

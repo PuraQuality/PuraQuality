@@ -38,13 +38,11 @@ public class ServletLogin extends HttpServlet {
             }
         }
         if(!validarEmail) {
-            System.out.println("Email Invalido");
             for (int i = 0; i < usuarios.size(); i++) {
                 if(usuarios.get(i).getEmail().equals(email)){
                     validarEmail = true;
                     prioridade = usuarios.get(i).isPrioridade();
                     posicao = i;
-                    System.out.println("Prioridade Invalido");
                     break;
                 }
             }
@@ -56,9 +54,7 @@ public class ServletLogin extends HttpServlet {
                 }
             }
             else{
-                System.out.println("Senha normal");
                 if (senha.equals(usuarios.get(posicao).getSenha())){
-                    System.out.println("Senha correta");
                     validarSenha = true;
                 }
             }

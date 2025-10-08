@@ -14,6 +14,13 @@ public class Funcionario {
 
     }
 
+    public Funcionario(int id,String email, String senha, boolean prioridade) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+        this.prioridade = prioridade;
+    }
+
     public Funcionario(String email, String senha, int empresaId, boolean prioridade) {
         this.email = email;
         this.senha = senha;

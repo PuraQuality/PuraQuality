@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>/
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +32,7 @@
     <div class="divider-container">
     <div class="divider divider2"></div><p class="divider_text">or<p><div class="divider"></div>
     </div>
-      <form class="form" action="${pageContext.request.contextPath}/servletLogin" method="post" onsubmit="return validarFormulario()">
+      <form class="form" action="${pageContext.request.contextPath}//servletLogin" method="post" onsubmit="return validarFormulario()">
         <div class="form-group">
             <div class="inputs">
               <input class="inputUser" type="email" id="email" name="email" placeholder=" " required />
@@ -45,7 +45,7 @@
         </div>
         </form>
     </div>
-    <img class="notebook" src="${pageContext.request.contextPath}/img/notebook.png" alt="notebook">
+    <img class="notebook" src="${pageContext.request.contextPath}/img/notebookLogin.png" alt="notebook">
     <img class="bola_cromo" src="${pageContext.request.contextPath}/img/bola_cromo.png" alt="bola_cromo">
     <img class="bola_cromo2" src="${pageContext.request.contextPath}/img/bola_cromo3.png" alt="bola_cromo2">
 </body>

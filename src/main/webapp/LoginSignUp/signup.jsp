@@ -43,7 +43,7 @@
               </form>
             </div>
       </div>
-      <img class="celular" src="${pageContext.request.contextPath}/img/celular02.png" alt="notebook">
+      <img class="celular" src="${pageContext.request.contextPath}/img/celularSolo.png" alt="celular">
       <img class="bola_cromo" src="${pageContext.request.contextPath}/img/bola_cromo.png" alt="bola_cromo">
       <img class="bola_cromo2" src="${pageContext.request.contextPath}/img/bola_cromo3.png" alt="bola_cromo2">
     <!-- JAVA SCRIPT -->

@@ -20,7 +20,7 @@
     <!-- BACKGROUND -->
     <img class="bola_cromo" src="img/bola_cromo.png" alt="">
     <img class="bola_cromo2" src="img/bola_cromo2.png" alt="">
-    <img class="celular" src="img/celula.png" alt="">
+    <img class="celular" src="img/celularPQ.png" alt="">
     <img class="faixa" src="img/faixa_cima.png" alt="">
     <div class="led-glow-container">
         <div class="led-glow pulsing"></div>
@@ -35,32 +35,93 @@
         </div>
         <div class="navegacao-cont">
             <nav class="navegacao">
-                <a class="planos_link" href="#planos_pg"><div class="pb">Planos</div></a>
                 <a class="sobre_link" href="#"><div class="sb">Sobre</div></a>
             </nav>
         </div>
         <a class="login_link" href="${pageContext.request.contextPath}/LoginSignUp/login.jsp"><div class="lb">Login</div></a>
     </header>
     <!-- CORPO DO SITE -->
-    <section class="cont1">
+    <section class="contLanding">
         <p class="titulo-pura" style="font-family: lexend Giga; ">PuraQuality</p>
         <p class="texto-inicio" style="font-family: montserrat;">Com o processo certo, todo problema tem solução</p>
         <a class="botao-inicio" style="font-family: montserrat;" href="#planos_pg"><div class="bi">Transforme sua industria</div></a>
     </section>
-    <section id="cont2" class="cont2">
+    <section id="contPrincipal" class="contPrincipal">
         <div class="gridTexto">
+        <div class="quemSomos">
+            <h1>Quem somos?</h1>
+            <p>A Magna é uma empresa comprometida com a inovação e a sustentabilidade, alinhada aos princípios da ODS 9. Dedicamo-nos a desenvolver soluções inteligentes para o controle e aprimoramento da qualidade, atendendo indústrias de pequeno a grande porte. Gerenciamos o PuraQuality, um aplicativo que facilita o monitoramento e a gestão da qualidade dos produtos, promovendo eficiência, produtividade e excelência operacional em cada processo.</p>
+        </div>
+        <div class="gridFunc">
             <div class="card">
-                <h1 class="tituloPrincipal">O que fazemos?</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eaque repellendus dicta. Impedit totam quae, molestias assumenda deserunt unde voluptate, repellendus veniam, accusamus facilis debitis? Doloribus minus incidunt necessitatibus deleniti?</p>
+                <h1 class="tituloFunc">O que fazemos?</h1>
+                <p>Nosso aplicativo otimiza os processos empresariais de ponta a ponta — do recebimento à expedição.    Atuamos na identificação e solução das causas raiz dos problemas operacionais, garantindo mais eficiência, controle e produtividade em toda a cadeia de processos.</p>
             </div>
             <div class="card">
-                <h1 class="tituloPrincipal2">Como fazemos?</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora impedit vitae eveniet molestiae nam aliquam adipisci pariatur qui debitis nihil. Esse neque explicabo nobis cum laboriosam, ratione totam dolorum aspernatur!</p>
+                <h1 class="tituloFunc2">Como fazemos?</h1>
+                <p>Unimos feedbacks e relatórios de qualidade em uma base única, analisada por uma IA treinada.     Ela identifica falhas e oportunidades de melhoria, gerando um relatório em PDF com insights e soluções práticas para otimizar o desempenho da empresa.</p>
             </div>
         </div>
-        <div class="textoConexo">
-            <h1 class="tituloConexo">Nosso processo gira como uma bola e se adapta como uma cobra</h1>
-            <p class="conexo">Logo, toda vez que ouver um problema dentro da indústria vamos partir do ponto em que o problema se iniciou e fazer com que todo o processo se adapate, como uma cobra se adapta ao terreno que passa</p>
+
+        <p class="conexo">Nosso processo é dinâmico e adaptável, ajustando-se a cada situação para identificar e resolver problemas de forma precisa e contínua.</p>
+
+        <div class="setores">
+            <div class="cardSet">
+                <h1 class="tituloSet">
+                    Setores que atendemos
+                </h1>
+                <p>
+                    Atendemos indústrias de diversos setores, como automotivo, tecnológico, suinocultura, bovinocultura, entre outros. <br>Nosso aplicativo se adapta a diferentes portes e realidades empresariais, mas é especialmente projetado para indústrias de médio e grande porte que buscam otimizar seus processos e alcançar maior eficiência operacional.
+                </p>
+            </div>
+            <img class="imgPredio" src="img/imgpredio.png" alt="imgpredio">
+        </div>
+        <div class="ODS">
+            <div class="cardIMG">
+                <img class="ODSimg" src="img/ODSimg.png" alt="ODSimg">
+                <div class="ledODS"></div>
+            </div>
+            <div class="cardODS">
+                <h1 class="ODSconc">
+                    Como nos conectamos com a
+                </h1>
+                <h1 class="ODStitulo">
+                    ODS
+                </h1>
+                <p class="exp">Nosso projeto se alinha à ODS 9 ao integrar práticas de controle de qualidade que fortalecem a inovação e a eficiência produtiva. Atuamos especialmente nos seguintes objetivos e metas:</p>
+                <div class="gridODS">
+                    <div class="cardMetas">
+                        <img class="imgMeta" src="img/91.png" alt="img9.1">
+                        <p><span style="color: darkred;">9.1</span> - Desenvolver infraestruturas de qualidade, confiáveis e sustentáveis</p>
+                    </div>
+                    <div class="cardMetas">
+                        <img class="imgMeta" src="img/95.png" alt="img9.5">
+                        <p><span style="color: darkgreen;">9.5</span> - Aumentar a pesquisa científica e melhorar a capacidade tecnológica industrial</p>
+                    </div>
+                    <div class="cardMetas">
+                        <img class="imgMeta" src="img/94.png" alt="img9.4">
+                        <p><span style="color: darkgoldenrod;">9.4</span> - Modernizar infraestruturas e tornar as indústrias mais sustentáveis</p>
+                    </div>
+                    <div class="cardMetas">
+                        <img class="imgMeta" src="img/9c.png" alt="img9.c">
+                        <p><span style="color: #118FB9;">9.c</span> - Aumentar o acesso à tecnologia da informação e comunicação</p>
+                    </div>
+                </div>
+                <p class="ODSfinal">Com essas ações, fortalecemos a confiabilidade dos produtos e serviços, promovendo um ambiente industrial mais inovador, sustentável e eficiente.</p>
+            </div>
+        </div>
+        <div class="sixS">
+            <h1>Como utilizamos a metodologia <strong>Six Sigma</strong>?</h1>
+            <div class="gridSix">
+                <p>Aplicamos o Six Sigma para identificar, analisar e corrigir falhas nos processos de fabricação, reduzindo defeitos e elevando a qualidade dos produtos.</p>
+                <div class="imgSix">
+                    <img class="roda" src="img/rodaSix.png" alt="SixSgima">
+                    <img class="smbSS" src="img/SSimg.png" alt="SixSgima">
+                </div>
+                <p>
+                    Combinado à nossa Inteligência Artificial e ao método Kanban, garantimos uma gestão da qualidade mais eficiente, integrada e contínua, alinhada aos padrões das indústrias de alto desempenho.
+                </p>
+            </div>
         </div>
     </section>
 </main>
@@ -129,11 +190,20 @@
 </section>
 <footer class="footer">
     preto
+    <h1 class="textoFooter">Conheça o nosso time!!</h1>
+    <div class="cardOverflow">
+        <div class="cardOver">1</div>
+        <div class="cardOver">2</div>
+        <div class="cardOver">3</div>
+        <div class="cardOver">4</div>
+        <div class="cardOver">5</div>
+        <div class="cardOver">6</div>
+    </div>
 </footer>
 <script>
     const quality_link = document.getElementById('quality_link');
     quality_link.addEventListener('click', () => {
-        window.location.href = '/LoginSingUp/login.html';
+        window.location.href = 'LoginSignUp/signUp.jsp';
     });
 </script>
 </body>

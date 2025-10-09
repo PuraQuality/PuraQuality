@@ -1,11 +1,11 @@
 /* Reset básico e estilo geral */
-body{
-    background-image: url("../img/bg_login.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    background-image: url('../img/bg_login.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     color: white;
     height: 100vh;
     display: flex;
@@ -25,18 +25,18 @@ body{
     position: absolute;
     top: 5px;
     left: 30px;
-     /* Gradiente de cores */
-     background: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
-    
-     /* Visualização do degradê no texto */
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     
-     background-clip: text; /* para navegadores não-webkit */
-     color: transparent;
-     filter: brightness(1.5);
-     stroke: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
-     transition: 0.2s ease;
+    /* Gradiente de cores */
+    background: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
+
+    /* Visualização do degradê no texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text; /* para navegadores não-webkit */
+    color: transparent;
+    filter: brightness(1.5);
+    stroke: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
+    transition: 0.2s ease;
 }
 .texto_bv{
     position: absolute;
@@ -168,9 +168,8 @@ input::-webkit-input-placeholder{
 /* ------------ coisinhas bonitinhas ------------ */
 .celular{
     position: absolute;
-    width: 60%;
-    top: 12.5px;
-    right: -100px;
+    width: 50%;
+    right:  50px;
     z-index: 2;
 }
 .bola_cromo{

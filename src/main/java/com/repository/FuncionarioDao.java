@@ -49,6 +49,56 @@ public class FuncionarioDao extends Dao<Funcionario> {
         }
     }
 
+    public List<Funcionario> selectEmpresa(int empresaId){
+        //Criando uma lista de usuarios
+        List<Funcionario> usuarios = new ArrayList<>();
+
+        //Comando sql
+        String sql = "SELECT * FROM funcionario where empresa_id = ?";
+
+        //atribuindo valores null
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try{
+            //Conectando e passando o comando sql
+            conn = ConnectionFactory.createConnection();
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1,empresaId);
+
+            rset = pstm.executeQuery();
+
+            //Percorre as linhas do comando sql
+            while (rset.next()){
+                //Criando usuario para ser armazenado na lista
+                Funcionario usuario1 = new Funcionario();
+
+                //Instanciando
+                usuario1.setId(rset.getInt("id"));
+                usuario1.setEmail(rset.getString("email"));
+                usuario1.setSenha(rset.getString("senha"));
+                usuario1.setEmpresaId(rset.getInt("empresa_id"));
+                usuario1.setPrioridade(rset.getBoolean("permissao"));
+
+                //add na lista
+                usuarios.add(usuario1);
+            }
+
+        }catch (Exception e){
+            //Printando erros
+            e.printStackTrace();
+        }finally {
+            //Fechando conexão e métodos
+            ConnectionFactory.fecharConnection(conn);
+            Dao.fecharPstm(pstm);
+            Dao.fecharRset(rset);
+        }
+        return usuarios;
+    }
+
+
     public List<Funcionario> select(){
         //Criando uma lista de usuarios
         List<Funcionario> usuarios = new ArrayList<Funcionario>();
@@ -98,7 +148,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
     public void update(Funcionario funcionario){
 
         //String sql
-        String sql = "UPDATE funcionario SET email = ?, senha = ?, prioridade = ? WHERE id = ?";
+        String sql = "UPDATE funcionario SET email = ?, senha = ?, permissao = ? WHERE id = ?";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -115,8 +165,9 @@ public class FuncionarioDao extends Dao<Funcionario> {
             pstm.setBoolean(3,funcionario.isPrioridade());
             pstm.setInt(4,funcionario.getId());
 
+            System.out.println(funcionario);
             //executando
-            pstm.execute();
+            pstm.executeUpdate();
             System.out.println("Salvo com sucesso!");
 
         }catch (Exception e){

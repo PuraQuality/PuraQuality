@@ -17,13 +17,15 @@ public class ServletLogin extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String email = request.getParameter("email");
+        String email = request.getParameter("emailfuncionario");
         String senha = request.getParameter("senha");
         boolean validarEmail = false;
         boolean validarSenha = false;
         int posicao = -1;
         boolean prioridade = false;
         boolean validarEmpresa = false;
+
+        request.getSession().setAttribute("emailfuncionario", email);
 
         FuncionarioDao usuarioDao = new FuncionarioDao();
         EmpresaDao empresaDao = new EmpresaDao();
@@ -34,17 +36,17 @@ public class ServletLogin extends HttpServlet {
                 validarEmail = true;
                 validarEmpresa = true;
                 posicao = i;
+                request.getSession().setAttribute("empresaid", empresas.get(i).getId());
                 break;
             }
         }
         if(!validarEmail) {
-            System.out.println("Email Invalido");
             for (int i = 0; i < usuarios.size(); i++) {
                 if(usuarios.get(i).getEmail().equals(email)){
                     validarEmail = true;
                     prioridade = usuarios.get(i).isPrioridade();
                     posicao = i;
-                    System.out.println("Prioridade Invalido");
+                    request.getSession().setAttribute("empresaid", usuarios.get(i).getEmpresaId());
                     break;
                 }
             }
@@ -56,21 +58,17 @@ public class ServletLogin extends HttpServlet {
                 }
             }
             else{
-                System.out.println("Senha normal");
                 if (senha.equals(usuarios.get(posicao).getSenha())){
-                    System.out.println("Senha correta");
                     validarSenha = true;
                 }
             }
         }
-        request.setAttribute("email", validarEmail);
-        request.setAttribute("senha", validarSenha);
+
         if(validarSenha){
             if(validarEmpresa) {
                 request.getRequestDispatcher("PaginaAposLogin/empresa.jsp").forward(request, response);
             }
             else{
-                System.out.println("Não empresa");
                 if(prioridade){
                     request.getRequestDispatcher("PaginaAposLogin/crud.jsp").forward(request, response);
                 }

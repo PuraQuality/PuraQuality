@@ -1,16 +1,61 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: carlosbellomo-ieg
-  Date: 03/10/2025
-  Time: 08:29
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.model.Funcionario" %>
+<%@ page import="com.repository.FuncionarioDao" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-    <h1>Login da empresa realizado com sucesso</h1>
+<h1>Seja bem vindo Usuário da empresa</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Permissões</th>
+        <th>Alterar informações</th>
+        <th>Deletar cadastro</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+        FuncionarioDao fdao = new FuncionarioDao();
+        List<Funcionario> funcionarios = fdao.selectEmpresa((int) request.getSession().getAttribute("empresaid"));
+        for(int i = 0;i < funcionarios.size();i++){%>
+    <tr>
+        <td><%=funcionarios.get(i).getEmail()%></td>
+        <td><%=funcionarios.get(i).isPrioridade()%></td>
+        <td>
+            <form action="servletAlterarUsuario" method="post">
+                <label>
+                    Permissão:<input type="checkbox" name="prioridade" <%=funcionarios.get(i).isPrioridade()?"checked":null%>>
+                </label>
+                <input type="hidden" name="id" value=<%=funcionarios.get(i).getId()%>>
+                <input type="hidden" name="email" value=<%=funcionarios.get(i).getEmail()%>>
+                <input type="hidden" name="senha" value=<%=funcionarios.get(i).getSenha()%>>
+                <button type="submit">Alterar Usuário</button>
+            </form>
+        </td>
+        <td>
+            <form action="servletDeletarUsuario" method="post">
+                <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
+                <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
+                <input type="hidden" name="senha" value="<%=funcionarios.get(i).getSenha()%>">
+                <input type="hidden" name="empresa" value="sim">
+                <button type="submit">Deletar Usuário</button>
+            </form>
+        </td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+<form action="servletInserirUsuario" method="post">
+    <input type="email" name="email" placeholder="Digite o email do novo funcionário">
+    <input type="password" name="senha" placeholder="Digite a senha do novo funcionário">
+    <input type="checkbox" name="permissao">
+    <input type="hidden" name="empresa" value="sim">
+    <input type="hidden" name="id_empresa" value="<%=request.getParameter("empresaid")%>">
+    <button type="submit">Inserir Usuário</button>
+</form>
 </body>
 </html>

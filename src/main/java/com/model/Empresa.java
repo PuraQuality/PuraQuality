@@ -10,6 +10,13 @@ public class Empresa {
     private String senha;
     private int planoId;
 
+    public Empresa(){
+
+    }
+
+    public Empresa(String aaaaaa, String aaaaaaaa, int i, String email, String senha, boolean b) {
+    }
+
     //Getters
     public int getId() {
         return id;

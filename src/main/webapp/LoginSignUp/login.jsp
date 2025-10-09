@@ -35,7 +35,7 @@
       <form class="form" action="${pageContext.request.contextPath}/servletLogin" method="post" onsubmit="return validarFormulario()">
         <div class="form-group">
             <div class="inputs">
-              <input class="inputUser" type="email" id="email" name="email" placeholder=" " required />
+              <input class="inputUser" type="email" id="email" name="emailfuncionario" placeholder=" " required />
               <label for="email" id="labelinput" class="labelinput">Email</label>
               <input class="inputUser" type="password" id="senha" name="senha" placeholder=" " required />
               <label for="senha" id="labelinput" class="labelinput">Senha</label>

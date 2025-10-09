@@ -1,7 +1,6 @@
 package com.controller;
 
 import java.io.*;
-import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -14,28 +13,15 @@ public class ServletAlterarUsuario extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        int id = Integer.parseInt(request.getParameter("id"));
         String email = request.getParameter("email");
-        boolean prioridade = (request.getParameter("prioridade") != null);
         System.out.println(request.getParameter("prioridade"));
-
-        System.out.println("Prioridade: " + prioridade);
+        boolean prioridade = (request.getParameter("prioridade") != null);
+        String senha = request.getParameter("senha");
 
         FuncionarioDao funcionarioDao = new FuncionarioDao();
-        List<Funcionario> usuario = funcionarioDao.select();
-        int posicao = -1;
-
-        for (int i = 0; i < usuario.size(); i++) {
-            if(usuario.get(i).getEmail().equals(email)){
-                 posicao = i;
-                break;
-            }
-        }
-
-        String senha = usuario.get(posicao).getSenha();
-        int id = usuario.get(posicao).getId();
         Funcionario funcionario = new Funcionario(id,email,senha,prioridade);
-
         funcionarioDao.update(funcionario);
-        request.getRequestDispatcher("PaginaAposLogin/crud.jsp").forward(request, response);
+        request.getRequestDispatcher("PaginaAposLogin/empresa.jsp").forward(request, response);
     }
 }

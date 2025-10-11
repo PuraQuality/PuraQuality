@@ -23,9 +23,9 @@
         List<Funcionario> funcionarios = fdao.selectEmpresa((int) request.getSession().getAttribute("empresaid"));
         for(int i = 0;i < funcionarios.size();i++){%>
     <tr>
-        <td><%=funcionarios.get(i).getEmail()%></td>
-        <td><%=funcionarios.get(i).isPrioridade()%></td>
-        <td>
+        <td style="border: 1px solid black;"><%=funcionarios.get(i).getEmail()%></td>
+        <td style="border: 1px solid black;"><%=funcionarios.get(i).isPrioridade()%></td>
+        <td style="border: 1px solid black;">
             <form action="servletAlterarUsuario" method="post">
                 <label>
                     Permissão:<input type="checkbox" name="prioridade" <%=funcionarios.get(i).isPrioridade()?"checked":null%>>
@@ -36,7 +36,7 @@
                 <button type="submit">Alterar Usuário</button>
             </form>
         </td>
-        <td>
+        <td style="border: 1px solid black;">
             <form action="servletDeletarUsuario" method="post">
                 <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
                 <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
@@ -50,8 +50,8 @@
     </tbody>
 </table>
 <form action="servletInserirUsuario" method="post">
-    <input type="email" name="email" placeholder="Digite o email do novo funcionário">
-    <input type="password" name="senha" placeholder="Digite a senha do novo funcionário">
+    <input type="email" name="email" placeholder="Digite o email do novo funcionário" style="width: 250px">
+    <input type="password" name="senha" placeholder="Digite a senha do novo funcionário" style="width: 250px">
     <input type="checkbox" name="permissao">
     <input type="hidden" name="empresa" value="sim">
     <input type="hidden" name="id_empresa" value="<%=request.getParameter("empresaid")%>">

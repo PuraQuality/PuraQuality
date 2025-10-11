@@ -24,7 +24,6 @@ public class ServletLogin extends HttpServlet {
         int posicao = -1;
         boolean prioridade = false;
         boolean validarEmpresa = false;
-
         request.getSession().setAttribute("emailfuncionario", email);
 
         FuncionarioDao usuarioDao = new FuncionarioDao();

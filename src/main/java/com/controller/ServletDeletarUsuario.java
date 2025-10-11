@@ -18,7 +18,6 @@ public class ServletDeletarUsuario extends HttpServlet {
         if(!email.equals(emailFuncionario)) {
             funcionarioDao.deleteById(id);
         }
-        System.out.println(request.getParameter("empresa"));
         if(((String)request.getParameter("empresa")).equals("sim")) {
             request.getRequestDispatcher("PaginaAposLogin/empresa.jsp").forward(request, response);
         }

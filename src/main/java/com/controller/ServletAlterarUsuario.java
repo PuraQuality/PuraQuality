@@ -15,7 +15,6 @@ public class ServletAlterarUsuario extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
         String email = request.getParameter("email");
-        System.out.println(request.getParameter("prioridade"));
         boolean prioridade = (request.getParameter("prioridade") != null);
         String senha = request.getParameter("senha");
 

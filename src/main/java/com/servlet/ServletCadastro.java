@@ -1,14 +1,12 @@
-package com.controller;
+package com.servlet;
 
 import java.io.*;
 
 import com.model.Empresa;
-import com.repository.EmpresaDao;
+import com.dao.EmpresaDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import com.repository.FuncionarioDao;
-import com.model.Funcionario;
 
 @WebServlet(name = "servletCadastro", value = "/servletCadastro")
 public class ServletCadastro extends HttpServlet {

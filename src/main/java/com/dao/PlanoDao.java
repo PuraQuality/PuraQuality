@@ -1,4 +1,4 @@
-package com.repository;
+package com.dao;
 
 //Importação do meu pacote
 import com.conexao.ConnectionFactory;

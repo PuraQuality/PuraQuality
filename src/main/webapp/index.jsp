@@ -38,7 +38,7 @@
                 <a class="sobre_link" href="#"><div class="sb">Sobre</div></a>
             </nav>
         </div>
-        <a class="login_link" href="${pageContext.request.contextPath}/LoginSignUp/login.jsp"><div class="lb">Login</div></a>
+        <a class="login_link" href="servlogin"><div class="lb">Login</div></a>
     </header>
     <!-- CORPO DO SITE -->
     <section class="contLanding">
@@ -168,7 +168,6 @@
             <li>Atualizações mensais</li>
             <li>Treinamento da equipe</li>
         </ul>
-    </div>
     </div>
     <div class="plano3">
         <h2 class="quality3">PuraQuality</h2>

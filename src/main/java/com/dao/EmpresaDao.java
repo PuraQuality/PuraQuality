@@ -1,4 +1,4 @@
-package com.repository;
+package com.dao;
 
 //package
 import com.conexao.ConnectionFactory;

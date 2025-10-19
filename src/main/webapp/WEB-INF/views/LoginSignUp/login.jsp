@@ -32,7 +32,7 @@
     <div class="divider-container">
     <div class="divider divider2"></div><p class="divider_text">or<p><div class="divider"></div>
     </div>
-      <form class="form" action="${pageContext.request.contextPath}//servletLogin" method="post" onsubmit="return validarFormulario()">
+      <form class="form" action="servletLogin" method="post" onsubmit="return validarFormulario()">
         <div class="form-group">
             <div class="inputs">
               <input class="inputUser" type="email" id="email" name="emailfuncionario" placeholder=" " required />
@@ -41,7 +41,7 @@
               <label for="senha" id="labelinput" class="labelinput">Senha</label>
             </div>
             <button class="botao" type="submit">Entrar</button>
-            <p class="sing_up">Ainda não tem uma conta? <a class="sing_A" href="${pageContext.request.contextPath}/LoginSignUp/signup.jsp">cadastre-se</a></p>
+            <p class="sing_up">Ainda não tem uma conta? <a class="sing_A" href="servcadastro">cadastre-se</a></p>
         </div>
         </form>
     </div>

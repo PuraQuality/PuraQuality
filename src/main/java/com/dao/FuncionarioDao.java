@@ -1,13 +1,11 @@
-package com.repository;
+package com.dao;
 
 //package
 import com.conexao.ConnectionFactory;
 import com.model.Funcionario;
 
 //sql
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 //pacote util
 import java.util.ArrayList;
@@ -83,6 +81,105 @@ public class FuncionarioDao extends Dao<Funcionario> {
                 usuario1.setPrioridade(rset.getBoolean("permissao"));
 
                 //add na lista
+
+                usuarios.add(usuario1);
+            }
+
+        }catch (Exception e){
+            //Printando erros
+            e.printStackTrace();
+        }finally {
+            //Fechando conexão e métodos
+            ConnectionFactory.fecharConnection(conn);
+            Dao.fecharPstm(pstm);
+            Dao.fecharRset(rset);
+        }
+        return usuarios;
+    }
+
+    public List<Funcionario> selectFiltro(int empresaid,String coluna, String filtro) throws SQLException {
+        //Criando uma lista de usuarios
+        List<Funcionario> usuarios = new ArrayList<>();
+
+        //Comando sql
+        String sql = "SELECT * FROM funcionario where %s LIKE ? and empresa_id = ?".formatted(coluna) ;
+
+        //atribuindo valores null
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try{
+            //Conectando e passando o comando sql
+            conn = ConnectionFactory.createConnection();
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1,"%" + filtro + "%");
+            pstm.setInt(2,empresaid);
+
+            rset = pstm.executeQuery();
+
+            //Percorre as linhas do comando sql
+            while (rset.next()){
+                //Criando usuario para ser armazenado na lista
+                Funcionario usuario1 = new Funcionario();
+
+                //Instanciando
+                usuario1.setId(rset.getInt("id"));
+                usuario1.setEmail(rset.getString("email"));
+                usuario1.setSenha(rset.getString("senha"));
+                usuario1.setEmpresaId(rset.getInt("empresa_id"));
+                usuario1.setPrioridade(rset.getBoolean("permissao"));
+
+                //add na lista
+                usuarios.add(usuario1);
+            }
+
+        }catch (Exception e){
+            //Printando erros
+            e.printStackTrace();
+        }finally {
+            //Fechando conexão e métodos
+            ConnectionFactory.fecharConnection(conn);
+            Dao.fecharPstm(pstm);
+            Dao.fecharRset(rset);
+        }
+        return usuarios;
+    }
+
+    public List<Funcionario> selectFiltro(int empresaid, boolean filtro) throws SQLException {
+        //Criando uma lista de usuarios
+        List<Funcionario> usuarios = new ArrayList<>();
+
+        //Comando sql
+        String sql = "SELECT * FROM funcionario where permissao = ? and empresa_id = ?";
+
+        //atribuindo valores null
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try{
+            //Conectando e passando o comando sql
+            conn = ConnectionFactory.createConnection();
+            pstm = conn.prepareStatement(sql);
+            pstm.setBoolean(1,filtro);
+            pstm.setInt(2,empresaid);
+
+            rset = pstm.executeQuery();
+
+            //Percorre as linhas do comando sql
+            while (rset.next()){
+                //Criando usuario para ser armazenado na lista
+                Funcionario usuario1 = new Funcionario();
+
+                //Instanciando
+                usuario1.setId(rset.getInt("id"));
+                usuario1.setEmail(rset.getString("email"));
+                usuario1.setSenha(rset.getString("senha"));
+                usuario1.setEmpresaId(rset.getInt("empresa_id"));
+                usuario1.setPrioridade(rset.getBoolean("permissao"));
+
+                //add na lista
                 usuarios.add(usuario1);
             }
 
@@ -134,9 +231,12 @@ public class FuncionarioDao extends Dao<Funcionario> {
             }
 
         }catch (Exception e){
+
             //Printando erros
             e.printStackTrace();
+
         }finally {
+
             //Fechando conexão e métodos
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);

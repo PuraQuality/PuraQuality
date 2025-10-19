@@ -1,11 +1,11 @@
-package com.controller;
+package com.servlet;
 
 import java.io.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import com.repository.FuncionarioDao;
+import com.dao.FuncionarioDao;
 import com.model.Funcionario;
 
 @WebServlet(name = "servletAlterarUsuario", value = "/servletAlterarUsuario")
@@ -21,6 +21,6 @@ public class ServletAlterarUsuario extends HttpServlet {
         FuncionarioDao funcionarioDao = new FuncionarioDao();
         Funcionario funcionario = new Funcionario(id,email,senha,prioridade);
         funcionarioDao.update(funcionario);
-        request.getRequestDispatcher("PaginaAposLogin/empresa.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
     }
 }

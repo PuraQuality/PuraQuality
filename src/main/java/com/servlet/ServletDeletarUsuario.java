@@ -1,11 +1,11 @@
-package com.controller;
+package com.servlet;
 
 import java.io.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import com.repository.FuncionarioDao;
+import com.dao.FuncionarioDao;
 
 @WebServlet(name = "servletDeletarUsuario", value = "/servletDeletarUsuario")
 public class ServletDeletarUsuario extends HttpServlet {
@@ -19,8 +19,8 @@ public class ServletDeletarUsuario extends HttpServlet {
             funcionarioDao.deleteById(id);
         }
         if(((String)request.getParameter("empresa")).equals("sim")) {
-            request.getRequestDispatcher("PaginaAposLogin/empresa.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("PaginaAposLogin/crud.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crud.jsp").forward(request, response);
     }
 }

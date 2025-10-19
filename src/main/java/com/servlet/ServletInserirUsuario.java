@@ -1,11 +1,11 @@
-package com.controller;
+package com.servlet;
 
 import java.io.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import com.repository.FuncionarioDao;
+import com.dao.FuncionarioDao;
 import com.model.Funcionario;
 
 @WebServlet(name = "servletInserirUsuario", value = "/servletInserirUsuario")
@@ -22,9 +22,9 @@ public class ServletInserirUsuario extends HttpServlet {
         Funcionario funcionario = new Funcionario(email,senha,empresaid,permissao);
         funcionarioDao.save(funcionario);
         if (request.getParameter("empresa").equals("sim")){
-            request.getRequestDispatcher("PaginaAposLogin/empresa.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("PaginaAposLogin/crud.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crud.jsp").forward(request, response);
 
     }
 }

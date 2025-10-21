@@ -10,6 +10,9 @@ body {
     color: #fff;
     font-family: Montserrat, sans serif;
 }
+p{
+    font-size: 20px;
+}
 /* -------------------CORPO DO SITE------------------- */
 .contLanding {
     position: absolute;
@@ -21,8 +24,8 @@ body {
 }
 .contPrincipal {
     position: absolute;
-    height: 1000vh;
-    background-color: rgb(16, 0, 22); /* cor leve para visualização */
+    height: 555vh;
+    background-color: rgb(13, 0, 34); /* cor leve para visualização */
     width: 90%;
     border-radius: 50px;
     margin-top: 680px; /* sobrepõe a seção anterior */
@@ -38,11 +41,11 @@ section {
     padding: 0;
 }
 .planos_pg {
-    background: linear-gradient(rgb(126, 0, 175), rgb(26, 0, 50), rgb(0, 0, 0));
+    background: linear-gradient(rgb(183, 0, 255), rgb(57, 0, 110), rgb(0, 0, 0));
     position: absolute;
     height: 120vh;
     width: 100%;
-    bottom: -8140px;
+    bottom: -4900px;
     z-index: 3;
 }
 
@@ -58,10 +61,10 @@ section {
 }
 .footer {
     position: absolute;
-    bottom: -8640px;
+    bottom: -5800px;
     width: 100%;
-    height: 500px;
-    background-color: #000000;
+    height: 900px;
+    background: linear-gradient(#000000 85%, #010139);
     z-index: 4;
     overflow-x: hidden;
     overflow-y: auto;
@@ -87,12 +90,32 @@ section {
     align-items: center;
     font-size: 50px;
 }
-.quemSomos > p{
+.qsGrid > p{
     position: relative;
     line-height: 1.6;
-    top: 25px;
-    left: 21%;
+    top: 20px;
     width: 800px;
+    font-size: 20px;
+}
+.logoMagna{
+    position: relative;
+    left: 25%;
+    top: 15%;
+    width: 150px;
+    height: 150px;
+}
+.logoQS{
+    position: relative;
+    top: 15%;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+.qsGrid{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3,2fr);
+    gap: 50px;
 }
 /* Funções */
 .tituloFunc {
@@ -113,6 +136,7 @@ section {
     width: 500px;
 }
 .card p {
+    font-size: 20px;
     line-height: 1.6;
     text-align: left;
 }
@@ -135,7 +159,7 @@ section {
 }
 .cardSet > p{
     position: relative;
-    font-size: large;
+    font-size: 20px;
     width: 650px;
     top: 5%;
     line-height: 1.6;
@@ -181,7 +205,7 @@ section {
 .ODStitulo{
     position: relative;
     font-size: 200px;
-    left: 30px;
+    left: 15px;
     top: 50px;
     width: 460px;
 
@@ -193,21 +217,26 @@ section {
 }
 .exp{
     position: relative;
-    top: 200px;
+    top: 250px;
     right: 600px;
     width: 1000px;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 .gridODS{
     position: relative;
     right: 750px;
-    top: 250px;
+    top: 300px;
     display: grid;
     grid-template-columns: repeat(4, 2fr);
 }
 .imgMeta{
     width: 250px;
+    border-radius: 15px;
+
+    animation: reveal 1s ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 50%;
 }
 .cardMetas > p{
     font-weight: 600;
@@ -215,22 +244,23 @@ section {
 }
 .ODSfinal{
     position: relative;
-    top: 300px;
+    top: 350px;
     left: -590px;
     width: 950px;
     right: 800px;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 /* Six Sigma */
 .sixS > h1{
     position: relative;
-    top: -150px;
+    top: -100px;
     left: 225px;
     font-size: 40px;
 }
 .gridSix{
     position: relative;
+    top: 50px;
     left: 150px;
     width: 200px;
     display: grid;
@@ -258,47 +288,322 @@ section {
     left: 18px;
     width: 400px;
 }
-/* -------------------footer------------------- */
-.cardOverflow {
+.relatorios{
+    position: relative;
+    top: -10%;
+}
+.relatorios > h1{
     position: relative;
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 30px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-behavior: smooth;
-    width: 100%;
-    max-width: 1500px;
-    padding: 20px 0;
+    justify-self: center;
+    font-size: 50px;
 }
-.cardOverflow::-webkit-scrollbar {
-    display: none;
-}
-.cardOver:hover{
-    transform: translateY(-20px)scale(1.03);
-    transition: 0.5s ease;
-}
-.cardOver {
+.rtGrid{
     position: relative;
-    top: 5%;
-    width: 320px;
-    height: 310px;
-    background-color: #ffffff;
-    flex-shrink: 0;
-    border-radius: 12px;
+    display: flex;
+
+}
+.rtGrid > p{
+    font-size: 20px;
+    position: relative;
+    display: flex;
+    text-align: left;
+    top: 50px;
+    left: 15%;
+    width: 650px;
+}
+.rgqimg{
+    position: relative;
+    left: 5%;
+    top: 50px;
+    width: 250px;
+}
+.ai{
+    position: relative;
+    top: -7%;
+}
+.ai > h1{
+    position: relative;
+    display: flex;
+    justify-self: center;
+    font-size: 45px;
+}
+.aiGrid{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    left: 3.5%;
+    top: 25px;
+}
+.aiGrid > p{
+    font-size: 22.5px;
+    width: 600px;
+
+}
+/* -------------------footer------------------- */
+.textoFooter{
+    position: relative;
+    font-weight: bolder;
+    font-size: 45px;
+    top: -15%;
+}
+.carousel-container {
+    max-width: 1500px;
+    width: 100%;
+    position: relative;
+    top: -12.5%;
+    left: 5.5%;
+}
+
+.carousel-title {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+    width: 1300px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
+/* Botões de navegação */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(58, 0, 69, 0.477);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-    transition: 0.5s ease;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
-.textoFooter{
-    font-weight: bolder;
-    font-size: 45px;
+
+.carousel-btn:hover {
+    background: rgba(58, 0, 69, 0.747);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: -60px;
+}
+
+.next-btn {
+    right: 110px;
+}
+.carousel-card {
+    display: flex;
+    min-width: 250px;
+    height: 300px;
+    background: linear-gradient(145deg, #2f1a3d, #0f0f2a);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.carousel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 10px rgba(140, 0, 255, 0.7);
+    border: 1px solid rgba(152, 44, 240, 0.5);
+}
+
+.member-photo {
+    position: relative;
+    top:-15%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #667eea;
+    margin-bottom: 15px;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+}
+.member-name {
+    position: relative;
+    top: -15%;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+.contatoGrid{
+    position: relative;
+    top: -10%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    font-size: 12.5px;
+}
+.contatoGrid > p{
+    font-size: 12.5px;
+}
+.contatoGridP{
+    position: relative;
+    top: -50%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    font-size: 12.5px;
+}
+.Adri > p{
+    left: -10px;
+}
+.ad{
+    top: -12%;
+}
+.Adri{
+    top: -7%;
+}
+.ya{
+    top: -12%;
+}
+.yada > p{
+    left: -10px;
+}
+.yada{
+    top: -7%;
+}
+.iconD{
+    width: 15px;
+}
+.iconE{
+    width: 15px;
+}
+.areaT{
+    position: relative;
+    top: -13%;
+    color: white;
+    font-weight: bold;
+}
+.contatoGridM{
+    position: relative;
+    top: -9%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.contatoGridM > p{
+    position: relative;
+    right: 22.5px;
+    font-size: 12.5px;
+}
+.contatoGrid > p{
+    position: relative;
+    right: 15px;
+    font-size: 12.5px;
+}
+.contatoGridP > p{
+    position: relative;
+    right: 15px;
+    font-size: 12.5px;
+}
+.areaTp{
+    position: relative;
+    top: -70%;
+    left: 29%;
+    color: white;
+    font-weight: bold;
+}
+/* -------------------Background Fixo------------------- */
+.background-layer {
+    position: absolute; /* ou absolute, mas fixed é melhor para fundos */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4755px;
+    z-index: 1; /* Fica atrás de tudo */
+    pointer-events: none; /* Não interfere com cliques ou hovers */
+}
+.ledBack{
+    position: relative;
+    top: 15%;
+    width: 100%;
+    height: 4000px;
+    background: radial-gradient(
+            circle at 35% 55%,
+            rgba(67, 150, 187, 0.9) 0%,
+                /* azul claro */ rgba(171, 36, 255, 0.449) 60%
+    ),
+    radial-gradient(
+            circle at 65% 45%,
+            rgba(130, 60, 170, 0.564) 0%,
+                /* violeta */ rgba(140, 40, 157, 0.475) 70%
+    );
+    filter: blur(80px);
+}
+.bolaC7Back{
+    position: relative;
+    transform: rotate(90deg);
+    top: -60%;
+    left: -5%;
+    width: 500px;
+}
+.bolaC4Back{
+    position: relative;
+    left: 10%;
+    top: -50%;
+    z-index: 3;
+}
+.bolaC3Back{
+    position: relative;
+    top: -70%;
+    left: 50%;
+    width: 400px;
+    transform: rotateY(150deg);
+}
+.bolaC5Back{
+    position: relative;
+    top: -50%;
+    left: -10%;
+    z-index: 3;
+    transform: rotate(10deg);
+}
+.bolaC6Back{
+    position: relative;
+    right: -24%;
+    top: -40%;
+    transform: rotate(45deg);
+    transform: rotateY(90deg);
+}
+.bolaC2Back{
+    position: relative;
+    left: -20%;
+    top: -40%;
+    width: 40%;
+    transform: rotate(45deg);
+}
+.bolaC8Back{
+    position: relative;
+    top: -30%;
+    right: -29%;
+    transform: rotate(290deg);
+}
+.bolaC7Back2{
+    position: relative;
+    top: -30%;
+    width: 40%;
+    transform: rotate(180deg);
+    left: -20%;
 }
 /* -------------------Coisinha bonitinha------------------- */
 .bola_cromo {
@@ -456,7 +761,7 @@ section {
 .botao-inicio {
     position: absolute;
     left: 280px;
-    top: 430px;
+    top: 415px;
     background-color: #9a03ff;
     border-radius: 20px;
     padding: 12px 20px;
@@ -480,15 +785,8 @@ section {
 /* ------------------- Planos página ------------------- */
 .bolaPg {
     position: relative;
+    top: 5%;
     left: -65%;
-    width: 30%;
-    filter: brightness(1.2);
-}
-.bolaPg2 {
-    position: relative;
-    top: -180%;
-    left: -20%;
-    transform: rotate(150deg);
     width: 30%;
     filter: brightness(1.2);
 }
@@ -503,7 +801,7 @@ section {
     position: relative;
     width: 45%;
     top: 10%;
-    left: 27.5%;
+    left: 26.5%;
 
     animation: girando 60s linear infinite;
 }
@@ -614,9 +912,10 @@ section {
     align-items: center;
     position: relative;
     top: 7%;
-    left: 40%;
+    left: 35%;
     padding: 10px 2px;
-    width: 20%;
+    width: 30%;
+    color: #7d7d7d;
     background-color: #5a5a5a;
     border-radius: 15px;
     text-align: center;
@@ -654,11 +953,6 @@ section {
     transition: all 0.3s ease;
 }
 
-.plano1 ul li:hover::before {
-    background: linear-gradient(135deg, #00ff88, #00cc6a);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
-}
 .plano2 ul li {
     position: relative;
     padding: 8px 0;
@@ -733,12 +1027,12 @@ section {
 /* -------------------titulos/textos------------------- */
 .titulo-pura {
     position: absolute;
-    top: 220px;
+    top: 280px;
     left: 85px;
-    font-weight: 600;
+    font-weight: bolder;
     font-size: 80px;
     /* Gradiente de cores */
-    background: linear-gradient(90deg, #bf00ff, #6a00ff, #0099ff);
+    background: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
 
     /* Visualização do degradê no texto */
     -webkit-background-clip: text;
@@ -747,14 +1041,15 @@ section {
     background-clip: text; /* para navegadores não-webkit */
     color: transparent;
     z-index: 2;
-    filter: brightness(1.5);
+    filter: brightness(2);
 }
 .texto-inicio {
     position: absolute;
     top: 380px;
-    left: 200px;
+    left: 180px;
     color: white;
     z-index: 2;
+    font-size: large;
 }
 /* -------------------Hovers------------------- */
 .botao-inicio:hover {
@@ -804,8 +1099,8 @@ section {
     }
     .plano1 ul li:hover::before {
         background: linear-gradient(135deg, #00ff88, #00cc6a);
-        transform: translateY(20%) scale(1.2);
-        box-shadow: 0 4px 15px rgba(0, 255, 136, 0.8);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
     }
 }
 .plano2:hover {
@@ -902,12 +1197,35 @@ section {
         box-shadow: 0 4px 15px rgba(0, 255, 136, 0.8);
     }
 }
-/* -------------------Media Queries------------------- */
+/* 🔥 Deixa todos os checks verdes quando passa o mouse no plano */
+.plano1:hover ul li::before {
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
+}
+
+/* Repita para os outros planos */
+.plano2:hover ul li::before,
+.plano3:hover ul li::before {
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
+}
+/* -------------------Animations------------------- */
 @keyframes girando {
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes reveal{
+    from {
+        opacity: 0;
+        clip-path: inset(45% 20% 45% 20%);
+    }
+    to {
+        opacity: 1;
+        clip-path: inset(0% 0% 0% 0%);
     }
 }

@@ -3,6 +3,7 @@ package com.dao;
 //package
 import com.conexao.ConnectionFactory;
 import com.model.Empresa;
+import com.model.Funcionario;
 
 //sql
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 //pacote util
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,162 @@ public class EmpresaDao extends Dao<Empresa> {
             ConnectionFactory.fecharConnection(conn);
             Dao.fecharPstm(pstm);
         }
+    }
+
+    public List<Empresa> selectEmpresa(int empresaId){
+        //Criando uma lista de usuarios
+        List<Empresa> usuarios = new ArrayList<>();
+
+        //Comando sql
+        String sql = "SELECT * FROM empresa where id = ?";
+
+        //atribuindo valores null
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try{
+            //Conectando e passando o comando sql
+            conn = ConnectionFactory.createConnection();
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1,empresaId);
+
+            rset = pstm.executeQuery();
+
+            //Percorre as linhas do comando sql
+            while (rset.next()){
+                //Criando usuario para ser armazenado na lista
+                Empresa usuario1 = new Empresa();
+
+                //Instanciando
+                usuario1.setId(rset.getInt("id"));
+                usuario1.setNome(rset.getString("email"));
+                usuario1.setSenha(rset.getString("senha"));
+                usuario1.setSetor(rset.getString("setor"));
+                usuario1.setCnpj(rset.getString("cnpj"));
+                usuario1.setEmail(rset.getString("email"));
+                usuario1.setPlanoId(rset.getInt("plano_id"));
+
+                //add na lista
+
+                usuarios.add(usuario1);
+            }
+
+        }catch (Exception e){
+            //Printando erros
+            e.printStackTrace();
+        }finally {
+            //Fechando conexão e métodos
+            ConnectionFactory.fecharConnection(conn);
+            Dao.fecharPstm(pstm);
+            Dao.fecharRset(rset);
+        }
+        return usuarios;
+    }
+
+    public List<Empresa> selectFiltro(String coluna, String filtro) throws SQLException {
+        List<Empresa> usuarios = new ArrayList<>();
+
+        //Comando sql
+        String sql = "SELECT * FROM empresa where %s LIKE ?".formatted(coluna);
+
+        //atribuindo valores null
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try{
+            //Conectando e passando o comando sql
+            conn = ConnectionFactory.createConnection();
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1,filtro);
+
+            rset = pstm.executeQuery();
+
+            //Percorre as linhas do comando sql
+            while (rset.next()){
+                //Criando usuario para ser armazenado na lista
+                Empresa usuario1 = new Empresa();
+
+                //Instanciando
+                usuario1.setId(rset.getInt("id"));
+                usuario1.setNome(rset.getString("email"));
+                usuario1.setSenha(rset.getString("senha"));
+                usuario1.setSetor(rset.getString("setor"));
+                usuario1.setCnpj(rset.getString("cnpj"));
+                usuario1.setEmail(rset.getString("email"));
+                usuario1.setPlanoId(rset.getInt("plano_id"));
+
+                //add na lista
+
+                usuarios.add(usuario1);
+            }
+
+        }catch (Exception e){
+            //Printando erros
+            e.printStackTrace();
+        }finally {
+            //Fechando conexão e métodos
+            ConnectionFactory.fecharConnection(conn);
+            Dao.fecharPstm(pstm);
+            Dao.fecharRset(rset);
+        }
+        return usuarios;
+    }
+
+    public List<Empresa> selectFiltro(int empresaid, boolean filtro) throws SQLException {
+        //Conectando e passando o comando sql
+        List<Empresa> usuarios = new ArrayList<>();
+
+        //Comando sql
+        String sql = "SELECT * FROM empresa where id = ? and permissao = ?";
+
+        //atribuindo valores null
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+
+        try{
+            //Conectando e passando o comando sql
+            conn = ConnectionFactory.createConnection();
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1,empresaid);
+            pstm.setBoolean(2,filtro);
+
+            rset = pstm.executeQuery();
+
+            //Percorre as linhas do comando sql
+            while (rset.next()){
+                //Criando usuario para ser armazenado na lista
+                Empresa usuario1 = new Empresa();
+
+                //Instanciando
+                usuario1.setId(rset.getInt("id"));
+                usuario1.setNome(rset.getString("email"));
+                usuario1.setSenha(rset.getString("senha"));
+                usuario1.setSetor(rset.getString("setor"));
+                usuario1.setCnpj(rset.getString("cnpj"));
+                usuario1.setEmail(rset.getString("email"));
+                usuario1.setPlanoId(rset.getInt("plano_id"));
+
+                //add na lista
+
+                usuarios.add(usuario1);
+            }
+
+        }catch (Exception e){
+            //Printando erros
+            e.printStackTrace();
+        }finally {
+            //Fechando conexão e métodos
+            ConnectionFactory.fecharConnection(conn);
+            Dao.fecharPstm(pstm);
+            Dao.fecharRset(rset);
+        }
+        return usuarios;
     }
 
     public List<Empresa> select(){

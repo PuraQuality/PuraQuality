@@ -21,6 +21,6 @@ public class ServletAlterarEmpresa extends HttpServlet {
         FuncionarioDao funcionarioDao = new FuncionarioDao();
         Funcionario funcionario = new Funcionario(id,email,senha,prioridade);
         funcionarioDao.update(funcionario);
-        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/pu.jsp").forward(request, response);
     }
 }

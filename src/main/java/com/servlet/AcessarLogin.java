@@ -6,7 +6,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import com.dao.FuncionarioDao;
-import com.model.Funcionario;
 
 @WebServlet("/servlogin")
 public class AcessarLogin extends HttpServlet {

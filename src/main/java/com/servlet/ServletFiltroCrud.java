@@ -1,15 +1,11 @@
 package com.servlet;
 
 import java.io.*;
-import java.util.List;
 
-import com.model.Empresa;
-import com.dao.EmpresaDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import com.dao.FuncionarioDao;
-import com.model.Funcionario;
 
 @WebServlet("/servletFiltro")
 public class ServletFiltroCrud extends HttpServlet {

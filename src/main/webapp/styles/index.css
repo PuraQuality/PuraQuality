@@ -12,6 +12,20 @@ body {
 }
 p{
     font-size: 20px;
+
+    animation: fadeIn 1s ease-in-out;
+    animation-timeline: view();
+    animation-range: entry 0% cover 65%;
+}
+h1{
+    animation: fadeIn 1s ease-in-out;
+    animation-timeline: view();
+    animation-range: entry 0% cover 70%;
+}
+img{
+    animation: fadeIn 1s ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 }
 /* -------------------CORPO DO SITE------------------- */
 .contLanding {
@@ -31,6 +45,8 @@ p{
     margin-top: 680px; /* sobrepõe a seção anterior */
     margin-left: 5%;
     z-index: 3;
+
+    /*animation: fadeIn 2.5s forwards;*/
 }
 main.corpo {
     margin: 0;
@@ -74,6 +90,148 @@ section {
     justify-content: center;
     padding: 40px 0;
 }
+/* ------------------- Landing ------------------- */
+.titulo-pura {
+    position: absolute;
+    top: 280px;
+    left: 85px;
+    font-weight: bolder;
+    font-size: 80px;
+    /* Gradiente de cores */
+    background: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
+
+    /* Visualização do degradê no texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text; /* para navegadores não-webkit */
+    color: transparent;
+    z-index: 2;
+    filter: brightness(2);
+
+    animation: fadeIn 1.5s forwards;
+}
+.texto-inicio {
+    position: absolute;
+    top: 380px;
+    left: 180px;
+    color: white;
+    z-index: 2;
+    font-size: large;
+
+    animation: fadeIn 2s forwards;
+}
+.botao-inicio {
+    position: absolute;
+    left: 280px;
+    top: 415px;
+    background-color: #9a03ff;
+    border-radius: 20px;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s ease;
+    z-index: 2;
+
+    animation: fadeIn 2.5s forwards;
+}
+/* ------------------- background landing ------------------- */
+.bola_cromo {
+    position: absolute;
+    bottom: -320px;
+    left: -250px;
+    width: 45%;
+    z-index: 2;
+}
+.bola_cromo2 {
+    position: absolute;
+    top: -290px;
+    left: -200px;
+    width: 45%;
+    z-index: 2;
+}
+.celular {
+    position: absolute;
+    top: 70px;
+    right: 90px;
+    width: 45%;
+    z-index: 4;
+
+    animation: fadeIn 1.5s forwards;
+}
+.faixa {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 55%;
+    z-index: 2;
+}
+.led-glow-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 4;
+    top: -50px;
+    right: 0px;
+    z-index: 1;
+}
+.led-glow {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+            circle at 35% 55%,
+            rgba(67, 150, 187, 0.9) 0%,
+                /* azul claro */ rgba(171, 36, 255, 0.449) 60%
+    ),
+    radial-gradient(
+            circle at 65% 45%,
+            rgba(130, 60, 170, 0.564) 0%,
+                /* violeta */ rgba(140, 40, 157, 0.475) 70%
+    );
+    filter: blur(80px);
+    transform: rotate(25deg);
+}
+.led-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    /* Para centralizar conteúdo, se houver */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+/* O led criado como um gradiente radial */
+.led {
+    position: absolute;
+    top: 150px;
+    left: 0px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+            circle at 35% 55%,
+            rgba(15, 109, 153, 0.9) 0%,
+                /* azul claro */ rgba(157, 0, 255, 0.262) 60%
+    ),
+    radial-gradient(
+            circle at 65% 45%,
+            rgba(60, 113, 170, 0.9) 0%,
+            rgb(40, 62, 157) 70%
+    );
+    filter: blur(80px);
+    fill: brightness(0.5);
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 1;
+    transform: rotate(25deg);
+}
+
+.bola_cromo,.bola_cromo2,.faixa{
+    animation: fadeIn 1.5s forwards;
+}
 /* -------------------Container principal------------------- */
 /* Apresentação */
 .quemSomos{
@@ -111,6 +269,7 @@ section {
     height: 150px;
     border-radius: 100%;
 }
+
 .qsGrid{
     position: relative;
     display: grid;
@@ -189,6 +348,10 @@ section {
     );
     filter: blur(80px);
     transform: rotate(25deg);
+
+    animation: fadeIn 1s ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 50%;
 }
 .ODSimg{
     position: relative;
@@ -605,97 +768,7 @@ section {
     transform: rotate(180deg);
     left: -20%;
 }
-/* -------------------Coisinha bonitinha------------------- */
-.bola_cromo {
-    position: absolute;
-    bottom: -320px;
-    left: -250px;
-    width: 45%;
-    z-index: 2;
-}
-.bola_cromo2 {
-    position: absolute;
-    top: -290px;
-    left: -200px;
-    width: 45%;
-    z-index: 2;
-}
-.celular {
-    position: absolute;
-    top: 70px;
-    right: 90px;
-    width: 45%;
-    z-index: 4;
-}
-.faixa {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 55%;
-    z-index: 2;
-}
-.led-glow-container {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    z-index: 4;
-    top: -50px;
-    right: 0px;
-    z-index: 1;
-}
-.led-glow {
-    position: absolute;
-    top: 100px;
-    right: 100px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(
-            circle at 35% 55%,
-            rgba(67, 150, 187, 0.9) 0%,
-                /* azul claro */ rgba(171, 36, 255, 0.449) 60%
-    ),
-    radial-gradient(
-            circle at 65% 45%,
-            rgba(130, 60, 170, 0.564) 0%,
-                /* violeta */ rgba(140, 40, 157, 0.475) 70%
-    );
-    filter: blur(80px);
-    transform: rotate(25deg);
-}
-.led-container {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    /* Para centralizar conteúdo, se houver */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-/* O led criado como um gradiente radial */
-.led {
-    position: absolute;
-    top: 150px;
-    left: 0px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(
-            circle at 35% 55%,
-            rgba(15, 109, 153, 0.9) 0%,
-                /* azul claro */ rgba(157, 0, 255, 0.262) 60%
-    ),
-    radial-gradient(
-            circle at 65% 45%,
-            rgba(60, 113, 170, 0.9) 0%,
-            rgb(40, 62, 157) 70%
-    );
-    filter: blur(80px);
-    fill: brightness(0.5);
-    opacity: 0.7;
-    pointer-events: none;
-    z-index: 1;
-    transform: rotate(25deg);
-}
+
 /* -------------------CABEÇALHO------------------- */
 .cabecalho {
     display: flex;
@@ -757,18 +830,6 @@ section {
     padding: 5px 25px;
     border-radius: 15px;
     transition: 0.2s ease;
-}
-.botao-inicio {
-    position: absolute;
-    left: 280px;
-    top: 415px;
-    background-color: #9a03ff;
-    border-radius: 20px;
-    padding: 12px 20px;
-    color: white;
-    text-decoration: none;
-    transition: 0.5s ease;
-    z-index: 2;
 }
 .sb:hover {
     background-color: rgb(200, 200, 200);
@@ -1024,33 +1085,6 @@ section {
     transform: translateY(-50%) scale(1.1);
     box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
 }
-/* -------------------titulos/textos------------------- */
-.titulo-pura {
-    position: absolute;
-    top: 280px;
-    left: 85px;
-    font-weight: bolder;
-    font-size: 80px;
-    /* Gradiente de cores */
-    background: linear-gradient(90deg, #bf00ff, #6a00ff, #0099FF);
-
-    /* Visualização do degradê no texto */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    background-clip: text; /* para navegadores não-webkit */
-    color: transparent;
-    z-index: 2;
-    filter: brightness(2);
-}
-.texto-inicio {
-    position: absolute;
-    top: 380px;
-    left: 180px;
-    color: white;
-    z-index: 2;
-    font-size: large;
-}
 /* -------------------Hovers------------------- */
 .botao-inicio:hover {
     background-color: #bd64f8;
@@ -1227,5 +1261,16 @@ section {
     to {
         opacity: 1;
         clip-path: inset(0% 0% 0% 0%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

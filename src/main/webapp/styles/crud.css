@@ -1,0 +1,24 @@
+:root{
+    --fonte-geral: 'Montserrat', sans serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #1c0018;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+.header{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgb(41, 41, 41);
+    display: flex;
+}
+.logo{
+    width: 25px;
+    height: 25px;
+}

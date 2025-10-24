@@ -49,7 +49,7 @@
                 <a class="sobre_link" href="#"><div class="sb">Sobre</div></a>
             </nav>
         </div>
-        <a class="login_link" href="../WEB-INF/views/LoginSignUp/login.jsp"><div class="lb">Login</div></a>
+        <a class="login_link" href="servlogin"><div class="lb">Login</div></a>
     </header>
     <!-- CORPO DO SITE -->
     <section class="contLanding">
@@ -160,11 +160,13 @@
         <img class="bola" src="img/bolaGira.png" alt="">
         <img id="bolaPg" class="bolaPg" src="img/bola_cromo.png" alt="">
         <img id="bolaPg" class="bolaPg3" src="img/bola_cromo3.png" alt="">
+        <img class="bolaC4Planos" src="img/bolaC4.png" alt="">
+        <img class="bolaC6Planos" src="img/bolaC6.png" alt="">
     </div>
     <div class="plano1">
         <h2 class="quality">Quality</h2>
         <p class="quality_p">R$999,00/mês</p>
-        <a class="quality_link" id="quality_link" href="">Cadastrar</a>
+        <button class="quality_link" id="quality_link" href="submit">Cadastrar</button>
         <ul type="none">
             <li>Análise completa de processos</li>
             <li>Relatórios detalhados</li>
@@ -177,9 +179,9 @@
     <div class="plano2">
         <h2 class="quality2">FullQuality</h2>
         <p class="quality_p2">R$2490,90/mês</p>
-        <a class="quality_link2" id="quality_link" href="">
+        <button class="quality_link2" id="quality_link" href="submit">
             Cadastrar
-        </a>
+        </button>
         <ul type="none">
             <li>Análise completa de processos</li>
             <li>Relatórios mais detalhados</li>
@@ -195,9 +197,7 @@
     <div class="plano3">
         <h2 class="quality3">PuraQuality</h2>
         <p class="quality_p3">R$4290,90/mês</p>
-        <a class="quality_link3" id="quality_link" href="">
-            Cadastrar
-        </a>
+        <button class="quality_link3" id="quality_link" href="subimit">Cadastrar</button>
         <ul type="none">
             <li>Análise completa de processos</li>
             <li>Relatórios completos</li>
@@ -212,7 +212,6 @@
 </section>
 <footer class="footer">
     <h1 class="textoFooter">Conheça o nosso time!!</h1>
-
     <div class="carousel-container">
         <button class="carousel-btn prev-btn" id="prevBtn">←</button>
         <div class="carousel-wrapper">
@@ -238,7 +237,7 @@
                     <div class="contatoGrid Adri">
                         <img class="iconE" src="img/emailIcon.png" alt="Email:"><p>adriel.pimentel@germinare<br>.org.br
                     </p>
-                        <img class="iconD" src="img/discordIcon.png" alt="Discord:"><p>adrielpimentel
+                        <img class="iconD icondAdri" src="img/discordIcon.png" alt="Discord:"><p>adrielpimentel
                     </p>
                     </div>
                 </div>
@@ -308,61 +307,71 @@
         const carouselTrack = document.getElementById('carouselTrack');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
 
-        // Define as dimensões fixas dos cards e espaçamento
         const cardWidth = 250;
         const gap = 20;
-
-        // Pega todos os cards reais (sem clones)
         const cards = Array.from(carouselTrack.children);
         const totalCards = cards.length;
 
-        // Número de cards visíveis ao mesmo tempo (máximo 5)
-        const visibleCards = Math.min(5, totalCards);
-
-        // Calcula a largura total necessária para mostrar 'visibleCards' cards
-        const trackWidth = (cardWidth + gap) * visibleCards - gap; // menos um gap no final
-
-        // Define o índice atual (começa no primeiro conjunto)
+        let visibleCards = Math.min(5, totalCards);
         let currentIndex = 0;
 
-        // Função que move o carrossel com base no índice atual
+        // Função que atualiza o carrossel
         function updateCarousel() {
             const offset = -currentIndex * (cardWidth + gap);
             carouselTrack.style.transform = `translateX(${offset}px)`;
+        }
+
+        // Atualiza largura do wrapper conforme número de cards visíveis
+        function updateWrapperWidth() {
+            const trackWidth = (cardWidth + gap) * visibleCards - gap;
+            carouselWrapper.style.width = `${trackWidth}px`;
+        }
+
+        // Função para ajustar o carrossel conforme o tamanho da tela
+        function handleResize() {
+            if (window.innerWidth <= 800) {
+                visibleCards = 2; // mostra apenas 1 card
+            } else {
+                visibleCards = Math.min(5, totalCards); // mostra até 5 cards em telas maiores
+            }2
+            // Corrige o índice se necessário
+            if (currentIndex > totalCards - visibleCards) {
+                currentIndex = totalCards - visibleCards;
+            }
+
+            updateWrapperWidth();
+            updateCarousel();
         }
 
         // Botão "Anterior"
         prevBtn.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-                updateCarousel();
             } else {
-                currentIndex = 1;
-                updateCarousel();
+                currentIndex = totalCards - visibleCards; // loop para o final
             }
+            updateCarousel();
         });
 
         // Botão "Próximo"
         nextBtn.addEventListener('click', () => {
-            // Permite avançar enquanto houver mais cards à frente
             if (currentIndex < totalCards - visibleCards) {
                 currentIndex++;
-                updateCarousel();
             } else {
-                currentIndex = 0
-                updateCarousel();
+                currentIndex = 0; // volta ao início
             }
+            updateCarousel();
         });
 
-        // --- CORREÇÃO PARA GARANTIR QUE O ÚLTIMO CARD NÃO FIQUE CORTADO ---
-        // Ajusta o width do wrapper para caber exatamente 'visibleCards' cards
-        const carouselWrapper = document.querySelector('.carousel-wrapper');
-        carouselWrapper.style.width = `${trackWidth}px`;
+        // Inicializa o carrossel
+        handleResize();
 
-        // Inicializa o carousel na posição correta
-        updateCarousel();
+        // Escuta mudanças de tamanho de tela
+        window.addEventListener('resize', handleResize);
     });
+
 </script>
 </body>
 </html>

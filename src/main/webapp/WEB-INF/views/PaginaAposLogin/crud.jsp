@@ -5,9 +5,25 @@
 <%@ page import="java.sql.SQLException" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/LogoPura.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/crud.css?v=<%= System.currentTimeMillis() %>">
+    <!---------------- imports ---------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="header">
+        <img src="${pageContext.request.contextPath}/img/logoOFC.png" alt="LogoPuraQuality" class="logo">
+        <h1 class="titulo-pura">PuraQuality</h1>
+    </div>
+    <div class="sideBar"></div>
     <h1>Seja bem vindo administrador</h1>
     <form method="POST" action="servletFiltro">
         <label>

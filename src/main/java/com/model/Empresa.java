@@ -9,12 +9,22 @@ public class Empresa {
     private String email;
     private String senha;
     private int planoId;
+    private String plano;
 
     public Empresa(){
 
     }
 
-    public Empresa(String aaaaaa, String aaaaaaaa, int i, String email, String senha, boolean b) {
+    public Empresa(int id,String nome, String setor, String cnpj, String email, String senha, int planoId) {
+        this.id = id;
+        this.nome = nome;
+        this.setor = setor;
+        this.cnpj = cnpj;
+        this.email = email;
+        this.senha = senha;
+        this.planoId = planoId;
+        this.plano = (planoId == 10)?"Quality":(planoId==11)?"FullQuality":"PuraQuality";
+        System.out.println(this.plano);
     }
 
     //Getters
@@ -46,6 +56,10 @@ public class Empresa {
         return planoId;
     }
 
+    public String getPlano() {
+        return plano;
+    }
+
     //Setters
     public void setId(int id) {
         this.id = id;
@@ -73,6 +87,10 @@ public class Empresa {
 
     public void setPlanoId(int planoId) {
         this.planoId = planoId;
+    }
+
+    public void setPlano(String plano) {
+        this.plano = plano;
     }
 
     //toString

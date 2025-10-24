@@ -26,7 +26,7 @@ public class ServletLogin extends HttpServlet {
         boolean validarEmpresa = false;
         request.getSession().setAttribute("emailfuncionario", email);
         request.getSession().setAttribute("filtro","");
-
+        request.getSession().setAttribute("tabela","");
         if(email.equals("puraquality@gmail.com") || senha.equals("PuraQuality2025+")){
             request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/puraquality.jsp").forward(request, response);
         }

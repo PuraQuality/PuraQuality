@@ -55,7 +55,7 @@ public class EmpresaDao extends Dao<Empresa> {
         }
     }
 
-    public List<Empresa> selectEmpresa(int empresaId){
+    public List<Empresa> selectEmpresa(int id){
         //Criando uma lista de usuarios
         List<Empresa> usuarios = new ArrayList<>();
 
@@ -72,27 +72,28 @@ public class EmpresaDao extends Dao<Empresa> {
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1,empresaId);
+            pstm.setInt(1,id);
 
             rset = pstm.executeQuery();
 
             //Percorre as linhas do comando sql
             while (rset.next()){
                 //Criando usuario para ser armazenado na lista
-                Empresa usuario1 = new Empresa();
+                Empresa empresas = new Empresa();
 
                 //Instanciando
-                usuario1.setId(rset.getInt("id"));
-                usuario1.setNome(rset.getString("email"));
-                usuario1.setSenha(rset.getString("senha"));
-                usuario1.setSetor(rset.getString("setor"));
-                usuario1.setCnpj(rset.getString("cnpj"));
-                usuario1.setEmail(rset.getString("email"));
-                usuario1.setPlanoId(rset.getInt("plano_id"));
+                empresas.setId(rset.getInt("id"));
+                empresas.setNome(rset.getString("nome"));
+                empresas.setSenha(rset.getString("senha"));
+                empresas.setSetor(rset.getString("setor"));
+                empresas.setCnpj(rset.getString("cnpj"));
+                empresas.setEmail(rset.getString("email"));
+                empresas.setPlanoId(rset.getInt("plano_id"));
+                empresas.setPlano((empresas.getPlanoId() == 10)?"Quality":(empresas.getPlanoId() == 11)?"FullQuality":"PuraQuality");
 
                 //add na lista
 
-                usuarios.add(usuario1);
+                usuarios.add(empresas);
             }
 
         }catch (Exception e){
@@ -111,7 +112,7 @@ public class EmpresaDao extends Dao<Empresa> {
         List<Empresa> usuarios = new ArrayList<>();
 
         //Comando sql
-        String sql = "SELECT * FROM empresa where %s LIKE ?".formatted(coluna);
+        String sql = "SELECT * FROM empresa where upper(%s) LIKE upper(?)".formatted(coluna);
 
         //atribuindo valores null
         Connection conn = null;
@@ -123,27 +124,28 @@ public class EmpresaDao extends Dao<Empresa> {
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1,filtro);
+            pstm.setString(1,"%" + filtro + "%");
 
             rset = pstm.executeQuery();
 
             //Percorre as linhas do comando sql
             while (rset.next()){
                 //Criando usuario para ser armazenado na lista
-                Empresa usuario1 = new Empresa();
+                Empresa empresas = new Empresa();
 
                 //Instanciando
-                usuario1.setId(rset.getInt("id"));
-                usuario1.setNome(rset.getString("email"));
-                usuario1.setSenha(rset.getString("senha"));
-                usuario1.setSetor(rset.getString("setor"));
-                usuario1.setCnpj(rset.getString("cnpj"));
-                usuario1.setEmail(rset.getString("email"));
-                usuario1.setPlanoId(rset.getInt("plano_id"));
+                empresas.setId(rset.getInt("id"));
+                empresas.setNome(rset.getString("nome"));
+                empresas.setSenha(rset.getString("senha"));
+                empresas.setSetor(rset.getString("setor"));
+                empresas.setCnpj(rset.getString("cnpj"));
+                empresas.setEmail(rset.getString("email"));
+                empresas.setPlanoId(rset.getInt("plano_id"));
+                empresas.setPlano((empresas.getPlanoId() == 10)?"Quality":(empresas.getPlanoId() == 11)?"FullQuality":"PuraQuality");
 
                 //add na lista
 
-                usuarios.add(usuario1);
+                usuarios.add(empresas);
             }
 
         }catch (Exception e){
@@ -158,12 +160,12 @@ public class EmpresaDao extends Dao<Empresa> {
         return usuarios;
     }
 
-    public List<Empresa> selectFiltro(int empresaid, boolean filtro) throws SQLException {
+    public List<Empresa> selectFiltro(boolean filtro) throws SQLException {
         //Conectando e passando o comando sql
         List<Empresa> usuarios = new ArrayList<>();
 
         //Comando sql
-        String sql = "SELECT * FROM empresa where id = ? and permissao = ?";
+        String sql = "SELECT * FROM empresa where permissao = ?";
 
         //atribuindo valores null
         Connection conn = null;
@@ -175,28 +177,29 @@ public class EmpresaDao extends Dao<Empresa> {
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1,empresaid);
-            pstm.setBoolean(2,filtro);
+            pstm.setBoolean(1,filtro);
 
             rset = pstm.executeQuery();
 
             //Percorre as linhas do comando sql
             while (rset.next()){
                 //Criando usuario para ser armazenado na lista
-                Empresa usuario1 = new Empresa();
+                Empresa empresas = new Empresa();
 
                 //Instanciando
-                usuario1.setId(rset.getInt("id"));
-                usuario1.setNome(rset.getString("email"));
-                usuario1.setSenha(rset.getString("senha"));
-                usuario1.setSetor(rset.getString("setor"));
-                usuario1.setCnpj(rset.getString("cnpj"));
-                usuario1.setEmail(rset.getString("email"));
-                usuario1.setPlanoId(rset.getInt("plano_id"));
+                empresas.setId(rset.getInt("id"));
+                empresas.setNome(rset.getString("nome"));
+                empresas.setSenha(rset.getString("senha"));
+                empresas.setSetor(rset.getString("setor"));
+                empresas.setCnpj(rset.getString("cnpj"));
+                empresas.setEmail(rset.getString("email"));
+                empresas.setPlanoId(rset.getInt("plano_id"));
+                empresas.setPlano((empresas.getPlanoId() == 10)?"Quality":(empresas.getPlanoId() == 11)?"FullQuality":"PuraQuality");
+
 
                 //add na lista
 
-                usuarios.add(usuario1);
+                usuarios.add(empresas);
             }
 
         }catch (Exception e){
@@ -243,6 +246,7 @@ public class EmpresaDao extends Dao<Empresa> {
                 empresa.setEmail(rset.getString("email"));
                 empresa.setSenha(rset.getString("senha"));
                 empresa.setPlanoId(rset.getInt("plano_id"));
+                empresa.setPlano((empresa.getPlanoId() == 10)?"Quality":(empresa.getPlanoId() == 11)?"FullQuality":"PuraQuality");
 
 
                 //Armazenando dentro da lista

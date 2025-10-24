@@ -15,7 +15,7 @@ public class ServletDeletarUsuario extends HttpServlet {
         String email = request.getParameter("email");
         String emailFuncionario = (String) request.getSession().getAttribute("emailfuncionario");
         FuncionarioDao funcionarioDao = new FuncionarioDao();
-        if(!email.equals(emailFuncionario)) {
+        if(!email.equals(emailFuncionario)||!((String)request.getParameter("empresa")).equals("sim")) {
             funcionarioDao.deleteById(id);
         }
         if(((String)request.getParameter("empresa")).equals("sim")) {

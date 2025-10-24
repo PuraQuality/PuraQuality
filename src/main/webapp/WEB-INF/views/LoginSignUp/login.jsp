@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="icon" href="${pageContext.request.contextPath}/img/LogoPura.png">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/logoOFC.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/login.css?v=<%= System.currentTimeMillis() %>">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +18,10 @@
 <body>
   <!-- CORPO DO SITE -->
   <div class="container-geral">
-    <a class="link_pura" href="${pageContext.request.contextPath}/index.jsp">
+    <a class="link_pura" href="${pageContext.request.contextPath}/index.html">
       <h1 class="texto_pura">PuraQuality</h1>
     </a>
-    <a class="link_home" href="${pageContext.request.contextPath}/index.jsp">
+    <a class="link_home" href="${pageContext.request.contextPath}/index.html">
       <img class="homeButton" src="${pageContext.request.contextPath}/img/homeButton.png" alt="homeButton">
     </a>
     <h1 class="texto_bv" >Bem-vindo de volta</h1>

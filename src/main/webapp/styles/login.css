@@ -8,6 +8,7 @@ body {
     background-repeat: no-repeat;
     color: white;
     height: 100vh;
+    width: 100%;
     display: flex;
     overflow: hidden;
 }
@@ -21,7 +22,7 @@ body {
 }
 .link_home{
     display: none;
-    width: 30px;
+    width: 10px;
 }
 .link_pura{
     font-family: 'Lexend Giga', sans-serif;
@@ -44,70 +45,13 @@ body {
 }
 .texto_bv{
     font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
     position: absolute;
-    top: 150px;
-    left: 31.5%;
-}
-/* ------------ Botão google ------------ */
-.google_button{
-    position: relative;
-    top: 230px;
-    left: 33%;
-    padding: 10px 125px;
-    border-radius: 15px;
-    border: none;
-    width: 300px;
-    height: 50px;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-.img_google{
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    width: 30px;
-    height: 30px;
-}
-.texto_google{
-    position: absolute;
-    top: 0px;
-    left: 80px;
-    font-size: 16px;
-    color: black;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-}
-/* ------------ Divisor "or" ------------ */
-.divider-container {
     display: flex;
-    position: absolute;
-    top: 280px;
-    left: 29.5%;
-}
-.divider{
-    position: relative;
-    height: 1px;
-    background-color: white;
-    top: 25px;
-    left: 5px;
-    padding: 0.1px 80px;
-}
-.divider_text{
-    position: relative;
-    margin: 0 10px;
-    font-size: 14px;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    top: 16px;
-    left: 5px;
-}
-.divider2{
-    position: relative;
-    height: 1px;
-    background-color: white;
-    top: 25px;
-    right: 5px;
-    padding: 0.1px 80px;
+    justify-self: center;
+    top: 150px;
+    left: 27%;
 }
 /* ------------ Inputs do formulário ------------ */
 .inputs {
@@ -170,17 +114,8 @@ input::-webkit-input-placeholder{
     -moz-text-fill-color: #ffffff;
     caret-color: #ffffff;
 }
-#email{
-    position: relative;
-    top: 0px;
-}
-#senha{
-    position: relative;
-    top: 0px;
-}
 .botao{
     position: relative;
-    top: 20px;
     padding: 12.5px 125px;
     border-radius: 10px;
     border: none;
@@ -190,9 +125,10 @@ input::-webkit-input-placeholder{
     cursor: pointer;
     transition: 0.5s ease;
 }
-.form-group{
-    position: relative;
-    top: 45%;
+.form{
+    position: absolute;
+    top: 270px;
+    left: 33%;
 }
 .labelinput {
     position: relative;

@@ -1300,6 +1300,9 @@ section {
     background: linear-gradient(135deg, #00ff88, #00cc6a);
     box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
 }
+.imgMeta:hover{
+    transform: translate(1.5);
+}
 /* ------------------- Animations ------------------- */
 @keyframes girando {
     0% {

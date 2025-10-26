@@ -23,13 +23,6 @@
       </a>
       <h1 class="texto_bv">Comece agora conosco</h1>
       <div class="container-form">
-          <button class="google_button">
-            <img class="img_google" src="${pageContext.request.contextPath}/img/google_logo.png" alt="google">
-            <p class="texto_google">Entrar com o google</p>
-          </button>
-          <div class="divider-container">
-          <div class="divider divider2"></div><p class="divider_text">or<p><div class="divider"></div>
-          </div>
             <form class="form" action="${pageContext.request.contextPath}/servletCadastro" method="post" onsubmit="return validarFormulario()">
               <div class="form-group">
                   <div class="inputs">

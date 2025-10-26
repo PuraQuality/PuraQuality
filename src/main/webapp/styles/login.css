@@ -22,7 +22,7 @@ body {
 .link_pura {
     position: absolute;
     top: 5px;
-    left: 30px;
+    left: 15px;
     display: flex;
     text-decoration: none;
     transition: 0.2s ease;

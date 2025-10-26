@@ -14,7 +14,7 @@ public class ServletCadastro extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         EmpresaDao empresaDao = new EmpresaDao();
-        Empresa empresa = new Empresa("AAAAAA","AAAAAAAA",3,email,senha,true);
+        Empresa empresa = new Empresa(1,"AAAAAAAA","101820603",email,senha,"12",10);
         if(empresaDao.save(empresa)) {
             request.getRequestDispatcher("LoginSignUp/login.jsp").forward(request, response);
         }

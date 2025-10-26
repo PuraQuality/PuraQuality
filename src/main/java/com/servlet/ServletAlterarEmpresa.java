@@ -1,7 +1,11 @@
 package com.servlet;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.dao.EmpresaDao;
+import com.model.Empresa;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -12,15 +16,12 @@ import com.model.Funcionario;
 public class ServletAlterarEmpresa extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int id = Integer.parseInt(request.getParameter("id"));
-        String email = request.getParameter("email");
-        boolean prioridade = (request.getParameter("prioridade") != null);
-        String senha = request.getParameter("senha");
-
-        FuncionarioDao funcionarioDao = new FuncionarioDao();
-        Funcionario funcionario = new Funcionario(id,email,senha,prioridade);
-        funcionarioDao.update(funcionario);
-        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/pu.jsp").forward(request, response);
+        int id = Integer.parseInt(request.getParameter("empId"));
+        int planoId = Integer.parseInt(request.getParameter("altplano"));
+        EmpresaDao empresaDao = new EmpresaDao();
+        List<Empresa> empresas = empresaDao.selectEmpresa(id);
+        Empresa empresa = new Empresa(empresas.get(0).getId(),empresas.get(0).getNome(),empresas.get(0).getSetor(),empresas.get(0).getCnpj(),empresas.get(0).getEmail(),empresas.get(0).getSenha(),planoId);
+        empresaDao.update(empresa);
+        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/puraquality.jsp").forward(request, response);
     }
 }

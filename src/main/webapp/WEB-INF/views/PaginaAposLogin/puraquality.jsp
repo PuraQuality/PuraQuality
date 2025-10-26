@@ -10,11 +10,15 @@
 </head>
 <body>
 <h1>Seja bem vindo Usuário da empresa</h1>
+<%String tabela = (String) request.getSession().getAttribute("tabela");%>
 <form method="POST" action="servletFiltro">
     <label>
         <select name="coluna" id="coluna">
-            <option value="email">Email</option>
-            <option value="permissao">Permissão</option>
+            <option value="nome">Nome</option>
+            <option value="setor" <%=(tabela.equals("setor")?"selected":"")%>>Setor</option>
+            <option value="cnpj" <%=(tabela.equals("cnpj")?"selected":"")%>>CNPJ</option>
+            <option value="email" <%=(tabela.equals("email")?"selected":"")%>>Email</option>
+            <option value="plano_id" <%=(tabela.equals("plano")?"selected":"")%>>Plano</option>
         </select>
     </label>
     <label>
@@ -49,7 +53,7 @@
                 empresas = edao.selectFiltro((filtro.equals("true")) ? true : false);
             }
             else{
-                empresas = edao.selectFiltro(empresaid,coluna,filtro);
+                empresas = edao.selectFiltro(coluna,filtro);
             }
         }
         for(int i = 0;i < empresas.size();i++){%>
@@ -58,22 +62,24 @@
         <td style="border: 1px solid black;"><%=empresas.get(i).getSetor()%></td>
         <td style="border: 1px solid black;"><%=empresas.get(i).getCnpj()%></td>
         <td style="border: 1px solid black;"><%=empresas.get(i).getEmail()%></td>
-        <td style="border: 1px solid black;"><%=(empresas.get(i).getPlanoId() == 10)?"Quality":(empresas.get(i).getPlanoId()==11)?"FullQuality":"PuraQuality"%></td>
+        <td style="border: 1px solid black;"><%=empresas.get(i).getPlano()%></td>
+        <td>
         <form method="POST" action="servletAlterarEmpresa">
             <label>
                 <select name="altplano" id="altplano">
                     <option value="10">Quality</option>
-                    <option value="11">FullQuality</option>
-                    <option value="12">PuraQuality</option>
+                    <option value="11" <%=(empresas.get(i).getPlanoId() == 11)?"selected":""%>>FullQuality</option>
+                    <option value="12" <%=(empresas.get(i).getPlanoId() == 12)?"selected":""%>>PuraQuality</option>
                 </select>
             </label>
+            <input type="hidden" name="empId"  value="<%=empresas.get(i).getId()%>">
+            <input type="hidden" name="tabela" value="puraquality">
             <input type="submit" value="Alterar">
         </form>
         </td>
         <td style="border: 1px solid black;">
-            <form action="servletDeletarUsuario" method="post">
-                <input type="hidden" name="id" value="<%=empresas.get(i).getId()%>">
-                <input type="hidden" name="email" value="<%=empresas.get(i).getEmail()%>">
+            <form action="servletDeletarEmpresa" method="post">
+                <input type="hidden" name="idempresa" value="<%=empresas.get(i).getId()%>">
                 <button type="submit">Deletar Usuário</button>
             </form>
         </td>
@@ -81,12 +87,11 @@
     <%}%>
     </tbody>
 </table>
-<form action="servletInserirUsuario" method="post">
-    <input type="email" name="email" placeholder="Digite o email do novo funcionário" style="width: 250px">
-    <input type="password" name="senha" placeholder="Digite a senha do novo funcionário" style="width: 250px">
+<form action="#" method="post">
+    <input type="email" name="email" placeholder="Digite o email da empresa" style="width: 250px">
+    <input type="password" name="senha" placeholder="Digite a senha da empresa" style="width: 250px">
+    <input type="text" name="cnpj" placeholder="Digite o cnpj" style="width: 250px">
     <input type="checkbox" name="permissao">
-    <input type="hidden" name="empresa" value="sim">
-    <input type="hidden" name="id_empresa" value="<%=request.getParameter("empresaid")%>">
     <button type="submit">Inserir Usuário</button>
 </form>
 </body>

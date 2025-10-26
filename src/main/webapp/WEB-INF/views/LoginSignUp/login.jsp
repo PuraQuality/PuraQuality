@@ -19,10 +19,8 @@
   <!-- CORPO DO SITE -->
   <div class="container-geral">
     <a class="link_pura" href="${pageContext.request.contextPath}/index.html">
+        <img class="homeButton" src="${pageContext.request.contextPath}/img/homeButton.png" alt="homeButton">
       <h1 class="texto_pura">PuraQuality</h1>
-    </a>
-    <a class="link_home" href="${pageContext.request.contextPath}/index.html">
-      <img class="homeButton" src="${pageContext.request.contextPath}/img/homeButton.png" alt="homeButton">
     </a>
     <h1 class="texto_bv" >Bem-vindo de volta</h1>
       <form class="form" action="servletLogin" method="post" onsubmit="return validarFormulario()">

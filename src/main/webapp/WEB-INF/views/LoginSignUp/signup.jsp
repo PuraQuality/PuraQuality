@@ -19,45 +19,39 @@
   <!-- CORPO DO SITE -->
     <div class="container-geral">
       <a class="link_pura" href="${pageContext.request.contextPath}/index.jsp">
+          <img class="homeButton" src="${pageContext.request.contextPath}/img/homeButton.png" alt="homeButton" />
         <h1 class="texto_pura">PuraQuality</h1>
       </a>
       <h1 class="texto_bv">Comece agora conosco</h1>
-      <div class="container-form">
-          <button class="google_button">
-            <img class="img_google" src="${pageContext.request.contextPath}/img/google_logo.png" alt="google">
-            <p class="texto_google">Entrar com o google</p>
-          </button>
-          <div class="divider-container">
-          <div class="divider divider2"></div><p class="divider_text">or<p><div class="divider"></div>
-          </div>
-            <form class="form" action="${pageContext.request.contextPath}/servletCadastro" method="post" onsubmit="return validarFormulario()">
-              <div class="form-group">
-                  <div class="inputs">
-                    <input type="tel" id="email" name="cnpj" placeholder="Digite seu CNPJ (00.000.000/0000-00)" maxlength="18" required />
-                    <input type="email" id="email_empresa" name="email" placeholder="Digite o email da sua empresa" required />
+        <form class="form" action="#" method="post" onsubmit="return validarFormulario()">
+            <div class="form-group">
+                <div class="inputs">
+                    <input type="email" id="email" name="email" placeholder="Digite seu CNPJ" required />
+                    <input type="email" id="email_empresa" name="empresa" placeholder="Digite o email da sua empresa" required />
                     <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
-                    <input type="password" id="confirm_senha" name="confirm_senha" placeholder="Confirme sua senha" required />
-                  </div>
-                  <button class="botao" type="submit">Entrar</button>
-              </div>
-              </form>
+                    <input type="password" id="confirm_senha" name="senha" placeholder="Confirme sua senha" required />
+                </div>
+                <button class="botao" type="submit">Entrar</button>
             </div>
-      </div>
+        </form>
       <img class="celular" src="${pageContext.request.contextPath}/img/celularSolo.png" alt="celular">
       <img class="bola_cromo" src="${pageContext.request.contextPath}/img/bola_cromo.png" alt="bola_cromo">
       <img class="bola_cromo2" src="${pageContext.request.contextPath}/img/bola_cromo3.png" alt="bola_cromo2">
-    <!-- JAVA SCRIPT -->
-      <script>
-        function validarFormulario() {
-          const senha = document.getElementById('senha').value.trim();
-          const confirm_senha = document.getElementById('confirm_senha').value.trim();
-          if(senha === confirm_senha){
-            return true;
-          } else{
-            alert('algumas das informações não coincidem.');
-            return false;
-          } // Permite o envio do formulário
-        }
-      </script>
+        <!-- JAVA SCRIPT -->
+        <script>
+            // valida se está tudo certo para o envio do formulário
+            function validarFormulario() {
+                // instanciando variáveis constantes pelo id
+                const senha = document.getElementById('senha').value.trim();
+                const confirm_senha = document.getElementById('confirm_senha').value.trim();
+                // chekando se as senhas estão iguais
+                if(senha == confirm_senha){
+                    return true;
+                } else{
+                    alert('algumas das informações não coincidem.');
+                    return false;
+                } // Permite o envio do formulário
+            }
+        </script>
 </body>
 </html>

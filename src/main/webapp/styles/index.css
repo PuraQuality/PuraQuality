@@ -313,6 +313,9 @@ section {
     line-height: 1.6;
     text-align: left;
 }
+.funcP{
+    display: none;
+}
 .conexo {
     position: relative;
     top: 275px;
@@ -416,6 +419,7 @@ section {
 .imgMeta {
     width: 250px;
     border-radius: 15px;
+    transition: 0.6s ease;
 
     animation: reveal 1s ease-in-out both;
     animation-timeline: view();
@@ -731,7 +735,7 @@ section {
 .areaTp {
     position: relative;
     top: -70%;
-    left: 29%;
+    left: 12.5%;
     color: white;
     font-weight: bold;
 }
@@ -739,6 +743,65 @@ section {
 .bolaC6Planos {
     display: none;
 }
+hr.divisoria {
+    position: relative;
+    top: -20%;
+    height: 0.5px;
+    border: none;
+    width: 100%;
+    background-color: rgba(171, 36, 255, 0.449);
+    margin: 0;
+}
+hr.divisoria2 {
+    position: relative;
+    top: 19%;
+    height: 0.5px;
+    border: none;
+    width: 100%;
+    background-color: rgba(75, 25, 106, 0.449);
+    margin: 0;
+}
+.footer-links {
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    padding: 10px;
+    gap: 20px;
+    text-decoration: none;
+}
+.footer-links a{
+    text-decoration: none;
+    color: #9A9595;
+}
+.descricao{
+    font-size:14px;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 0;
+    bottom: 28px;
+    padding: 10px;
+    gap: 10px;
+    text-decoration: none;
+    animation: none;
+    color: #686767;
+}
+.descricao2{
+    font-size:14px;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    padding: 10px;
+    gap: 10px;
+    text-decoration: none;
+    animation: none;
+    color: #686767;
+}
+
 /* -------------------Background Fixo------------------- */
 .background-layer {
     position: absolute; /* ou absolute, mas fixed é melhor para fundos */
@@ -1152,6 +1215,7 @@ section {
     position: relative;
     top: 16%;
     border-radius: 20px;
+    box-shadow: 0 -5px 20px 10px rgba(200, 50, 180, 0.822);
     backdrop-filter: blur(20px) saturate(200%);
     -webkit-backdrop-filter: blur(20px) saturate(200%);
     background: linear-gradient(
@@ -1199,6 +1263,7 @@ section {
     position: relative;
     top: 16%;
     border-radius: 20px;
+    box-shadow: 0 -5px 25px 15px rgba(199, 34, 177, 0.801);
     backdrop-filter: blur(20px) saturate(200%);
     -webkit-backdrop-filter: blur(20px) saturate(200%);
     background: linear-gradient(
@@ -1246,6 +1311,7 @@ section {
     position: relative;
     top: 16%;
     border-radius: 20px;
+    box-shadow: 0 -5px 20px 10px rgba(255, 0, 221, 0.933);
     backdrop-filter: blur(20px) saturate(200%);
     -webkit-backdrop-filter: blur(20px) saturate(200%);
     background: linear-gradient(
@@ -1300,6 +1366,10 @@ section {
     background: linear-gradient(135deg, #00ff88, #00cc6a);
     box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);
 }
+.imgMeta:hover {
+    transform: scale(1.15);
+    transition: 0.6s ease;
+}
 /* ------------------- Animations ------------------- */
 @keyframes girando {
     0% {
@@ -1332,6 +1402,151 @@ section {
     }
 }
 /* ------------------- Responsividade ------------------- */
+@media (max-width: 1340px){
+    /* LANDING */
+    .celular{
+        right: 0%;
+        top: 20%;
+    }
+    .texto-inicio{
+        left: 10%;
+    }
+    .titulo-pura{
+        left: 2.5%;
+    }
+    .botao-inicio{
+        left: 18%;
+    }
+    .bola_cromo2{
+        top: -30%;
+    }
+    .bola_cromo{
+        top: 55%;
+    }
+    /* CONTPRINCIPAL */
+    .qsGrid{
+        left: -2.5%;
+    }
+    .qsP{
+        left: 2.5%;
+    }
+    .logoMagna{
+        left: 40%;
+    }
+    .logoQS{
+        right: 10%;
+    }
+    .gridFunc{
+        gap: 50px;
+    }
+    .setores{
+        left: 6.5%;
+    }
+    .imgPredio{
+        width: 65%;
+    }
+    .ledODS{
+        left: 9%;
+    }
+    .ODSconc{
+        position: relative;
+        left: -13%;
+        top: 50px;
+    }
+    .ODStitulo{
+        position: relative;
+        left: -10%;
+    }
+    .exp{
+        left: -60%;
+    }
+    .imgMeta{
+        width: 200px;
+    }
+    .gridODS{
+        left: -65%;
+    }
+    .ODSfinal{
+        left: -58%;
+    }
+    .sixS > h1{
+        left: 10%;
+    }
+    .gridSix{
+        left: 3%;
+    }
+    .relatorios > h1{
+        width: 600px;
+    }
+    .rtGrid{
+        top: 50px;
+        left: -6.5%;
+    }
+    .ai{
+        top: -150px;
+    }
+    /* BACKGROUND */
+    .background-layer {
+        position: absolute;
+        height: 3000px;
+        top: -40%;
+    }
+    .ledBack{
+        top: 30%;
+        height: 4100px;
+    }
+    .bolaC7Back {
+        top: -90%;
+        left: -15%;
+    }
+    .bolaC4Back {
+        top: -92%;
+        left: 80%;
+    }
+    .bolaC3Back {
+        top: -110%;
+        left: 35%;
+        width: 30%;
+    }
+    .bolaC5Back {
+        top: -72%;
+        left: -60%;
+    }
+    .bolaC6Back {
+        top: -70%;
+        left: 70%;
+    }
+    .bolaC2Back {
+        top: -70%;
+        width: 60%;
+        left: -40%;
+    }
+    .bolaC8Back {
+        top: -72%;
+        left: 70%;
+    }
+    .bolaC7Back2 {
+        top: -55%;
+        left: -70%;
+    }
+    /* PLANOS */
+    .plano1{
+        left: 3%;
+    }
+    .plano3{
+        right: 3%;
+    }
+    .plano2{
+        left: 37%;
+    }
+    /* FOOTER */
+    .carousel-wrapper{
+        left: 5%;
+    }
+    .prev-btn{
+        left: 0%;
+    }
+}
 @media (max-width: 800px) {
     /* Header */
     .lb {
@@ -1499,7 +1714,8 @@ section {
     }
     .ODSconc {
         position: relative;
-        left: -100%;
+        left: -67%;
+        font-size: 22.5px;
     }
     .ODStitulo {
         left: -55%;
@@ -1523,6 +1739,7 @@ section {
     }
     .imgMeta {
         width: 200px;
+        transition: 0.6s ease;
     }
     .gridODS {
         grid-template-columns: repeat(2, 1fr);
@@ -1551,7 +1768,7 @@ section {
         font-size: var(--tamanho-texto);
     }
     .sixText {
-        left: -40%;
+        left: 2.5%;
     }
     .roda {
         width: 300px;
@@ -1564,7 +1781,7 @@ section {
     .imgSix {
         position: relative;
         top: -225px;
-        right: -70%;
+        right: -100%;
         width: 300px;
         height: 300px;
     }
@@ -1580,7 +1797,7 @@ section {
         left: 4%;
     }
     .relatorios {
-        top: -5.5%;
+        top: -7%;
     }
     .relatorios > h1 {
         font-size: var(--tamanho-subtitulo);
@@ -1592,14 +1809,16 @@ section {
         height: 150px;
     }
     .lupa {
-        left: 4%;
+        top: -10%;
+        left: 10%;
     }
     .grafico {
-        left: -5%;
+        left: 2%;
     }
     .rtGrid > p {
         font-size: var(--tamanho-texto);
-        left: -2%;
+        top: 0%;
+        left: 5%;
     }
     .ai {
         position: relative;
@@ -1687,6 +1906,9 @@ section {
     .plano1:hover,
     .plano2:hover {
         top: 8%;
+    }
+    .plano1:hover, .plano2:hover, .plano3:hover{
+        transform: scale(1.05);
     }
     .bola {
         top: 20%;

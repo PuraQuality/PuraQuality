@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PuraQuality</title>
-    <link rel="icon" href="img/logoOFC.png"/>
+    <link rel="icon" href="img/LogoOFC.png"/>
     <link rel="stylesheet" href="styles/index.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
         <div class="logo-cont">
             <img class="logo" src="img/logoOFC.png" alt="PuraQuality">
         </div>
-        <a class="login_link" href="severletLogin"><div class="lb">Login</div></a>
+        <a class="login_link" href="LoginSingUp/login.html"><div class="lb">Login</div></a>
     </header>
     <!-- CORPO DO SITE -->
     <section class="contLanding">
@@ -65,7 +65,7 @@
         <div class="gridFunc">
             <div class="card funcCard">
                 <h1 class="tituloFunc">O que fazemos?</h1>
-                <p class="funcText">osso aplicativo otimiza os processos empresariais de ponta a ponta — do recebimento à expedição.    Atuamos na identificação e solução das causas raiz dos problemas operacionais, garantindo mais eficiência, controle e produtividade em toda a cadeia de processos.</p>
+                <p class="funcText">osso aplicativo otimiza os processos empresariais de ponta a ponta, do recebimento à expedição.    Atuamos na identificação e solução das causas raiz dos problemas operacionais, garantindo mais eficiência, controle e produtividade em toda a cadeia de processos.</p>
                 <p class="funcP">Nosso app otimiza processos do recebimento à expedição, identificando e resolvendo causas raiz de falhas operacionais. Assim, garante mais eficiência, controle e produtividade em toda a cadeia.</p>
             </div>
             <div class="card funcCard2">
@@ -83,8 +83,7 @@
                     Setores que atendemos
                 </h1>
                 <p>
-                    Atendemos indústrias de diversos setores, como automotivo, tecnológico, suinocultura, bovinocultura, entre outros.
-                    Nosso aplicativo se adapta a diferentes portes e realidades empresariais, mas é especialmente projetado para indústrias de médio e grande porte que buscam otimizar seus processos e alcançar maior eficiência operacional.
+                    Atendemos indústrias de diversos setores, como automotivo, tecnológico, suinocultura, bovinocultura, entre outros. <br>Nosso aplicativo se adapta a diferentes portes e realidades empresariais, mas é especialmente projetado para indústrias de médio e grande porte que buscam otimizar seus processos e alcançar maior eficiência operacional.
                 </p>
             </div>
             <img class="imgPredio" src="img/imgpredio.png" alt="imgpredio">
@@ -199,7 +198,7 @@
     <div class="plano3">
         <h2 class="quality3">PuraQuality</h2>
         <p class="quality_p3">R$4290,90/mês</p>
-        <button class="quality_link3" id="quality_link" href="subimit">Cadastrar</button>
+        <button class="quality_link3" id="quality_link" onclick="window.location.href='LoginSingUp/singup.html'">Cadastrar</button>
         <ul type="none">
             <li>Análise completa de processos</li>
             <li>Relatórios completos</li>
@@ -213,6 +212,7 @@
     </div>
 </section>
 <footer class="footer">
+    <hr class="divisoria">
     <h1 class="textoFooter">Conheça o nosso time!!</h1>
     <div class="carousel-container">
         <button class="carousel-btn prev-btn" id="prevBtn">←</button>
@@ -237,8 +237,7 @@
                     <div class="member-name">Adriel Pimentel</div>
                     <p class="areaT">DEV - Backend</p>
                     <div class="contatoGrid Adri">
-                        <img class="iconE" src="img/emailIcon.png" alt="Email:"><p>adriel.pimentel@germinare
-                        .org.br
+                        <img class="iconE" src="img/emailIcon.png" alt="Email:"><p>adriel.pimentel@germinare<br>.org.br
                     </p>
                         <img class="iconD icondAdri" src="img/discordIcon.png" alt="Discord:"><p>adrielpimentel
                     </p>
@@ -277,8 +276,7 @@
                     <div class="member-name">Pedro Yada</div>
                     <p class="areaT">FULL STACK</p>
                     <div class="contatoGrid yada">
-                        <img class="iconE" src="img/emailIcon.png" alt="Email:"><p>pedro.barbeitos@germinare
-                        .org.br
+                        <img class="iconE" src="img/emailIcon.png" alt="Email:"><p>pedro.barbeitos@germinare<br>.org.br
                     </p>
                         <img class="iconD" src="img/discordIcon.png" alt="Discord:"><p>yada_7060
                     </p>
@@ -290,7 +288,7 @@
                     <img src="img/pedroLucas.png" alt="Pedro Santos" class="member-photo">
                     <div class="member-name">Pedro Lucas</div>
                     <div class="contato">
-                        <p class="areaTp">DEV - Back</p>
+                        <p class="areaTp">DEV - Backend</p>
                         <div class="contatoGridP">
                             <img class="iconE" src="img/emailIcon.png" alt="Email:"><p>pedroribas099@gmail.com
                         </p>
@@ -304,75 +302,118 @@
         </div>
         <button class="carousel-btn next-btn" id="nextBtn">→</button>
     </div>
-
+    <hr class="divisoria2">
+    <nav class="footer-links">
+        <a href="/footerpages/termos.html">Termos e condições</a>
+        <a href="/footerpages/privacidade.html">Como cuidamos da sua privacidade</a>
+        <a href="https://w.app/magna" target="_blank">Contato</a>
+    </nav>
+    <p class="descricao">Copyright © 2025 MAGNA. Todos os direitos reservados</p>
+    <p class="descricao2">R. Irineu José Bordon, 335 - Parque Anhanguera - CEP 05120-060 - empresa MAGNA</p>
 </footer>
 <script>
+    // Aguarda o carregamento completo do HTML antes de executar o código
     document.addEventListener('DOMContentLoaded', function() {
+
+        // === VARIÁVEIS GLOBAIS ===
+
+        // Pega o elemento que contém todos os cards do carrossel
         const carouselTrack = document.getElementById('carouselTrack');
+
+        // Pega os botões de navegação (anterior e próximo)
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+
+        // Pega o wrapper que envolve o carrossel (usa para controlar a largura visível)
         const carouselWrapper = document.querySelector('.carousel-wrapper');
 
+        // Largura de cada card em pixels
         const cardWidth = 250;
+
+        // Espaço entre os cards (gap)
         const gap = 20;
+
+        // Converte os cards em array e pega o total de cards
         const cards = Array.from(carouselTrack.children);
         const totalCards = cards.length;
 
+        // Número de cards visíveis na tela (começa com no máximo 5 ou o total, o que for menor)
         let visibleCards = Math.min(5, totalCards);
+
+        // Índice atual do carrossel (qual card está sendo mostrado primeiro)
         let currentIndex = 0;
 
-        // Função que atualiza o carrossel
+        // === FUNÇÕES ===
+
+        // Atualiza a posição do carrossel movendo-o para a esquerda
+        // Multiplica o índice atual pela largura de cada card + gap para calcular o deslocamento
         function updateCarousel() {
             const offset = -currentIndex * (cardWidth + gap);
             carouselTrack.style.transform = `translateX(${offset}px)`;
         }
 
-        // Atualiza largura do wrapper conforme número de cards visíveis
+        // Ajusta a largura do wrapper baseado no número de cards visíveis
+        // Isso garante que apenas a quantidade correta de cards seja mostrada
         function updateWrapperWidth() {
             const trackWidth = (cardWidth + gap) * visibleCards - gap;
             carouselWrapper.style.width = `${trackWidth}px`;
         }
 
-        // Função para ajustar o carrossel conforme o tamanho da tela
+        // Ajusta o carrossel conforme o tamanho da tela (responsividade)
         function handleResize() {
             if (window.innerWidth <= 800) {
-                visibleCards = 2; // mostra apenas 1 card
+                // Telas pequenas (mobiles): mostra 2 cards
+                visibleCards = 2;
+            } else if (window.innerWidth <= 1340) {
+                // Telas médias (tablets/notebooks): mostra 4 cards
+                visibleCards = 4;
             } else {
-                visibleCards = Math.min(5, totalCards); // mostra até 5 cards em telas maiores
-            }2
-            // Corrige o índice se necessário
+                // Telas grandes (desktop): mostra até 5 cards
+                visibleCards = Math.min(5, totalCards);
+            }
+
+            // Se o índice atual é maior que deveria, corrige para não ficar fora dos limites
             if (currentIndex > totalCards - visibleCards) {
                 currentIndex = totalCards - visibleCards;
             }
 
+            // Aplica as mudanças
             updateWrapperWidth();
             updateCarousel();
         }
 
-        // Botão "Anterior"
+        // === EVENTOS DE CLIQUE ===
+
+        // Botão "Anterior" (←)
         prevBtn.addEventListener('click', () => {
             if (currentIndex > 0) {
+                // Se não estiver no início, volta um card
                 currentIndex--;
             } else {
-                currentIndex = totalCards - visibleCards; // loop para o final
+                // Se estiver no início, vai para o final (loop infinito)
+                currentIndex = totalCards - visibleCards;
             }
             updateCarousel();
         });
 
-        // Botão "Próximo"
+        // Botão "Próximo" (→)
         nextBtn.addEventListener('click', () => {
             if (currentIndex < totalCards - visibleCards) {
+                // Se não estiver no final, avança um card
                 currentIndex++;
             } else {
-                currentIndex = 0; // volta ao início
+                // Se estiver no final, volta para o início (loop infinito)
+                currentIndex = 0;
             }
             updateCarousel();
         });
 
-        // Inicializa o carrossel
+        // === INICIALIZAÇÃO ===
+
+        // Chama a função na primeira vez para configurar tudo
         handleResize();
 
-        // Escuta mudanças de tamanho de tela
+        // Escuta mudanças no tamanho da janela e ajusta automaticamente
         window.addEventListener('resize', handleResize);
     });
 

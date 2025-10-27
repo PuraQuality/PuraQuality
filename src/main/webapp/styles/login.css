@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
-    background-image: url("../img/bg_login.png");
+    background-image: url("/img/bg_login.png");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
@@ -22,7 +22,7 @@ body {
 .link_pura {
     position: absolute;
     top: 5px;
-    left: 15px;
+    left: 30px;
     display: flex;
     text-decoration: none;
     transition: 0.2s ease;
@@ -65,67 +65,6 @@ body {
     justify-self: center;
     top: 150px;
     left: 27%;
-}
-/* ------------ Botão google ------------ */
-.google_button {
-    position: relative;
-    top: 230px;
-    left: 33%;
-    padding: 10px 125px;
-    border-radius: 15px;
-    border: none;
-    width: 300px;
-    height: 50px;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-.img_google {
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    width: 30px;
-    height: 30px;
-}
-.texto_google {
-    position: absolute;
-    top: 0px;
-    left: 80px;
-    font-size: 16px;
-    color: black;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-}
-/* ------------ Divisor "or" ------------ */
-.divider-container {
-    display: flex;
-    position: absolute;
-    top: 280px;
-    left: 29.5%;
-}
-.divider {
-    position: relative;
-    height: 1px;
-    background-color: white;
-    top: 25px;
-    left: 5px;
-    padding: 0.1px 80px;
-}
-.divider_text {
-    position: relative;
-    margin: 0 10px;
-    font-size: 14px;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    top: 16px;
-    left: 5px;
-}
-.divider2 {
-    position: relative;
-    height: 1px;
-    background-color: white;
-    top: 25px;
-    right: 5px;
-    padding: 0.1px 80px;
 }
 /* ------------ Inputs do formulário ------------ */
 .inputs {

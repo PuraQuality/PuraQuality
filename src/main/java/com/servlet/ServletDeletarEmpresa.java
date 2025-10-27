@@ -12,9 +12,17 @@ import com.dao.FuncionarioDao;
 public class ServletDeletarEmpresa extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EmpresaDao empresaDao = new EmpresaDao();
+
+//        Pegando o valor da requisição
         int id = Integer.parseInt(request.getParameter("idempresa"));
+
+//        Declarando o objeto
+        EmpresaDao empresaDao = new EmpresaDao();
+
+//        Deletando do banco de dados
         empresaDao.deleteById(id);
+
+//        Voltando para a página
         request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/puraquality.jsp").forward(request, response);
     }
 }

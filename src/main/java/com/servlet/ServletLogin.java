@@ -17,24 +17,36 @@ public class ServletLogin extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+//        Pegando os Parâmetros
         String email = request.getParameter("emailfuncionario");
         String senha = request.getParameter("senha");
+
+//        Declarando variáveis com valores padrões
         boolean validarEmail = false;
         boolean validarSenha = false;
         int posicao = -1;
         boolean prioridade = false;
         boolean validarEmpresa = false;
+
+//        Guardando informações para usar depois
         request.getSession().setAttribute("emailfuncionario", email);
         request.getSession().setAttribute("filtro","");
         request.getSession().setAttribute("tabela","");
+
+//        Validando para ver se nós estamos tentando logar
         if(email.equals("puraquality@gmail.com") || senha.equals("PuraQuality2025+")){
             request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/puraquality.jsp").forward(request, response);
         }
         else {
+
+//            Declarando diversos objetos
             FuncionarioDao usuarioDao = new FuncionarioDao();
             EmpresaDao empresaDao = new EmpresaDao();
             List<Funcionario> usuarios = usuarioDao.select();
             List<Empresa> empresas = empresaDao.select();
+
+//            Vendo se o e-mail da empresa está presente no banco de dados
             for (int i = 0; i < empresas.size(); i++) {
                 if (empresas.get(i).getEmail().equals(email)) {
                     validarEmail = true;
@@ -44,6 +56,8 @@ public class ServletLogin extends HttpServlet {
                     break;
                 }
             }
+
+//            Vendo se o e-mail do funcionário está presente no banco de dados
             if (!validarEmail) {
                 for (int i = 0; i < usuarios.size(); i++) {
                     if (usuarios.get(i).getEmail().equals(email)) {
@@ -55,6 +69,8 @@ public class ServletLogin extends HttpServlet {
                     }
                 }
             }
+
+//            Vendo se a senha corresponde ao e-mail do banco de dados
             if (posicao != -1) {
                 if (validarEmpresa) {
                     if (senha.equals(empresas.get(posicao).getSenha())) {
@@ -67,6 +83,7 @@ public class ServletLogin extends HttpServlet {
                 }
             }
 
+//            Encaminhando para a página correspondente
             if (validarSenha) {
                 if (validarEmpresa) {
                     request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
@@ -77,12 +94,12 @@ public class ServletLogin extends HttpServlet {
                         request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/home.jsp").forward(request, response);
                     }
                 }
-            } else {
+            }
+
+//            Voltando para login caso a senha esteja errada
+            else {
                 request.getRequestDispatcher("WEB-INF/views/LoginSignUp/login.jsp").forward(request, response);
             }
         }
-    }
-
-    public void destroy() {
     }
 }

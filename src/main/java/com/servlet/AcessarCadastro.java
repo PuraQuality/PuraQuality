@@ -5,12 +5,13 @@ import java.io.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import com.dao.FuncionarioDao;
 
 @WebServlet("/servcadastro")
 public class AcessarCadastro extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+//        Servlet para encaminhar para o jsp dentro da view para a página de cadastro
         request.getRequestDispatcher("WEB-INF/views/LoginSignUp/cadastro.jsp").forward(request, response);
     }
 }

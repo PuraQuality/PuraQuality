@@ -11,13 +11,17 @@ import com.dao.FuncionarioDao;
 @WebServlet("/servletFiltro")
 public class ServletFiltroCrud extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+//        Adquirindo o valor dos parâmetros do jsp
         String tabela = request.getParameter("tabela");
         String coluna = request.getParameter("coluna");
         String filtro = request.getParameter("filtro");
-        System.out.println(filtro);
 
+//        Guardando o valor para usar na pagina de crud
         request.getSession().setAttribute("coluna",coluna);
         request.getSession().setAttribute("filtro",filtro);
+
+//        Encaminhando os valores de volta para a página correta
         if(tabela.equals("crud")) {
             request.getRequestDispatcher("/WEB-INF/views/PaginaAposLogin/crud.jsp").forward(request, response);
         }

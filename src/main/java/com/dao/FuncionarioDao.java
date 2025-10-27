@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioDao extends Dao<Funcionario> {
+
+//    Método para salvar funcionário no banco de dados
     public boolean save(Funcionario usuario){
 
         //Comando sql
@@ -47,6 +49,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         }
     }
 
+//    Método para selecionar o funcionário baseado em sua empresa no banco de dados
     public List<Funcionario> selectEmpresa(int empresaId){
         //Criando uma lista de usuarios
         List<Funcionario> usuarios = new ArrayList<>();
@@ -97,6 +100,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         return usuarios;
     }
 
+//    Método para selecionar funcionário de acordo com o filtro no banco de dados
     public List<Funcionario> selectFiltro(int empresaid,String coluna, String filtro) throws SQLException {
         //Criando uma lista de usuarios
         List<Funcionario> usuarios = new ArrayList<>();
@@ -146,6 +150,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         return usuarios;
     }
 
+//    Método para selecionar funcionário com a permissão desejada no banco de dados
     public List<Funcionario> selectFiltro(int empresaid, boolean filtro) throws SQLException {
         //Criando uma lista de usuarios
         List<Funcionario> usuarios = new ArrayList<>();
@@ -195,7 +200,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         return usuarios;
     }
 
-
+//    Método para selecionar todos os funcionário no banco de dados
     public List<Funcionario> select(){
         //Criando uma lista de usuarios
         List<Funcionario> usuarios = new ArrayList<Funcionario>();
@@ -245,6 +250,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         return usuarios;
     }
 
+//    Método para atualizar o funcionário no banco de dados
     public void update(Funcionario funcionario){
 
         //String sql
@@ -280,6 +286,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         }
     }
 
+//    Método para deletar o funcionário do banco de dados
     public void deleteById(int id){
 
         //comando sql

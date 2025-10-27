@@ -17,6 +17,7 @@ import java.util.List;
 
 public class EmpresaDao extends Dao<Empresa> {
 
+//    Método para salvar empresa no banco de dados
     public boolean save(Empresa empresa){
 
         //Comando sql
@@ -55,6 +56,7 @@ public class EmpresaDao extends Dao<Empresa> {
         }
     }
 
+//    Método para selecionar uma empresa específica no banco de dados
     public List<Empresa> selectEmpresa(int id){
         //Criando uma lista de usuarios
         List<Empresa> usuarios = new ArrayList<>();
@@ -108,6 +110,7 @@ public class EmpresaDao extends Dao<Empresa> {
         return usuarios;
     }
 
+//    Método para selecionar a empresa com o filtro correspondente no banco de dados
     public List<Empresa> selectFiltro(String coluna, String filtro) throws SQLException {
         List<Empresa> usuarios = new ArrayList<>();
 
@@ -144,7 +147,6 @@ public class EmpresaDao extends Dao<Empresa> {
                 empresas.setPlano((empresas.getPlanoId() == 10)?"Quality":(empresas.getPlanoId() == 11)?"FullQuality":"PuraQuality");
 
                 //add na lista
-
                 usuarios.add(empresas);
             }
 
@@ -160,60 +162,7 @@ public class EmpresaDao extends Dao<Empresa> {
         return usuarios;
     }
 
-    public List<Empresa> selectFiltro(boolean filtro) throws SQLException {
-        //Conectando e passando o comando sql
-        List<Empresa> usuarios = new ArrayList<>();
-
-        //Comando sql
-        String sql = "SELECT * FROM empresa where permissao = ?";
-
-        //atribuindo valores null
-        Connection conn = null;
-        PreparedStatement pstm = null;
-        ResultSet rset = null;
-
-        try{
-            //Conectando e passando o comando sql
-            conn = ConnectionFactory.createConnection();
-            pstm = conn.prepareStatement(sql);
-
-            pstm.setBoolean(1,filtro);
-
-            rset = pstm.executeQuery();
-
-            //Percorre as linhas do comando sql
-            while (rset.next()){
-                //Criando usuario para ser armazenado na lista
-                Empresa empresas = new Empresa();
-
-                //Instanciando
-                empresas.setId(rset.getInt("id"));
-                empresas.setNome(rset.getString("nome"));
-                empresas.setSenha(rset.getString("senha"));
-                empresas.setSetor(rset.getString("setor"));
-                empresas.setCnpj(rset.getString("cnpj"));
-                empresas.setEmail(rset.getString("email"));
-                empresas.setPlanoId(rset.getInt("plano_id"));
-                empresas.setPlano((empresas.getPlanoId() == 10)?"Quality":(empresas.getPlanoId() == 11)?"FullQuality":"PuraQuality");
-
-
-                //add na lista
-
-                usuarios.add(empresas);
-            }
-
-        }catch (Exception e){
-            //Printando erros
-            e.printStackTrace();
-        }finally {
-            //Fechando conexão e métodos
-            ConnectionFactory.fecharConnection(conn);
-            Dao.fecharPstm(pstm);
-            Dao.fecharRset(rset);
-        }
-        return usuarios;
-    }
-
+//    Método para selecionar todas as empresa no banco de dados
     public List<Empresa> select(){
 
         //Criando a lista
@@ -264,6 +213,7 @@ public class EmpresaDao extends Dao<Empresa> {
         return empresas;
     }
 
+//    Método para atualizar empresa do banco de dados
     public void update(Empresa empresa){
 
         //String sql
@@ -301,6 +251,7 @@ public class EmpresaDao extends Dao<Empresa> {
         }
     }
 
+//    Método para deletar a empresa no banco de dados
     public void deleteById(int id){
         //Comando sql
         String sql = "DELETE FROM empresa WHERE id = ?";

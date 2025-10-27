@@ -8,10 +8,9 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet("/servcadastro")
 public class AcessarCadastro extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
 //        Servlet para encaminhar para o jsp dentro da view para a página de cadastro
-        request.getRequestDispatcher("WEB-INF/views/LoginSignUp/cadastro.jsp").forward(request, response);
-    }
+        request.getRequestDispatcher("WEB-INF/views/LoginSignUp/signup.jsp").forward(request, response);    }
 }

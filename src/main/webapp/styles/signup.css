@@ -90,25 +90,33 @@ input::-webkit-input-placeholder {
     position: relative;
     z-index: 0;
 }
-#email {
+#cnpj {
     position: relative;
     top: -45px;
 }
-#email_empresa {
+#email {
     position: relative;
     top: -30px;
 }
-#senha {
+#nomeEmpresa {
     position: relative;
     top: -15px;
 }
-#confirm_senha {
+#setor {
     position: relative;
     top: 0px;
 }
+#tel{
+    position: relative;
+    top: 15px;
+}
+#senha{
+    position: relative;
+    top: 28px;
+}
 .botao {
     position: relative;
-    top: 20px;
+    top: 50px;
     padding: 12.5px 125px;
     border-radius: 10px;
     border: none;
@@ -125,22 +133,23 @@ input::-webkit-input-placeholder {
 /* ------------ Assets ------------ */
 .celular{
     position: absolute;
-    width: 50%;
-    right: 0;
+    width: 85%;
+    right: -600px;
+    top: -15px;
     z-index: 2;
 }
-.bola_cromo{
+.bolaC{
     position: absolute;
     top: -200px;
-    right: 200px;
-    width: 40%;
+    right: -300px;
+    width: 60%;
     transform: rotate(50deg);
 }
-.bola_cromo2{
+.bolaC2{
     position: absolute;
     bottom: -200px;
-    right: -70px;
-    width: 25%;
+    right: -650px;
+    width: 40%;
 }
 /* ------------  hovers ------------ */
 .botao:hover{
@@ -161,7 +170,7 @@ input::-webkit-input-placeholder {
 @media (max-width: 800px){
     .container-geral{
         width: 100%;
-        z-index: 2;
+        z-index: 3;
     }
     .link_pura{
         z-index: 10;
@@ -169,24 +178,23 @@ input::-webkit-input-placeholder {
     .celular{
         display: none;
     }
-    .bola_cromo{
-        left: -15%;
-        top: -20%;
-        transform: rotateY(180deg);
-        z-index: 1;
+    .bolaC{
+        display: none;
     }
-    .bola_cromo2{
-        bottom: -15%;
-        width: 30%;
+    .bolaC2{
+        display: none;
     }
 }
 @media (max-width: 1340px){
     .celular{
-        top: 10%;
-        right: -5%;
+        top: 0%;
+        right: -60%;
     }
-    .bola_cromo{
-        right: 10%;
-        top: -20%;
+    .bolaC{
+        right: -30%;
+        top: -30%;
+    }
+    .bolaC2{
+        right: -50%;
     }
 }

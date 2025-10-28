@@ -23,7 +23,7 @@
       <h1 class="texto_pura">PuraQuality</h1>
     </a>
     <h1 class="texto_bv" >Bem-vindo de volta</h1>
-      <form class="form" action="servletLogin" method="post" onsubmit="return validarFormulario()">
+      <form class="form" action="servletLogin" method="post">
         <div class="form-group">
             <div class="inputs">
               <input class="inputUser" type="email" id="email" name="emailfuncionario" placeholder=" " required />

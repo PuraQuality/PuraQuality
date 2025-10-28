@@ -49,12 +49,7 @@
         if(((String) request.getSession().getAttribute("filtro")).isEmpty()){
             empresas = edao.select();
         } else {
-            if (((coluna != null)?coluna:"").equals("permissao")) {
-                empresas = edao.selectFiltro((filtro.equals("true")) ? true : false);
-            }
-            else{
-                empresas = edao.selectFiltro(coluna,filtro);
-            }
+            empresas = edao.selectFiltro(coluna,filtro);
         }
         for(int i = 0;i < empresas.size();i++){%>
     <tr>

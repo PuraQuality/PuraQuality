@@ -15,13 +15,16 @@ public class ServletAlterarUsuario extends HttpServlet {
 
 //        Pegando a requisição da página jsp
         int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
+        int telefone = Integer.parseInt(request.getParameter("telefone"));
         String email = request.getParameter("email");
         boolean prioridade = (request.getParameter("prioridade") != null);
         String senha = request.getParameter("senha");
 
 //        Declarando objetos
         FuncionarioDao funcionarioDao = new FuncionarioDao();
-        Funcionario funcionario = new Funcionario(id,email,senha,prioridade);
+        Funcionario funcionario = new Funcionario(id,nome,sobrenome,telefone,email,senha,prioridade);
 
 //        Adicionando ao banco de dados
         funcionarioDao.update(funcionario);

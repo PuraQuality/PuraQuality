@@ -65,6 +65,7 @@ public class ServletLogin extends HttpServlet {
                         prioridade = usuarios.get(i).isPrioridade();
                         posicao = i;
                         request.getSession().setAttribute("empresaid", usuarios.get(i).getEmpresaId());
+                        request.getSession().setAttribute("funcionarioid", usuarios.get(i).getId());
                         break;
                     }
                 }

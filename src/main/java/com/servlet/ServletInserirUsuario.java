@@ -22,7 +22,7 @@ public class ServletInserirUsuario extends HttpServlet {
         boolean permissao = request.getParameter("permissao") != null && !request.getParameter("permissao").equals("1");
 
 //        Declarando o funcionário
-        Funcionario funcionario = new Funcionario(email,senha,empresaid,permissao);
+        Funcionario funcionario = new Funcionario(email,senha,325,"sd","dsfdfs",1,true);
 
 //        Salvando o usuário
         funcionarioDao.save(funcionario);

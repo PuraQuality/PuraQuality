@@ -11,6 +11,9 @@
 <form method="POST" action="servletFiltro">
     <label>
         <select name="coluna" id="coluna">
+            <option value="nome">Nome</option>
+            <option value="sobrenome">Sobrenome</option>
+            <option value="telefone">Telefone</option>
             <option value="email">Email</option>
             <option value="permissao">Permissão</option>
         </select>
@@ -24,6 +27,8 @@
 <table>
     <thead>
     <tr>
+        <th>Nome Completo</th>
+        <th>Telefone</th>
         <th>Email</th>
         <th>Permissões</th>
         <th>Alterar informações</th>
@@ -50,14 +55,20 @@
         }
         for(int i = 0;i < funcionarios.size();i++){%>
     <tr>
+        <td style="border: 1px solid black;"><%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%></td>
+        <td style="border: 1px solid black;"><%=funcionarios.get(i).getTelefone()%></td>
         <td style="border: 1px solid black;"><%=funcionarios.get(i).getEmail()%></td>
         <td style="border: 1px solid black;"><%=funcionarios.get(i).isPrioridade()%></td>
+
         <td style="border: 1px solid black;">
             <form action="servletAlterarUsuario" method="post">
                 <label>
                     Permissão:<input type="checkbox" name="prioridade" <%=funcionarios.get(i).isPrioridade()?"checked":null%>>
                 </label>
                 <input type="hidden" name="id" value=<%=funcionarios.get(i).getId()%>>
+                <input type="hidden" name="nome" value=<%=funcionarios.get(i).getNome()%>>
+                <input type="hidden" name="sobrenome" value=<%=funcionarios.get(i).getSobrenome()%>>
+                <input type="hidden" name="telefone" value=<%=funcionarios.get(i).getTelefone()%>>
                 <input type="hidden" name="email" value=<%=funcionarios.get(i).getEmail()%>>
                 <input type="hidden" name="senha" value=<%=funcionarios.get(i).getSenha()%>>
                 <button type="submit">Alterar Usuário</button>
@@ -67,7 +78,6 @@
             <form action="servletDeletarUsuario" method="post">
                 <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
                 <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
-                <input type="hidden" name="senha" value="<%=funcionarios.get(i).getSenha()%>">
                 <input type="hidden" name="empresa" value="sim">
                 <button type="submit">Deletar Usuário</button>
             </form>

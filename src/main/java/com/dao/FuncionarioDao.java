@@ -17,7 +17,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
     public boolean save(Funcionario usuario){
 
         //Comando sql
-        String sql = "INSERT INTO funcionario (email, senha, empresa_id, permissao) VALUES(?, ?, ?, ?)";
+        String sql = "INSERT INTO funcionario (nome, sobrenome, email, senha, empresa_id, permissao) VALUES(?, ?, ?, ?, ?, ?)";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -29,10 +29,10 @@ public class FuncionarioDao extends Dao<Funcionario> {
             pstm = conn.prepareStatement(sql);
 
             //Instanciando
-            pstm.setString(1,usuario.getEmail());
-            pstm.setString(2,usuario.getSenha());
-            pstm.setInt(3,usuario.getEmpresaId());
-            pstm.setBoolean(4,usuario.isPrioridade());
+            pstm.setString(3,usuario.getEmail());
+            pstm.setString(4,usuario.getSenha());
+            pstm.setInt(5,usuario.getEmpresaId());
+            pstm.setBoolean(6,usuario.isPrioridade());
 
             //Executando
             System.out.println("Salvo com sucesso!");
@@ -78,6 +78,8 @@ public class FuncionarioDao extends Dao<Funcionario> {
 
                 //Instanciando
                 usuario1.setId(rset.getInt("id"));
+                usuario1.setNome(rset.getString("nome"));
+                usuario1.setSobrenome(rset.getString("sobrenome"));
                 usuario1.setEmail(rset.getString("email"));
                 usuario1.setSenha(rset.getString("senha"));
                 usuario1.setEmpresaId(rset.getInt("empresa_id"));

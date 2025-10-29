@@ -59,6 +59,7 @@
         <table>
             <thead>
             <tr>
+                <th>Nome Completo</th>
                 <th>Email</th>
                 <th>Permissão</th>
                 <th>Telefone</th>
@@ -86,9 +87,10 @@
     }
 for(int i = 0;i < funcionarios.size();i++){%>
 <tr>
+    <td><%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%></td>
     <td><%=funcionarios.get(i).getEmail()%></td>
     <td><%=funcionarios.get(i).isPrioridade()%></td>
-    <td>-</td>
+    <td><%=funcionarios.get(i).getTelefone()%></td>
     <td>
         <form action="servletDeletarUsuario" method="post" class="delete-form">
             <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">

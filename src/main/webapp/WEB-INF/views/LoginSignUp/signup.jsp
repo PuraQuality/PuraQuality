@@ -23,19 +23,38 @@
         <h1 class="texto_pura">PuraQuality</h1>
       </a>
       <h1 class="texto_bv">Comece agora conosco</h1>
-        <form class="form" action="/servletCadastro" method="post">
-            <div class="form-group">
-                <div class="inputs">
-                    <input type="text" id="cnpj" name="cnpj" placeholder="Digite seu CNPJ" maxlength="18" required />
-                    <input type="email" id="email" name="empresa" placeholder="Digite o email da sua empresa" required />
-                    <input type="text" id="nomeEmpresa" name="nome" placeholder="Digite o nome da sua empresa" required />
-                    <input type="text" id="setor" name="setor" placeholder="Digite o setor da sua empresa" required>
-                    <input type="tel" id="tel" name="tel" placeholder="Digite o telefone da sua empresa" required>
-                    <input type="password" id="senha" name="senha" placeholder="Digite uma senha" required />
+      <form class="form" action="/servletCadastro" method="post">
+        <div class="form-group">
+            <div class="inputs">
+                <div class="input-container">
+                    <input type="text" id="cnpj" name="cnpj" maxlength="18" required placeholder=" " />
+                    <label for="cnpj" class="labelcnpj">CNPJ EX: 12.345.678/0001-09</label>
                 </div>
-                <button class="botao" type="submit" id="botao">Cadastrar</button>
+                <div class="input-container">
+                    <input type="email" id="email" name="empresa" required placeholder=" " />
+                    <label for="email" class="labelemail">Email:</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="nomeEmpresa" name="nome" required placeholder=" " />
+                    <label for="nome" class="labelnome">Empresa:</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="setor" name="setor" required placeholder=" " />
+                    <label for="setor" class="labelsetor">Setor:</label>
+                </div>
+                <div class="input-container">
+                    <input type="tel" id="tel" name="tel" required placeholder=" " />
+                    <label for="tel" class="labeltel">Telefone EX: (55) 12345-6789</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="senha" name="senha" required placeholder=" " />
+                    <label for="senha" class="labelsenha">Senha:</label>
+                </div>
             </div>
-        </form>
+            <button class="botao" type="submit" id="botao">Cadastrar</button>
+        </div>
+    </form>
+
         <!-- Modal de Erros -->
         <div id="modal-erros" class="modal">
           <div class="modal-content">
@@ -52,11 +71,9 @@
         const botao = document.getElementById('botao')
         // puxando a senha, cnpj e o email pelo id
         const cnpj = document.getElementById('cnpj')
-        const senha = document.getElementById('senha')
         const email = document.getElementById('email')
         const tel = document.getElementById('tel')
-        // setando os regex
-        const regexSenha = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&])(?=.*[a-z])[a-zA-Z0-9@#$%&]{8,100}$/;
+        // setando os regex para validação
         const regexEmail = /[^ ]+@[a-z]+(\.[a-z]+)?(\.com|\.br)/;
         const regexCNPJ = /^\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}$/;
         const regexTelefone = /^(\+55\s?)?(\(?\d{2}\)?\s?)(\d{4,5}\s?-?\d{4})$/;
@@ -73,10 +90,6 @@
             if (!regexEmail.test(email.value)) {
                 erros.push("E-mail inválido. Exemplo: empresa@dominio.com.br");
                 email.style.borderColor = 'red';
-            }
-            if (!regexSenha.test(senha.value)) {
-                erros.push("Senha inválida. Deve ter 8-100 caracteres, maiúscula, minúscula, número e símbolo (@#$%&)");
-                senha.style.borderColor = 'red';
             }
             if (!regexTelefone.test(tel.value)) {
                 erros.push("Telefone inválido. Exemplo: (11) 98765-4321");

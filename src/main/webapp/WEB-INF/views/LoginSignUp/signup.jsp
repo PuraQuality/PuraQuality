@@ -142,7 +142,6 @@
             e.preventDefault(); // Impede o envio automático
             validarEExibirErros();
         });
-        
       </script>
 </body>
 </html>

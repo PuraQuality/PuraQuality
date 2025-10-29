@@ -55,7 +55,6 @@
         const senha = document.getElementById('senha')
         const email = document.getElementById('email')
         const tel = document.getElementById('tel')
-
         // setando os regex
         const regexSenha = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&])(?=.*[a-z])[a-zA-Z0-9@#$%&]{8,100}$/;
         const regexEmail = /[^ ]+@[a-z]+(\.[a-z]+)?(\.com|\.br)/;
@@ -69,15 +68,19 @@
               // verificando os regex e dando push para a lista
             if (!regexCNPJ.test(cnpj.value)) {
                 erros.push("CNPJ inválido. Exemplo: 12.345.678/0001-90");
+                cnpj.style.borderColor = 'red';
             }
             if (!regexEmail.test(email.value)) {
                 erros.push("E-mail inválido. Exemplo: empresa@dominio.com.br");
+                email.style.borderColor = 'red';
             }
             if (!regexSenha.test(senha.value)) {
                 erros.push("Senha inválida. Deve ter 8-100 caracteres, maiúscula, minúscula, número e símbolo (@#$%&)");
+                senha.style.borderColor = 'red';
             }
             if (!regexTelefone.test(tel.value)) {
                 erros.push("Telefone inválido. Exemplo: (11) 98765-4321");
+                tel.style.borderColor = 'red';
             }
             // se os erros forem maiores que zero, ou seja, tiver quaisquer erros, abre o modal
             if (erros.length > 0) {

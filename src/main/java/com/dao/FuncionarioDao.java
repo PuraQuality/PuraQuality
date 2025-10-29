@@ -115,6 +115,10 @@ public class FuncionarioDao extends Dao<Funcionario> {
         PreparedStatement pstm = null;
         ResultSet rset = null;
 
+        if(coluna.equals("plano")){
+            sql = "SELECT * FROM plano where nome LIKE ?";
+        }
+
         try{
             //Conectando e passando o comando sql
             conn = ConnectionFactory.createConnection();

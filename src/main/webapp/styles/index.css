@@ -1089,7 +1089,6 @@ hr.divisoria2 {
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 10%;
   left: 35%;
   padding: 10px 2px;
   width: 30%;
@@ -1102,9 +1101,9 @@ hr.divisoria2 {
   text-decoration: none;
   font-weight: bolder;
 }
-form {
+form{
   position: relative;
-  top: 10%;
+  top: 30px;
 }
 .plano1 ul li {
   position: relative;
@@ -1358,7 +1357,7 @@ form {
     box-shadow: 0 4px 15px rgba(0, 255, 136, 0.8);
   }
 }
-/* 🔥 Deixa todos os checks verdes quando passa o mouse no plano */
+/* Deixa todos os checks verdes quando passa o mouse no plano */
 .plano1:hover ul li::before {
   background: linear-gradient(135deg, #00ff88, #00cc6a);
   box-shadow: 0 4px 12px rgba(0, 255, 136, 0.5);

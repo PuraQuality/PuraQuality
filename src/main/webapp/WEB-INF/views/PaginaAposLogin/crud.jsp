@@ -155,7 +155,7 @@ for(int i = 0;i < funcionarios.size();i++){%>
     </div>
 
     <script>
-<%--FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO--%>
+            // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO
         function openInsertModal() {
             // aqui ele pega o valor do modal e troca o display para flex, ou seja, abre
             document.getElementById('insertModal').style.display = 'flex';

@@ -1,0 +1,14 @@
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(rgb(23, 23, 23), rgb(13, 0, 34), #670081);
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  line-height: 1.8;
+  padding: 32px 0;
+}

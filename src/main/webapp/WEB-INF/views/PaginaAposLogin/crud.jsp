@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM - Dashboard</title>
-    <link rel="icon" href="${pageContext.request.contextPath}/img/LogoPura.png">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/logoOFC.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/crud.css?v=<%= System.currentTimeMillis() %>">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,8 +38,12 @@
         </div>
         <form method="POST" action="servletFiltro" class="search-form">
             <select name="coluna" id="coluna" class="search-dropdown">
+                <option value="nome">Nome</option>
+                <option value="sobrenome">Sobrenome</option>
+                <option value="telefone">Telefone</option>
                 <option value="email">Email</option>
                 <option value="permissao">Permissão</option>
+                <option value="plano">Plano</option>
             </select>
             <div class="search-input-wrapper">
                 <input type="text" name="filtro" class="search-input" placeholder="O que procura?" value="<%=(request.getSession().getAttribute("filtro") != null) ? request.getSession().getAttribute("filtro") : ""%>">

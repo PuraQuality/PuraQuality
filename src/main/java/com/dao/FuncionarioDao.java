@@ -83,7 +83,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
                 usuario1.setId(rset.getInt("id"));
                 usuario1.setNome(rset.getString("nome"));
                 usuario1.setSobrenome(rset.getString("sobrenome"));
-                usuario1.setSobrenome(rset.getString("telefone"));
+                usuario1.setTelefone(rset.getString("telefone"));
                 usuario1.setEmail(rset.getString("email"));
                 usuario1.setSenha(rset.getString("senha"));
                 usuario1.setEmpresaId(rset.getInt("empresa_id"));
@@ -141,7 +141,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
                 usuario1.setId(rset.getInt("id"));
                 usuario1.setNome(rset.getString("nome"));
                 usuario1.setSobrenome(rset.getString("sobrenome"));
-                usuario1.setSobrenome(rset.getString("telefone"));
+                usuario1.setTelefone(rset.getString("telefone"));
                 usuario1.setEmail(rset.getString("email"));
                 usuario1.setSenha(rset.getString("senha"));
                 usuario1.setEmpresaId(rset.getInt("empresa_id"));
@@ -194,7 +194,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
                 usuario1.setId(rset.getInt("id"));
                 usuario1.setNome(rset.getString("nome"));
                 usuario1.setSobrenome(rset.getString("sobrenome"));
-                usuario1.setSobrenome(rset.getString("telefone"));
+                usuario1.setTelefone(rset.getString("telefone"));
                 usuario1.setEmail(rset.getString("email"));
                 usuario1.setSenha(rset.getString("senha"));
                 usuario1.setEmpresaId(rset.getInt("empresa_id"));
@@ -244,7 +244,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
                 usuario1.setId(rset.getInt("id"));
                 usuario1.setNome(rset.getString("nome"));
                 usuario1.setSobrenome(rset.getString("sobrenome"));
-                usuario1.setSobrenome(rset.getString("telefone"));
+                usuario1.setTelefone(rset.getString("telefone"));
                 usuario1.setEmail(rset.getString("email"));
                 usuario1.setSenha(rset.getString("senha"));
                 usuario1.setEmpresaId(rset.getInt("empresa_id"));

@@ -23,7 +23,7 @@ public class ServletFiltroCrud extends HttpServlet {
 
 //        Encaminhando os valores de volta para a página correta
         if(tabela.equals("crud")) {
-            request.getRequestDispatcher("/WEB-INF/views/PaginaAposLogin/crudEmpresa.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/PaginaAposLogin/crudRH.jsp").forward(request, response);
         }
         else if(tabela.equals("empresa")) {
             request.getRequestDispatcher("/WEB-INF/views/PaginaAposLogin/crudAdm.jsp").forward(request, response);

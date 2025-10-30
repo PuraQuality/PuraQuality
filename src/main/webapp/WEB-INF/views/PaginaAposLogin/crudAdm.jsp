@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM - Dashboard</title>
     <link rel="icon" href="${pageContext.request.contextPath}/img/logoOFC.png">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/crudEmpresa.css?v=<%= System.currentTimeMillis() %>">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/crudAdm.css?v=<%= System.currentTimeMillis() %>">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,14 +112,27 @@
                 </form>
             </td>
             <td>
+                <div class="delete-form">
+                    <div class="delete-button" onclick="openDelModal()">Deletar</div>
+                </div>
+            </td>
+        </tr>
+        <div id="del-modal" class="modal-del">
+            <div class="del-content">
+                <span class="close" onclick="closeDelModal()">&times;</span>
+                <h1>Você tem certeza?</h1>
+                <p>Você tem certeza que quer deletar <%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%>?</p>
                 <form action="servletDeletarUsuario" method="post" class="delete-form">
                     <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
                     <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
-                    <input type="hidden" name="empresa" value="sim">
-                    <button type="submit" class="delete-button">Deletar</button>
+                    <input type="hidden" name="empresa" value="nao">
+                    <div class="flexText">
+                        <button type="submit" class="delete-button modal-delbutton">Deletar</button>
+                        <div onclick="closeDelModal()" class="delCancel">Cancelar</div>
+                    </div>
                 </form>
-            </td>
-        </tr>
+            </div>
+        </div>
         <%}%>
         </tbody>
     </table>
@@ -177,36 +190,58 @@
 </div>
 
 <script>
-    // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO
+    // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO E DELETAR USUÁRIO
     function openInsertModal() {
+        // aqui ele pega o valor do modal e troca o display para flex, ou seja, abre
         document.getElementById('insertModal').style.display = 'flex';
     }
-
-    // FUNÇÃO PARA FECHAR O MODAL DE INSERÇÃO DE USUÁRIO
+    function openDelModal() {
+        document.getElementById('del-modal').style.display = 'flex';
+    }
+    // FUNÇÃO PARA FECHAR O MODAL DE INSERÇÃO DE USUÁRIO E DELETAR USUÁRIO
     function closeInsertModal() {
+        // aqui ele pega o valor do modal e troca o display para none, ou seja, fecha
         document.getElementById('insertModal').style.display = 'none';
+    }
+    function closeDelModal() {
+        document.getElementById('del-modal').style.display = 'none';
     }
 
     // FECHAR O MODAL QUANDO CLICAR FORA DELE
     window.onclick = function(event) {
+        // pega o modal pelo id e coloca em uma constante que nunca muda (const)
         const modal = document.getElementById('insertModal');
+        // verifica se o alvo do clique é o modal
         if (event.target == modal) {
+            // se for, fecha o modal
             modal.style.display = 'none';
         }
     }
-
+    // FECHAR O MODAL QUANDO CLICAR FORA DELE
+    window.onclick = function(event) {
+        // pega o modal pelo id e coloca em uma constante que nunca muda (const)
+        const modal = document.getElementById('del-modal');
+        // verifica se o alvo do clique é o modal
+        if (event.target == modal) {
+            // se for, fecha o modal
+            modal.style.display = 'none';
+        }
+    }
     // FUNÇÃO PARA VER A SENHA
+    // puxando pelo id do botão e fazendo um callback de click
     document.getElementById('verSenha').addEventListener('click', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Evita o comportamento padrão do botão
+        // pega o botao pelo id
         const botao = document.getElementById('verSenha');
+        // pega o input da senha pelo id
         const senhaInput = document.getElementById('senha');
-
+        // verfica o tipo do input
         if (senhaInput.type === 'password') {
-            senhaInput.type = 'text';
-            botao.textContent = '👁️';
+            senhaInput.type = 'text'; // Mostra a senha
+            botao.textContent = '👁️'; // troca os emojis
         } else {
-            senhaInput.type = 'password';
-            botao.textContent = '🙈';
+            senhaInput.type = 'password'; // Oculta a senha
+            botao.textContent = '🙈'; // troca os emojis
         }
     });
 </script>

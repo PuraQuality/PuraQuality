@@ -33,7 +33,7 @@ public class ServletInserirUsuario extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudAdm.jsp").forward(request, response);
         }
         else {
-            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudEmpresa.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudRH.jsp").forward(request, response);
         }
     }
 }

@@ -370,9 +370,6 @@ tbody td:not(:last-child){
     font-size: 14px;
     transition: all 0.3s ease;
 }
-.permissao-select{
-
-}
 
 .form-group input::placeholder{
     color: var(--text-muted);
@@ -488,6 +485,31 @@ select[name="permissao"]::before{
     color: #ffffff;
     font-size: 14px;
 }
+/* Update Button */
+.update-button{
+    background-color: #3b82f6;
+    color: var(--text-light);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.update-button:hover{
+    background-color: #2563eb;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.update-button:active{
+    transform: scale(0.98);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header-bar{

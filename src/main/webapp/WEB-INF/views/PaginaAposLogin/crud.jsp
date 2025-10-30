@@ -43,7 +43,6 @@
                 <option value="telefone">Telefone</option>
                 <option value="email">Email</option>
                 <option value="permissao">Permissão</option>
-                <option value="plano">Plano</option>
             </select>
             <div class="search-input-wrapper">
                 <input type="text" name="filtro" class="search-input" placeholder="O que procura?" value="<%=(request.getSession().getAttribute("filtro") != null) ? request.getSession().getAttribute("filtro") : ""%>">
@@ -51,7 +50,7 @@
                     <i class="fas fa-search"></i>
                 </button>
             </div>
-            <input type="hidden" name="tabela" value="crud">
+            <input type="hidden" name="tabela" value="empresa">
         </form>
         <button class="insert-button" onclick="openInsertModal()">
             <i class="fas fa-plus"></i> Inserir
@@ -64,10 +63,11 @@
             <thead>
             <tr>
                 <th>Nome Completo</th>
-                <th>Email</th>
-                <th>Permissão</th>
                 <th>Telefone</th>
-                <th>Deletar</th>
+                <th>Email</th>
+                <th>Permissões</th>
+                <th>Alterar informações</th>
+                <th>Deletar cadastro</th>
             </tr>
             </thead>
             <tbody>
@@ -77,8 +77,7 @@
     int empresaid = (int) request.getSession().getAttribute("empresaid");
     String coluna = request.getParameter("coluna");
     String filtro = (String) request.getSession().getAttribute("filtro");
-    
-    // Verifica se o filtro está vazio ou null
+
     if(filtro == null || filtro.isEmpty()){
         funcionarios = fdao.selectEmpresa(empresaid);
     } else {
@@ -92,14 +91,31 @@
 for(int i = 0;i < funcionarios.size();i++){%>
 <tr>
     <td><%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%></td>
+    <td><%=funcionarios.get(i).getTelefone()%></td>
     <td><%=funcionarios.get(i).getEmail()%></td>
     <td><%=funcionarios.get(i).isPrioridade()%></td>
-    <td><%=funcionarios.get(i).getTelefone()%></td>
+    <td>
+        <form action="servletAlterarUsuario" method="post" class="update-form">
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="prioridade" <%=funcionarios.get(i).isPrioridade()?"checked":""%>>
+                    Permissão de Administrador
+                </label>
+            </div>
+            <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
+            <input type="hidden" name="nome" value="<%=funcionarios.get(i).getNome()%>">
+            <input type="hidden" name="sobrenome" value="<%=funcionarios.get(i).getSobrenome()%>">
+            <input type="hidden" name="telefone" value="<%=funcionarios.get(i).getTelefone()%>">
+            <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
+            <input type="hidden" name="senha" value="<%=funcionarios.get(i).getSenha()%>">
+            <button type="submit" class="update-button">Alterar</button>
+        </form>
+    </td>
     <td>
         <form action="servletDeletarUsuario" method="post" class="delete-form">
             <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
             <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
-            <input type="hidden" name="empresa" value="nao">
+            <input type="hidden" name="empresa" value="sim">
             <button type="submit" class="delete-button">Deletar</button>
         </form>
     </td>
@@ -125,16 +141,18 @@ for(int i = 0;i < funcionarios.size();i++){%>
                         <input type="password" id="senha" name="senha" placeholder="Digite a senha do novo funcionário" required>
                         <button id="verSenha" class="verSenha">🙈</button>
                     </div>
+                </div>
+                <div class="formCard">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" placeholder="Digite o nome do novo funcionário">
                     </div>
-                </div>
-                <div class="formCard">
                     <div class="form-group">
                         <label for="sobrenome">Sobrenome:</label>
                         <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite o sobrenome do novo funcionário">
                     </div>
+                </div>
+                <div class="formCard">
                     <div class="form-group">
                         <label for="telefone">Telefone:</label>
                         <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
@@ -145,7 +163,7 @@ for(int i = 0;i < funcionarios.size();i++){%>
                             <option value="1">Administrador</option>
                             <option value="0">Funcionário</option>
                         </select>
-                    </div>
+                </div>
                 </div>
                 <input type="hidden" name="permissao" value="1">
                 <input type="hidden" name="empresa" value="nao">
@@ -159,42 +177,36 @@ for(int i = 0;i < funcionarios.size();i++){%>
     </div>
 
     <script>
-            // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO
+        // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO
         function openInsertModal() {
-            // aqui ele pega o valor do modal e troca o display para flex, ou seja, abre
             document.getElementById('insertModal').style.display = 'flex';
         }
+        
         // FUNÇÃO PARA FECHAR O MODAL DE INSERÇÃO DE USUÁRIO
         function closeInsertModal() {
-            // aqui ele pega o valor do modal e troca o display para none, ou seja, fecha
             document.getElementById('insertModal').style.display = 'none';
         }
 
         // FECHAR O MODAL QUANDO CLICAR FORA DELE
         window.onclick = function(event) {
-            // pega o modal pelo id e coloca em uma constante que nunca muda (const)
             const modal = document.getElementById('insertModal');
-            // verifica se o alvo do clique é o modal
             if (event.target == modal) {
-                // se for, fecha o modal
                 modal.style.display = 'none';
             }
         }
+        
         // FUNÇÃO PARA VER A SENHA
-        // puxando pelo id do botão e fazendo um callback de click
         document.getElementById('verSenha').addEventListener('click', function(event) {
-            event.preventDefault(); // Evita o comportamento padrão do botão
-            // pega o botao pelo id
+            event.preventDefault();
             const botao = document.getElementById('verSenha');
-            // pega o input da senha pelo id
             const senhaInput = document.getElementById('senha');
-            // verfica o tipo do input
+            
             if (senhaInput.type === 'password') {
-                senhaInput.type = 'text'; // Mostra a senha
-                botao.textContent = '👁️'; // troca os emojis
+                senhaInput.type = 'text';
+                botao.textContent = '👁️';
             } else {
-                senhaInput.type = 'password'; // Oculta a senha
-                botao.textContent = '🙈'; // troca os emojis
+                senhaInput.type = 'password';
+                botao.textContent = '🙈';
             }
         });
     </script>

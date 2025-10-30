@@ -141,7 +141,7 @@
         botao.addEventListener('click', function(e) {
             e.preventDefault(); // Impede o envio automático
             validarEExibirErros();
-        });
+        });x
       </script>
 </body>
 </html>

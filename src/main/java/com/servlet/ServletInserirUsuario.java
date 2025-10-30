@@ -20,9 +20,12 @@ public class ServletInserirUsuario extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         boolean permissao = request.getParameter("permissao") != null && !request.getParameter("permissao").equals("1");
+        String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
+        String telefone = request.getParameter("telefone").replace("[^0-9]", "");
 
 //        Declarando o funcionário
-        Funcionario funcionario = new Funcionario(email,senha,325,"sd","dsfdfs",1,true);
+        Funcionario funcionario = new Funcionario(nome,sobrenome,telefone,email,senha,empresaid,permissao);
 
 //        Salvando o usuário
         funcionarioDao.save(funcionario);

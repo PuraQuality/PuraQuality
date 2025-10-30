@@ -91,7 +91,7 @@
     }
 for(int i = 0;i < funcionarios.size();i++){%>
 <tr>
-    <td><%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%></td>
+    <td><%=funcionarios.get(i).getNome() + " " + ((funcionarios.get(i).getSobrenome()!=null)?funcionarios.get(i).getSobrenome():" ")%></td>
     <td><%=funcionarios.get(i).getEmail()%></td>
     <td><%=funcionarios.get(i).isPrioridade()%></td>
     <td><%=funcionarios.get(i).getTelefone()%></td>

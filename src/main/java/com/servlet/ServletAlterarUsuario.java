@@ -30,6 +30,6 @@ public class ServletAlterarUsuario extends HttpServlet {
         funcionarioDao.update(funcionario);
 
 //        Encaminhando de volta para o nosso crud
-        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudAdm.jsp").forward(request, response);
     }
 }

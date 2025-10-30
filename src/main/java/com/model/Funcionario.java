@@ -8,7 +8,7 @@ public class Funcionario {
     private String sobrenome;
     private String email;
     private String senha;
-    private int telefone;
+    private String telefone;
     private int empresaId;
     private boolean prioridade;
 
@@ -17,7 +17,7 @@ public class Funcionario {
 
     }
 
-    public Funcionario(int id, String nome, String sobrenome, int telefone, String email, String senha, boolean prioridade) {
+    public Funcionario(int id, String nome, String sobrenome, String telefone, String email, String senha, boolean prioridade) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -27,7 +27,7 @@ public class Funcionario {
         this.prioridade = prioridade;
     }
 
-    public Funcionario(String nome, String sobrenome, int telefone, String email, String senha, int empresaId, boolean prioridade) {
+    public Funcionario(String nome, String sobrenome, String telefone, String email, String senha, int empresaId, boolean prioridade) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
@@ -50,7 +50,7 @@ public class Funcionario {
         return sobrenome;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
@@ -83,7 +83,7 @@ public class Funcionario {
         this.sobrenome = sobrenome;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

@@ -115,7 +115,7 @@ for(int i = 0;i < funcionarios.size();i++){%>
         <form action="servletDeletarUsuario" method="post" class="delete-form">
             <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
             <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
-            <input type="hidden" name="empresa" value="sim">
+            <input type="hidden" name="empresa" value="nao">
             <button type="submit" class="delete-button">Deletar</button>
         </form>
     </td>

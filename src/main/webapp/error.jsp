@@ -16,12 +16,13 @@
 </head>
 <body>
 <div class="container">
-  <h1>ERROR</h1>
+  <h1>Página não encontrada</h1>
   <div class="alert-icon">
-    <img src="img/alert-triangle-red.png" alt="Alerta!" />
+    <img src="img/alerta.png" alt="Alerta!" />
   </div>
-  <p>Ocorreu um erro no sistema</p>
-  <a href="${pageContext.request.contextPath}/index.html" class="btn-voltar">Voltar</a>
+  <p>Página não encontrada.
+      Verifique o endereço ou volte para a página inicial</p>
+  <a href="${pageContext.request.contextPath}/index.html" class="btn-voltar">Voltar para página inicial</a>
 </div>
 </body>
 </html>

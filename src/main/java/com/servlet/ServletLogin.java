@@ -87,10 +87,10 @@ public class ServletLogin extends HttpServlet {
 //            Encaminhando para a página correspondente
             if (validarSenha) {
                 if (validarEmpresa) {
-                    request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudAdm.jsp").forward(request, response);
                 } else {
                     if (prioridade) {
-                        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crud.jsp").forward(request, response);
+                        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudRH.jsp").forward(request, response);
                     } else {
                         request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/home.jsp").forward(request, response);
                     }

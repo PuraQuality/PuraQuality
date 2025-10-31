@@ -509,7 +509,92 @@ select[name="permissao"]::before{
 .update-button:active{
     transform: scale(0.98);
 }
+/* Delete Button */
+.delete-form{
+    margin: 0;
+    display: inline-block;
+}
 
+.delete-button{
+    background-color: #dc2626;
+    color: var(--text-light);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.delete-button:hover{
+    background-color: #b91c1c;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.delete-button:active{
+    transform: scale(0.98);
+}
+.delCancel{
+    background-color: rgba(83, 35, 168, 0.8);
+    color: var(--text-light);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.delCancel:hover{
+    background-color: #6a00ff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(106, 0, 255, 0.4);
+}
+.del-content > h1{
+    position: relative;
+    justify-self: center;
+    top: -10px;
+}
+.del-content > p{
+    position: relative;
+    justify-self: center;
+    top: -10px;
+}
+.flexText{
+    position: relative;
+    display: flex;
+    justify-self: center;
+    gap: 75px;
+    top: 15px;
+}
+.modal-del{
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+.del-content{
+    background-color: var(--table-bg);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .header-bar{
@@ -639,5 +724,154 @@ table.loading::after{
 }
 
 ::-webkit-scrollbar-thumb:hover {
+    background: #6a00ff;
+}
+/* Responsividade para tabelas - 1340px */
+@media (max-width: 1340px) {
+    .table-container {
+        margin-top: 160px;
+        padding: 20px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    thead th {
+        padding: 15px 12px;
+        font-size: 14px;
+    }
+
+    tbody td {
+        padding: 15px 12px;
+        font-size: 13px;
+    }
+
+    .delete-button,
+    .update-button {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+
+    /* Ajuste para formulários em telas médias */
+    .formCard {
+        gap: 12px;
+    }
+
+    .modal-content,
+    .del-content {
+        padding: 30px;
+        max-width: 450px;
+    }
+}
+
+/* Responsividade para tabelas - 800px */
+@media (max-width: 800px) {
+    .table-container {
+        margin-top: 180px;
+        padding: 15px 10px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 700px;
+        font-size: 12px;
+    }
+
+    thead th {
+        padding: 12px 8px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    tbody td {
+        padding: 12px 8px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    tbody tr {
+        height: 50px;
+    }
+
+    .delete-button,
+    .update-button {
+        padding: 5px 12px;
+        font-size: 11px;
+        margin: 2px 0;
+    }
+
+    /* Ajuste para formulários em mobile */
+    .formCard {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-content,
+    .del-content {
+        padding: 25px 20px;
+        max-width: 90%;
+        margin: 20px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-submit,
+    .btn-cancel {
+        height: 40px;
+        font-size: 13px;
+    }
+
+    /* Ajuste do botão ver senha */
+    .verSenha {
+        right: 20px;
+        top: auto;
+        transform: translateY(-50%);
+    }
+}
+
+/* Responsividade adicional para telas muito pequenas */
+@media (max-width: 480px) {
+    .table-container {
+        margin-top: 200px;
+        padding: 10px 5px;
+    }
+
+    table {
+        min-width: 600px;
+        font-size: 11px;
+    }
+
+    thead th,
+    tbody td {
+        padding: 10px 6px;
+    }
+
+    .delete-button,
+    .update-button {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
+}
+
+/* Scroll horizontal suave para tabelas em mobile */
+.table-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+    border-radius: 3px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #bf00ff;
+    border-radius: 3px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
     background: #6a00ff;
 }

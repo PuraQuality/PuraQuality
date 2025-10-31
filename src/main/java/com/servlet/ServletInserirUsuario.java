@@ -30,10 +30,10 @@ public class ServletInserirUsuario extends HttpServlet {
 //        Salvando o usuário
         funcionarioDao.save(funcionario);
         if (request.getParameter("empresa").equals("sim")){
-            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/empresa.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudAdm.jsp").forward(request, response);
         }
         else {
-            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crud.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudRH.jsp").forward(request, response);
         }
     }
 }

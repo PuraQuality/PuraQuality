@@ -72,15 +72,20 @@
         </thead>
         <tbody>
         <%
+//            Declarando objetos e listas
             FuncionarioDao fdao = new FuncionarioDao();
             List<Funcionario> funcionarios;
+
+//            Adquirindo o valor dos parâmetros
             int empresaid = (int) request.getSession().getAttribute("empresaid");
             String coluna = request.getParameter("coluna");
             String filtro = (String) request.getSession().getAttribute("filtro");
 
+//            Vendo se Possui algum filtro para o select
             if(filtro == null || filtro.isEmpty()){
                 funcionarios = fdao.selectEmpresa(empresaid);
             } else {
+//                validando para ver se a coluna desejada para o filtro é permissão, se for, envia
                 if (coluna != null && coluna.equals("permissao")) {
                     funcionarios = fdao.selectFiltro(empresaid, Boolean.parseBoolean(filtro));
                 }

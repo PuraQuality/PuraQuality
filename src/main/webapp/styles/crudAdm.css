@@ -595,6 +595,27 @@ select[name="permissao"]::before{
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
     position: relative;
 }
+.modal-trocaButton{
+    background-color: #6a00ff;
+}
+.modal-trocaButton:hover{
+    background-color: #6a00ff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(106, 0, 255, 0.4);
+}
+.troca-form{
+    position: relative;
+    left: 17%;
+}
+.trCancel{
+    background-color: #dc2626
+}
+.trCancel:hover{
+    background-color: #b91c1c;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header-bar{

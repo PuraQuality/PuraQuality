@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<%@include file="../loading.jsp"%>
 <!-- Header Bar -->
 <div class="header-bar">
     <div class="header-left">
@@ -55,6 +54,9 @@
     </form>
     <button class="insert-button" onclick="openInsertModal()">
         <i class="fas fa-plus"></i> Inserir
+    </button>
+    <button class="insert-button" onclick="openTrocaModal()">
+        Trocar senha
     </button>
 </div>
 
@@ -195,7 +197,33 @@
         </form>
     </div>
 </div>
-
+<div id="modal-troca" class="modal modal-troca">
+    <div class="del-content troca-content">
+        <span class="close" onclick="closeTrocaModal()">&times;</span>
+        <h1>Trocar Senha</h1>
+        <form action="servletAlterarUsuario" method="post" class="delete-form troca-form">
+            <input type="hidden" name="id" value="<%=funcionarios%>">
+            <input type="hidden" name="email" value="<%=funcionarios%>">
+            <input type="hidden" name="empresa" value="nao">
+            <div class="form-group">
+                <label for="atSenha">Senha atual:</label>
+                <input type="password" id="atSenha" name="atSenha" placeholder="Digite a senha atual" required>
+            </div>
+            <div class="form-group">
+                <label for="nvSenha">Senha nova:</label>
+                <input type="password" id="nvSenha" name="nvSenha" placeholder="Digite a senha nova" required>
+            </div>
+            <div class="form-group">
+                <label for="cfSenha">Confirmar senha:</label>
+                <input type="password" id="cfSenha" name="cfSenha" placeholder="Confirme a senha" required>
+            </div>
+            <div class="flexText">
+                <button type="submit" class="delete-button modal-trocaButton">Trocar</button>
+                <div onclick="closeTrocaModal()" class="delCancel trCancel">Cancelar</div>
+            </div>
+        </form>
+    </div>
+</div>
 <script>
     // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO E DELETAR USUÁRIO
     function openInsertModal() {
@@ -205,6 +233,9 @@
     function openDelModal(id) {
         document.getElementById('del-modal' + id).style.display = 'flex';
     }
+    function openTrocaModal() {
+        document.getElementById('modal-troca').style.display = 'flex';
+    }
     // FUNÇÃO PARA FECHAR O MODAL DE INSERÇÃO DE USUÁRIO E DELETAR USUÁRIO
     function closeInsertModal() {
         // aqui ele pega o valor do modal e troca o display para none, ou seja, fecha
@@ -213,7 +244,9 @@
     function closeDelModal(id) {
         document.getElementById('del-modal' + id).style.display = 'none';
     }
-
+    function closeTrocaModal() {
+        document.getElementById('modal-troca').style.display = 'none';
+    }
     // FECHAR O MODAL QUANDO CLICAR FORA DELE
     window.onclick = function(event) {
         // pega o modal pelo id e coloca em uma constante que nunca muda (const)

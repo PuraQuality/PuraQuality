@@ -112,7 +112,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         List<Funcionario> usuarios = new ArrayList<>();
 
         //Comando sql
-        String sql = "SELECT * FROM funcionario where %s LIKE ? and empresa_id = ?".formatted(coluna) ;
+        String sql = "SELECT * FROM funcionario where upper(%s) LIKE upper(?) and empresa_id = ?".formatted(coluna) ;
 
         //atribuindo valores null
         Connection conn = null;
@@ -120,7 +120,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         ResultSet rset = null;
 
         if(coluna.equals("plano")){
-            sql = "SELECT * FROM plano where nome LIKE ?";
+            sql = "SELECT * FROM upper(plano) where nome LIKE upper(?)";
         }
 
         try{

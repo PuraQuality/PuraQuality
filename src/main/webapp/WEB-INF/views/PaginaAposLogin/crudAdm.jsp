@@ -38,8 +38,7 @@
     </div>
     <form method="POST" action="servletFiltro" class="search-form">
         <select name="coluna" id="coluna" class="search-dropdown">
-            <option value="nome">Nome</option>
-            <option value="sobrenome">Sobrenome</option>
+            <option value="nome || sobrenome">Nome</option>
             <option value="telefone">Telefone</option>
             <option value="email">Email</option>
             <option value="permissao">Permissão</option>
@@ -93,6 +92,7 @@
                     funcionarios = fdao.selectFiltro(empresaid, coluna, filtro);
                 }
             }
+//            Para cada usuário, adiciona uma linha na tabela
             for(int i = 0;i < funcionarios.size();i++){%>
         <tr>
             <td><%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%></td>

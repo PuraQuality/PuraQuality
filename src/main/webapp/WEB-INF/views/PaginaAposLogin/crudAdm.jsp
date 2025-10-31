@@ -125,7 +125,7 @@
                 <form action="servletDeletarUsuario" method="post" class="delete-form">
                     <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
                     <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
-                    <input type="hidden" name="empresa" value="nao">
+                    <input type="hidden" name="empresa" value="sim">
                     <div class="flexText">
                         <button type="submit" class="delete-button modal-delbutton">Deletar</button>
                         <div onclick="closeDelModal()" class="delCancel">Cancelar</div>

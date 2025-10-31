@@ -178,9 +178,9 @@ input::-webkit-input-placeholder {
 /* ------------ coisinhas bonitinhas ------------ */
 .notebook {
     position: absolute;
-    width: 70%;
+    width: 50%;
     top: 0%;
-    right: -5%;
+    right: 0%;
     transform: rotateY(180deg);
     z-index: 2;
 }

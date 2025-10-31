@@ -7,12 +7,18 @@
         width: 100%;
         height: 100%;
         background: linear-gradient(135deg, #0a1a2e 0%, #16213e 50%, #1a0f2e 100%);
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         z-index: 9999;
         transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loading-overlay.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
     }
 
     .loading-overlay.hidden {
@@ -39,7 +45,7 @@
     }
 
     .loading-text {
-        color: var(--text-light, #ffffff);
+        color: #ffffff;
         font-family: 'Montserrat', sans-serif;
         font-size: 18px;
         font-weight: 600;
@@ -53,6 +59,14 @@
     .loading-dots {
         display: inline-block;
         animation: dots 1.5s infinite;
+    }
+
+    .loading-iframe {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: none;
+        opacity: 0;
     }
 
     @keyframes spin {
@@ -71,27 +85,88 @@
     <img src="${pageContext.request.contextPath}/img/logoOFC.png" alt="PuraQuality" class="loading-logo">
     <div class="loading-spinner"></div>
     <div class="loading-text">
-        Carregando<span class="loading-dots">...</span>
+        Processando<span class="loading-dots">...</span>
     </div>
 </div>
 
+<iframe id="loadingIframe" class="loading-iframe" name="loadingIframe"></iframe>
+
 <script>
-    // Esconde o loading quando a página terminar de carregar
-    window.addEventListener('load', function() {
+    // Funções globais para controle do loading
+    function showLoading() {
         const loadingOverlay = document.getElementById('loadingOverlay');
-        setTimeout(function() {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('active');
+            loadingOverlay.classList.remove('hidden');
+        }
+    }
+
+    function hideLoading() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
             loadingOverlay.classList.add('hidden');
-            // Remove completamente do DOM após a animação
-            setTimeout(function() {
-                loadingOverlay.remove();
+            setTimeout(() => {
+                loadingOverlay.classList.remove('active');
             }, 500);
-        }, 1000); // 1 segundo de delay para garantir que tudo carregou
+        }
+    }
+
+    // Intercepta todos os forms da página
+    document.addEventListener('DOMContentLoaded', function() {
+        // Intercepta todos os formulários
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                showLoading();
+
+                // Se o form tem target, usa o iframe
+                if (!form.target || form.target === '_self') {
+                    form.target = 'loadingIframe';
+                }
+
+                // Desabilita botões de submit
+                const submitButtons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
+                submitButtons.forEach(button => {
+                    button.disabled = true;
+                    if (button.tagName === 'BUTTON') {
+                        const originalText = button.textContent;
+                        button.textContent = 'Processando...';
+                        button.setAttribute('data-original-text', originalText);
+                    }
+                });
+            });
+        });
+
+        // Intercepta links que levam para ações (que não são âncoras)
+        const links = document.querySelectorAll('a[href]:not([href^="#"]):not([href^="javascript:"])');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Só mostra loading se for um link interno (que não abre nova aba)
+                if (!link.target || link.target === '_self') {
+                    showLoading();
+
+                    // Adiciona timeout para garantir que a navegação ocorra
+                    setTimeout(() => {
+                        hideLoading();
+                    }, 3000); // Fallback de 3 segundos
+                }
+            });
+        });
     });
 
-    // Mostra o loading imediatamente se a página demorar muito
-    document.addEventListener('DOMContentLoaded', function() {
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        // Garante que o loading está visível
-        loadingOverlay.classList.remove('hidden');
+    // Monitora o iframe para saber quando o carregamento terminou
+    document.getElementById('loadingIframe').addEventListener('load', function() {
+        // Quando o iframe carrega (form submetido), esconde o loading
+        setTimeout(hideLoading, 500);
+    });
+
+    // Fallback: esconde loading se a página for recarregada
+    window.addEventListener('beforeunload', function() {
+        hideLoading();
+    });
+
+    // Esconde loading quando a página carrega completamente
+    window.addEventListener('load', function() {
+        setTimeout(hideLoading, 1000);
     });
 </script>

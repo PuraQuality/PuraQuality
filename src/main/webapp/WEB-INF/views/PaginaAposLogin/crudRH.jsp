@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+<%@include file="../loading.jsp"%>
 <!-- Header Bar -->
 <div class="header-bar">
     <div class="header-left">

@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+<%@include file="../loading.jsp"%>
   <!-- CORPO DO SITE -->
   <div class="container-geral">
     <a class="link_pura" href="${pageContext.request.contextPath}/index.html">
@@ -38,5 +39,8 @@
     <img class="notebook" src="${pageContext.request.contextPath}/img/notebookLogin.png" alt="notebook">
     <img class="bola_cromo" src="${pageContext.request.contextPath}/img/bola_cromo.png" alt="bola_cromo">
     <img class="bola_cromo2" src="${pageContext.request.contextPath}/img/bola_cromo3.png" alt="bola_cromo2">
+    <script>
+        
+    </script>
 </body>
 </html>

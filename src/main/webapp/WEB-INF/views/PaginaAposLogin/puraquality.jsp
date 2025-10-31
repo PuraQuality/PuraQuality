@@ -6,9 +6,10 @@
 <%@ page import="com.dao.EmpresaDao" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>ADM SUPREMO</title>
 </head>
 <body>
+<%@include file="../loading.jsp"%>
 <h1>Seja bem vindo Usuário da empresa</h1>
 <%String tabela = (String) request.getSession().getAttribute("tabela");%>
 <form method="POST" action="servletFiltro">

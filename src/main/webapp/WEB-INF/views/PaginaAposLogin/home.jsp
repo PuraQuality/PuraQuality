@@ -8,10 +8,15 @@
 </head>
 <body>
 <%
+//    Criando o objeto e a lista
     FuncionarioDao fdao = new FuncionarioDao();
     List<Funcionario> funcionarios;
+
+//    Adquirindo os parametros
     String empresaId = (String) request.getSession().getAttribute("empresaid");
     String funcionarioId = (String) request.getSession().getAttribute("funcionarioid");
+
+//    Pegando um funcionário específico
     funcionarios = fdao.selectFiltro(Integer.parseInt(empresaId),"id",funcionarioId);
 %>
     <h1>Área de trabalho</h1>

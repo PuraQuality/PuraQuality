@@ -39,8 +39,7 @@
     </div>
     <form method="POST" action="servletFiltro" class="search-form">
         <select name="coluna" id="coluna" class="search-dropdown">
-            <option value="nome">Nome</option>
-            <option value="sobrenome">Sobrenome</option>
+            <option value="nome || sobrenome">Nome</option>
             <option value="telefone">Telefone</option>
             <option value="email">Email</option>
             <option value="permissao">Permissão</option>
@@ -73,8 +72,11 @@
         </thead>
         <tbody>
         <%
+//            Criando objeto e lista
             FuncionarioDao fdao = new FuncionarioDao();
             List<Funcionario> funcionarios;
+
+//            Adquirindo os parametros
             int empresaid = (int) request.getSession().getAttribute("empresaid");
             String coluna = request.getParameter("coluna");
             String filtro = (String) request.getSession().getAttribute("filtro");
@@ -83,6 +85,7 @@
             if(filtro == null || filtro.isEmpty()){
                 funcionarios = fdao.selectEmpresa(empresaid);
             } else {
+//                Vendo se o filtro é uma permissão para chamar o método correto
                 if (coluna != null && coluna.equals("permissao")) {
                     funcionarios = fdao.selectFiltro(empresaid, Boolean.parseBoolean(filtro));
                 }
@@ -90,6 +93,7 @@
                     funcionarios = fdao.selectFiltro(empresaid, coluna, filtro);
                 }
             }
+//            Adicionando uma linha da tabela para cada funcionário
             for(int i = 0;i < funcionarios.size();i++){%>
         <tr>
             <td><%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%></td>

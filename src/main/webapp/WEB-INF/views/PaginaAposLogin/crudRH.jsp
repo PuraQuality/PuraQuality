@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page errorPage="/error.jsp" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.model.Funcionario" %>
 <%@ page import="com.dao.FuncionarioDao" %>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page errorPage="/error.jsp" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.model.Funcionario" %>
 <%@ page import="com.dao.FuncionarioDao" %>
@@ -42,16 +43,22 @@
     </thead>
     <tbody>
     <%
+//        Criando o objeto e a lista
         EmpresaDao edao = new EmpresaDao();
         List<Empresa> empresas;
+
+//        Adquirindo os parametros
         String coluna = request.getParameter("coluna");
         String filtro = (String) request.getSession().getAttribute("filtro");
 
+//        Vendo se possui algum filtro
         if(((String) request.getSession().getAttribute("filtro")).isEmpty()){
             empresas = edao.select();
         } else {
             empresas = edao.selectFiltro(coluna,filtro);
         }
+
+//        Criando uma linha para cada empresa
         for(int i = 0;i < empresas.size();i++){%>
     <tr>
         <td style="border: 1px solid black;"><%=empresas.get(i).getNome()%></td>

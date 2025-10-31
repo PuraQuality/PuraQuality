@@ -1,0 +1,64 @@
+html, body {
+    height: auto;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(rgb(23, 23, 23), rgb(13, 0, 34), #670081);
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    line-height: 1.8;
+    padding: 32px 0;
+}
+
+.wrapper {
+    position: relative;
+    background: #000;
+    width: min(150vmin, 1100px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 32px 40px 96px;
+    border-radius: 30px;
+    margin: 24px auto 48px;
+    box-sizing: border-box;
+}
+
+.wrapper h1, .wrapper p {
+    margin: 0;
+}
+
+.wrapper h1 {
+    margin-bottom: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+button {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: #fff;
+    color: #000;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}

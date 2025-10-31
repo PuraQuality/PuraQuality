@@ -121,15 +121,11 @@
             <div class="del-content">
                 <span class="close" onclick="closeDelModal(<%=i%>)">&times;</span>
                 <h1>Você tem certeza?</h1>
-                <%System.out.println(funcionarios.get(i).getNome());
-                    System.out.println(i);%>
                 <p>Você tem certeza que quer deletar <%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%>?</p>
                 <form action="servletDeletarUsuario" method="post" class="delete-form">
                     <input type="hidden" name="id" value="<%=funcionarios.get(i).getId()%>">
                     <input type="hidden" name="email" value="<%=funcionarios.get(i).getEmail()%>">
                     <input type="hidden" name="empresa" value="nao">
-                    <%System.out.println(funcionarios.get(i).getNome());
-                        System.out.println(i);%>
                     <div class="flexText">
                         <button type="submit" class="delete-button modal-delbutton">Deletar</button>
                         <div onclick="closeDelModal(<%=i%>)" class="delCancel">Cancelar</div>

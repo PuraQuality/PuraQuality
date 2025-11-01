@@ -20,7 +20,7 @@ public class ServletAlterarUsuario extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
         boolean prioridade = (request.getParameter("prioridade") != null || request.getParameter("prioridade").equals("true"));
-        String senha = request.getParameter("senha");
+        String senha = request.getParameter("nvsenha");
 
 //        Declarando objetos
         FuncionarioDao funcionarioDao = new FuncionarioDao();

@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
 </head>
 <body>
-<%@include file="../loading.jsp"%>
+<%@include file="WEB-INF/views/loading.jsp"%>
 <div class="container">
   <h1>Página não encontrada</h1>
   <div class="alert-icon">

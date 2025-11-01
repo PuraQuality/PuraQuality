@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page errorPage="../../../error.jsp" %>
+<%@ page errorPage="/error.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<%@include file="../loading.jsp"%>
+<%--<%@include file="../loading.jsp"%>--%>
   <!-- CORPO DO SITE -->
   <div class="container-geral">
     <a class="link_pura" href="${pageContext.request.contextPath}/index.html">

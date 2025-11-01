@@ -271,16 +271,16 @@
     });
 
     //puxando a senha atual
-    const senha = document.getElementById('senhaat')
+    const senha = validacao.getElementById('senhaat')
     // função para verificação da senha
-    function verificacaoDeSenha(senha){
-        const senhaInput = document.getElementById('atSenha').value;
-        if(senhaInput !== senha.value){
+    function verificacaoDeSenha(validacao){
+        if(validacao !== 'sim'){
             alert("Senha atual incorreta!");
             return false;
         }
         return true;
     }
+
 </script>
 </body>
 </html>

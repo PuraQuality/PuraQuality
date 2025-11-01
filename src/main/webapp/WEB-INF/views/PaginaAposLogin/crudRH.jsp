@@ -81,6 +81,7 @@
 
 //            Adquirindo os parametros
             int empresaid = (int) request.getSession().getAttribute("empresaid");
+            int funcionarioid = (int) request.getSession().getAttribute("funcionarioid");
             String coluna = request.getParameter("coluna");
             String filtro = (String) request.getSession().getAttribute("filtro");
 
@@ -105,13 +106,13 @@
             <td><%=funcionarios.get(i).getTelefone()%></td>
             <td>
                 <div class="delete-form">
-                    <div class="delete-button" onclick="openDelModal()">Deletar</div>
+                    <div class="delete-button" onclick="openDelModal(<%=i%>)">Deletar</div>
                 </div>
             </td>
         </tr>
-        <div id="del-modal" class="modal-del">
+        <div id="del-modal<%=i%>" class="modal-del">
             <div class="del-content">
-                <span class="close" onclick="closeDelModal()">&times;</span>
+                <span class="close" onclick="closeDelModal(<%=i%>)">&times;</span>
                 <h1>Você tem certeza?</h1>
                 <p>Você tem certeza que quer deletar <%=funcionarios.get(i).getNome() + " " + funcionarios.get(i).getSobrenome()%>?</p>
                 <form action="servletDeletarUsuario" method="post" class="delete-form">
@@ -120,7 +121,7 @@
                     <input type="hidden" name="empresa" value="nao">
                     <div class="flexText">
                         <button type="submit" class="delete-button modal-delbutton">Deletar</button>
-                        <div onclick="closeDelModal()" class="delCancel">Cancelar</div>
+                        <div onclick="closeDelModal(<%=i%>)" class="delCancel">Cancelar</div>
                     </div>
                 </form>
             </div>
@@ -175,9 +176,18 @@
     <div class="del-content troca-content">
         <span class="close" onclick="closeTrocaModal()">&times;</span>
         <h1>Trocar Senha</h1>
+        <%
+//            Adquirindo os dados do usuário atual
+            funcionarios = fdao.selectFiltro(empresaid,"id",String.valueOf(funcionarioid));
+            Funcionario usuario = funcionarios.get(0);
+        %>
         <form action="servletAlterarUsuario" method="post" class="delete-form troca-form">
-            <input type="hidden" name="id" value="<%=funcionarios%>">
-            <input type="hidden" name="email" value="<%=funcionarios%>">
+            <input type="hidden" name="id" value="<%=funcionarioid%>">
+            <input type="hidden" name="nome" value="<%=usuario.getNome()%>">
+            <input type="hidden" name="sobrenome" value="<%=usuario.getSobrenome()%>">
+            <input type="hidden" name="telefone" value="<%=usuario.getTelefone()%>">
+            <input type="hidden" name="email" value="<%=usuario.getEmail()%>">
+            <input type="hidden" name="permissao" value="<%=usuario.isPrioridade()%>">
             <input type="hidden" name="empresa" value="nao">
             <div class="form-group">
                 <label for="atSenha">Senha atual:</label>
@@ -204,8 +214,8 @@
         // aqui ele pega o valor do modal e troca o display para flex, ou seja, abre
         document.getElementById('insertModal').style.display = 'flex';
     }
-    function openDelModal() {
-        document.getElementById('del-modal').style.display = 'flex';
+    function openDelModal(id) {
+        document.getElementById('del-modal'+id).style.display = 'flex';
     }
     function openTrocaModal() {
         document.getElementById('modal-troca').style.display = 'flex';
@@ -215,8 +225,8 @@
         // aqui ele pega o valor do modal e troca o display para none, ou seja, fecha
         document.getElementById('insertModal').style.display = 'none';
     }
-    function closeDelModal() {
-        document.getElementById('del-modal').style.display = 'none';
+    function closeDelModal(id) {
+        document.getElementById('del-modal'+id).style.display = 'none';
     }
     function closeTrocaModal() {
         document.getElementById('modal-troca').style.display = 'none';
@@ -232,9 +242,9 @@
         }
     }
     // FECHAR O MODAL QUANDO CLICAR FORA DELE
-    window.onclick = function(event) {
+    window.onclick = function(event,id) {
         // pega o modal pelo id e coloca em uma constante que nunca muda (const)
-        const modal = document.getElementById('del-modal');
+        const modal = document.getElementById('del-modal'+id);
         // verifica se o alvo do clique é o modal
         if (event.target == modal) {
             // se for, fecha o modal

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="icon" href="${pageContext.request.contextPath}/img/LogoPura.png">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/logoOFC.png">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/signup.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">

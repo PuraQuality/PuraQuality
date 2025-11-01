@@ -81,6 +81,7 @@
 
 //            Adquirindo o valor dos parâmetros
             int empresaid = (int) request.getSession().getAttribute("empresaid");
+            int funcionarioid = (int) request.getSession().getAttribute("funcionarioid");
             String coluna = request.getParameter("coluna");
             String filtro = (String) request.getSession().getAttribute("filtro");
 
@@ -201,9 +202,18 @@
     <div class="del-content troca-content">
         <span class="close" onclick="closeTrocaModal()">&times;</span>
         <h1>Trocar Senha</h1>
+        <%
+//            Adquirindo os dados do usuário atual
+            funcionarios = fdao.selectFiltro(empresaid,"id",String.valueOf(funcionarioid));
+            Funcionario usuario = funcionarios.get(0);
+        %>
         <form action="servletAlterarUsuario" method="post" class="delete-form troca-form">
-            <input type="hidden" name="id" value="<%=funcionarios%>">
-            <input type="hidden" name="email" value="<%=funcionarios%>">
+            <input type="hidden" name="id" value="<%=funcionarioid%>">
+            <input type="hidden" name="nome" value="<%=usuario.getNome()%>">
+            <input type="hidden" name="sobrenome" value="<%=usuario.getSobrenome()%>">
+            <input type="hidden" name="telefone" value="<%=usuario.getTelefone()%>">
+            <input type="hidden" name="email" value="<%=usuario.getEmail()%>">
+            <input type="hidden" name="permissao" value="<%=usuario.isPrioridade()%>">
             <input type="hidden" name="empresa" value="nao">
             <div class="form-group">
                 <label for="atSenha">Senha atual:</label>

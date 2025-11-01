@@ -11,6 +11,7 @@ public class Empresa {
     private int planoId;
     private String plano;
 
+
     public Empresa(){
 
     }
@@ -24,7 +25,16 @@ public class Empresa {
         this.senha = senha;
         this.planoId = planoId;
         this.plano = (planoId == 10)?"Quality":(planoId==11)?"FullQuality":"PuraQuality";
-        System.out.println(this.plano);
+    }
+
+    public Empresa(String nome, String setor, String cnpj, String email, String senha, int planoId) {
+        this.nome = nome;
+        this.setor = setor;
+        this.cnpj = cnpj;
+        this.email = email;
+        this.senha = senha;
+        this.planoId = planoId;
+        this.plano = (planoId == 10)?"Quality":(planoId==11)?"FullQuality":"PuraQuality";
     }
 
     //Getters

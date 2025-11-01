@@ -5,12 +5,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet("/servcadastro")
+@WebServlet("/cadastro")
 public class AcessarCadastro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.getSession().setAttribute("idplano",request.getParameter("idplano"));
         try {
             // servlet que leva para a página de cadastro
             request.getRequestDispatcher("WEB-INF/views/LoginSignUp/signup.jsp").forward(request, response);

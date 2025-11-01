@@ -30,6 +30,7 @@ public class ServletLogin extends HttpServlet {
         boolean validarEmpresa = false;
 
 //        Guardando informações para usar depois
+
         request.getSession().setAttribute("emailfuncionario", email);
         request.getSession().setAttribute("filtro","");
         request.getSession().setAttribute("tabela","");

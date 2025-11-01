@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="icon" href="${pageContext.request.contextPath}/img/LogoPura.png">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/logoOFC.png">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/signup.css">
     <!---------------- imports ---------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<%@include file="../loading.jsp"%>
   <!-- CORPO DO SITE -->
     <div class="container-geral">
       <a class="link_pura" href="${pageContext.request.contextPath}/index.html">+

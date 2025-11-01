@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<%@include file="../loading.jsp"%>
 <!-- Header Bar -->
 <div class="header-bar">
     <div class="header-left">
@@ -57,6 +56,9 @@
     <button class="insert-button" onclick="openInsertModal()">
         <i class="fas fa-plus"></i> Inserir
     </button>
+    <button class="insert-button" onclick="openTrocaModal()">
+        Trocar senha
+    </button>
 </div>
 
 <!-- Data Table -->
@@ -79,6 +81,7 @@
 
 //            Adquirindo os parametros
             int empresaid = (int) request.getSession().getAttribute("empresaid");
+            int funcionarioid = (int) request.getSession().getAttribute("funcionarioid");
             String coluna = request.getParameter("coluna");
             String filtro = (String) request.getSession().getAttribute("filtro");
 
@@ -169,6 +172,42 @@
         </form>
     </div>
 </div>
+<div id="modal-troca" class="modal modal-troca">
+    <div class="del-content troca-content">
+        <span class="close" onclick="closeTrocaModal()">&times;</span>
+        <h1>Trocar Senha</h1>
+        <%
+//            Adquirindo os dados do usuário atual
+            funcionarios = fdao.selectFiltro(empresaid,"id",String.valueOf(funcionarioid));
+            Funcionario usuario = funcionarios.get(0);
+        %>
+        <form action="servletAlterarUsuario" method="post" class="delete-form troca-form">
+            <input type="hidden" name="id" value="<%=funcionarioid%>">
+            <input type="hidden" name="nome" value="<%=usuario.getNome()%>">
+            <input type="hidden" name="sobrenome" value="<%=usuario.getSobrenome()%>">
+            <input type="hidden" name="telefone" value="<%=usuario.getTelefone()%>">
+            <input type="hidden" name="email" value="<%=usuario.getEmail()%>">
+            <input type="hidden" name="permissao" value="<%=usuario.isPrioridade()%>">
+            <input type="hidden" name="empresa" value="nao">
+            <div class="form-group">
+                <label for="atSenha">Senha atual:</label>
+                <input type="password" id="atSenha" name="atSenha" placeholder="Digite a senha atual" required>
+            </div>
+            <div class="form-group">
+                <label for="nvSenha">Senha nova:</label>
+                <input type="password" id="nvSenha" name="nvSenha" placeholder="Digite a senha nova" required>
+            </div>
+            <div class="form-group">
+                <label for="cfSenha">Confirmar senha:</label>
+                <input type="password" id="cfSenha" name="cfSenha" placeholder="Confirme a senha" required>
+            </div>
+            <div class="flexText">
+                <button type="submit" class="delete-button modal-trocaButton">Trocar</button>
+                <div onclick="closeTrocaModal()" class="delCancel trCancel">Cancelar</div>
+            </div>
+        </form>
+    </div>
+</div>
 <script>
     // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE USUÁRIO E DELETAR USUÁRIO
     function openInsertModal() {
@@ -178,6 +217,9 @@
     function openDelModal(id) {
         document.getElementById('del-modal'+id).style.display = 'flex';
     }
+    function openTrocaModal() {
+        document.getElementById('modal-troca').style.display = 'flex';
+    }
     // FUNÇÃO PARA FECHAR O MODAL DE INSERÇÃO DE USUÁRIO E DELETAR USUÁRIO
     function closeInsertModal() {
         // aqui ele pega o valor do modal e troca o display para none, ou seja, fecha
@@ -186,7 +228,9 @@
     function closeDelModal(id) {
         document.getElementById('del-modal'+id).style.display = 'none';
     }
-
+    function closeTrocaModal() {
+        document.getElementById('modal-troca').style.display = 'none';
+    }
     // FECHAR O MODAL QUANDO CLICAR FORA DELE
     window.onclick = function(event) {
         // pega o modal pelo id e coloca em uma constante que nunca muda (const)

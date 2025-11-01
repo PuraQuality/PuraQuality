@@ -13,12 +13,16 @@ public class ServletCadastro extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 //        Pegando a requisição do jsp
+        String cnpj = request.getParameter("cnpj");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+        String nome = request.getParameter("nome");
+        String setor = request.getParameter("setor");
+        String telefone = request.getParameter("tel");
 
 //        Declarando objeto
         EmpresaDao empresaDao = new EmpresaDao();
-        Empresa empresa = new Empresa(1,"AAAAAAAA","101820603",email,senha,"12",10);
+        Empresa empresa = new Empresa(nome,setor,cnpj,email,senha,(int) request.getSession().getAttribute("idplano"));
 
 //        Validando se o cadastro deu certo, se sim vai para login, se não volta
         if(empresaDao.save(empresa)) {

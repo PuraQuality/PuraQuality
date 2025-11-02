@@ -34,13 +34,14 @@ public class ServletLogin extends HttpServlet {
         request.getSession().setAttribute("emailfuncionario", email);
         request.getSession().setAttribute("filtro","");
         request.getSession().setAttribute("tabela","");
-
+        System.out.println("Entrou no servlet");
 //        Validando para ver se nós estamos tentando logar
         if(email.equals("puraquality@gmail.com") || senha.equals("PuraQuality2025+")){
+            System.out.println("Parametro correto");
             request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/puraquality.jsp").forward(request, response);
         }
         else {
-
+            System.out.println("algo errado");
 //            Declarando diversos objetos
             FuncionarioDao usuarioDao = new FuncionarioDao();
             EmpresaDao empresaDao = new EmpresaDao();
@@ -97,7 +98,6 @@ public class ServletLogin extends HttpServlet {
                     }
                 }
             }
-
 //            Voltando para login caso a senha esteja errada
             else {
                 request.getRequestDispatcher("WEB-INF/views/LoginSignUp/login.jsp").forward(request, response);

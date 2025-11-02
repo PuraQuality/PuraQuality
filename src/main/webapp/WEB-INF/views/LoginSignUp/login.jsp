@@ -31,6 +31,7 @@
               <label for="email" id="labelinput" class="labelinput">Email</label>
               <input class="inputUser" type="password" id="senha" name="senha" placeholder=" " required />
               <label for="senha" id="labelinput" class="labelinput">Senha</label>
+                <button id="verSenha" class="verSenha">🙈</button>
             </div>
             <button class="botao" type="submit">Entrar</button>
         </div>
@@ -40,7 +41,23 @@
     <img class="bola_cromo" src="${pageContext.request.contextPath}/img/bola_cromo.png" alt="bola_cromo">
     <img class="bola_cromo2" src="${pageContext.request.contextPath}/img/bola_cromo3.png" alt="bola_cromo2">
     <script>
-        
+        // FUNÇÃO PARA VER A SENHA
+        // puxando pelo id do botão e fazendo um callback de click
+        document.getElementById('verSenha').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do botão
+            // pega o botao pelo id
+            const botao = document.getElementById('verSenha');
+            // pega o input da senha pelo id
+            const senhaInput = document.getElementById('senha');
+            // verfica o tipo do input
+            if (senhaInput.type === 'password') {
+                senhaInput.type = 'text'; // Mostra a senha
+                botao.textContent = '👁️'; // troca os emojis
+            } else {
+                senhaInput.type = 'password'; // Oculta a senha
+                botao.textContent = '🙈'; // troca os emojis
+            }
+        });
     </script>
 </body>
 </html>

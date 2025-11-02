@@ -198,15 +198,15 @@
         </form>
     </div>
 </div>
+<%
+    //            Adquirindo os dados do usuário atual
+    funcionarios = fdao.selectFiltro(empresaid,"id",String.valueOf(funcionarioid));
+    Funcionario usuario = funcionarios.get(0);
+%>
 <div id="modal-troca" class="modal modal-troca">
     <div class="del-content troca-content">
         <span class="close" onclick="closeTrocaModal()">&times;</span>
         <h1>Trocar Senha</h1>
-        <%
-//            Adquirindo os dados do usuário atual
-            funcionarios = fdao.selectFiltro(empresaid,"id",String.valueOf(funcionarioid));
-            Funcionario usuario = funcionarios.get(0);
-        %>
         <form action="servletAlterarUsuario" method="post" class="delete-form troca-form">
             <input type="hidden" name="id" value="<%=funcionarioid%>">
             <input type="hidden" name="nome" value="<%=usuario.getNome()%>">
@@ -214,7 +214,8 @@
             <input type="hidden" name="telefone" value="<%=usuario.getTelefone()%>">
             <input type="hidden" name="email" value="<%=usuario.getEmail()%>">
             <input type="hidden" name="permissao" value="<%=usuario.isPrioridade()%>">
-            <input type="hidden" name="empresa" value="nao">
+            <input type="hidden" id="senhaat" name="senha" value="<%=usuario.getSenha()%>>">
+            <input type="hidden" name="empresa" value="sim">
             <div class="form-group">
                 <label for="atSenha">Senha atual:</label>
                 <input type="password" id="atSenha" name="atSenha" placeholder="Digite a senha atual" required>
@@ -294,6 +295,16 @@
             botao.textContent = '🙈'; // troca os emojis
         }
     });
+    const senhaat = document.getElementById('senhaat')
+    const senha = document.getElementById('atsenha')
+    // função para verificação da senha
+    function verificacaoDeSenha(senhaat){
+        if(senhaat !== senha){
+            alert("Senha atual incorreta!");
+            return false;
+        }
+        return true;
+    }
 </script>
 </body>
 </html>

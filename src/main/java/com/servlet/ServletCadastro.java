@@ -22,7 +22,7 @@ public class ServletCadastro extends HttpServlet {
 
 //        Declarando objeto
         EmpresaDao empresaDao = new EmpresaDao();
-        Empresa empresa = new Empresa(nome,setor,cnpj,email,senha,(int) request.getSession().getAttribute("idplano"));
+        Empresa empresa = new Empresa(nome,setor,telefone,cnpj,email,senha,(int) request.getSession().getAttribute("idplano"));
 
 //        Validando se o cadastro deu certo, se sim vai para login, se não volta
         if(empresaDao.save(empresa)) {

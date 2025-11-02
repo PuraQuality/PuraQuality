@@ -143,6 +143,10 @@
                     <label for="setor">Setor:</label>
                     <input type="text" id="setor" name="setor" placeholder="Digite o setor da empresa" required>
                 </div>
+                <div class="form-group">
+                    <label for="tel">Telefone:</label>
+                    <input type="tel" id="tel" name="tel" placeholder="Digite o telefone da empresa" required>
+                </div>
             </div>
             <div class="formCard">
                 <div class="form-group">

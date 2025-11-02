@@ -270,11 +270,12 @@
         }
     });
 
-    //puxando a senha atual
-    const senha = validacao.getElementById('senhaat')
+    //puxando senhas
+    const senhaat = document.getElementById('senhaat')
+    const senha = document.getElementById('atsenha')
     // função para verificação da senha
-    function verificacaoDeSenha(validacao){
-        if(validacao !== 'sim'){
+    function verificacaoDeSenha(senhaat){
+        if(senhaat !== senha){
             alert("Senha atual incorreta!");
             return false;
         }

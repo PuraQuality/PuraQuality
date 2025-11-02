@@ -1,100 +1,215 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page errorPage="/error.jsp" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.model.Funcionario" %>
-<%@ page import="com.dao.FuncionarioDao" %>
 <%@ page import="com.model.Empresa" %>
 <%@ page import="com.dao.EmpresaDao" %>
 <html>
 <head>
-    <title>ADM SUPREMO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM SUPREMO - Dashboard</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/logoOFC.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/puraquality.css?v=<%= System.currentTimeMillis() %>">
+    <!---------------- imports ---------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<h1>Seja bem vindo Usuário da empresa</h1>
-<%String tabela = (String) request.getSession().getAttribute("tabela");%>
-<form method="POST" action="servletFiltro">
-    <label>
-        <select name="coluna" id="coluna">
+<!-- Header Bar -->
+<div class="header-bar">
+    <div class="header-left">
+        <img src="${pageContext.request.contextPath}/img/logoOFC.png" alt="LogoPuraQuality" class="logo-header">
+        <a href="${pageContext.request.contextPath}/index.html" class="titulo-header">PuraQuality</a>
+    </div>
+    <div class="header-right">
+        <span class="dashboard-label">ADM SUPREMO - Dashboard</span>
+    </div>
+</div>
+
+<!-- Control Panel -->
+<div class="control-panel">
+    <div class="filter-icon" aria-label="Filter">
+        <i class="fas fa-filter"></i>
+    </div>
+    <form method="POST" action="servletFiltro" class="search-form">
+        <select name="coluna" id="coluna" class="search-dropdown">
             <option value="nome">Nome</option>
-            <option value="setor" <%=(tabela.equals("setor")?"selected":"")%>>Setor</option>
-            <option value="cnpj" <%=(tabela.equals("cnpj")?"selected":"")%>>CNPJ</option>
-            <option value="email" <%=(tabela.equals("email")?"selected":"")%>>Email</option>
-            <option value="plano_id" <%=(tabela.equals("plano")?"selected":"")%>>Plano</option>
+            <option value="setor">Setor</option>
+            <option value="cnpj">CNPJ</option>
+            <option value="email">Email</option>
+            <option value="plano_id">Plano</option>
         </select>
-    </label>
-    <label>
-        <input type="text" name="filtro" placeholder="Digite o que deseja procurar:">
-    </label>
-    <input type="hidden" name="tabela" value="puraquality">
-    <input type="submit" value="Enviar">
-</form>
-<table>
-    <thead>
-    <tr>
-        <th>Nome</th>
-        <th>Setor</th>
-        <th>CNPJ</th>
-        <th>Email</th>
-        <th>Plano</th>
-        <th>Deletar</th>
-        <th>Alterar</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%
-//        Criando o objeto e a lista
-        EmpresaDao edao = new EmpresaDao();
-        List<Empresa> empresas;
+        <div class="search-input-wrapper">
+            <input type="text" name="filtro" class="search-input" placeholder="O que procura?" value="<%=(request.getSession().getAttribute("filtro") != null) ? request.getSession().getAttribute("filtro") : ""%>">
+            <button type="submit" class="search-button" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <input type="hidden" name="tabela" value="puraquality">
+    </form>
+    <button class="insert-button" onclick="openInsertModal()">
+        <i class="fas fa-plus"></i> Inserir Empresa
+    </button>
+</div>
 
-//        Adquirindo os parametros
-        String coluna = request.getParameter("coluna");
-        String filtro = (String) request.getSession().getAttribute("filtro");
+<!-- Data Table -->
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Setor</th>
+            <th>CNPJ</th>
+            <th>Email</th>
+            <th>Plano</th>
+            <th>Alterar Plano</th>
+            <th>Deletar Empresa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            EmpresaDao edao = new EmpresaDao();
+            List<Empresa> empresas;
+            String coluna = request.getParameter("coluna");
+            String filtro = (String) request.getSession().getAttribute("filtro");
 
-//        Vendo se possui algum filtro
-        if(((String) request.getSession().getAttribute("filtro")).isEmpty()){
-            empresas = edao.select();
-        } else {
-            empresas = edao.selectFiltro(coluna,filtro);
-        }
+            if(filtro == null || filtro.isEmpty()){
+                empresas = edao.select();
+            } else {
+                empresas = edao.selectFiltro(coluna, filtro);
+            }
+            for(int i = 0; i < empresas.size(); i++){%>
+        <tr>
+            <td><%=empresas.get(i).getNome()%></td>
+            <td><%=empresas.get(i).getSetor()%></td>
+            <td><%=empresas.get(i).getCnpj()%></td>
+            <td><%=empresas.get(i).getEmail()%></td>
+            <td><%=empresas.get(i).getPlano()%></td>
+            <td>
+                <form method="POST" action="servletAlterarEmpresa" class="update-form">
+                    <select name="altplano" id="altplano">
+                        <option value="10">Quality</option>
+                        <option value="11" <%=(empresas.get(i).getPlanoId() == 11)?"selected":""%>>FullQuality</option>
+                        <option value="12" <%=(empresas.get(i).getPlanoId() == 12)?"selected":""%>>PuraQuality</option>
+                    </select>
+                    <input type="hidden" name="empId" value="<%=empresas.get(i).getId()%>">
+                    <input type="hidden" name="tabela" value="puraquality">
+                    <button type="submit" class="update-button">Alterar</button>
+                </form>
+            </td>
+            <td>
+                <div class="delete-form">
+                    <div class="delete-button" onclick="openDelModal('<%=empresas.get(i).getId()%>')">Deletar</div>
+                </div>
+            </td>
+        </tr>
+        <%}%>
+        </tbody>
+    </table>
+</div>
 
-//        Criando uma linha para cada empresa
-        for(int i = 0;i < empresas.size();i++){%>
-    <tr>
-        <td style="border: 1px solid black;"><%=empresas.get(i).getNome()%></td>
-        <td style="border: 1px solid black;"><%=empresas.get(i).getSetor()%></td>
-        <td style="border: 1px solid black;"><%=empresas.get(i).getCnpj()%></td>
-        <td style="border: 1px solid black;"><%=empresas.get(i).getEmail()%></td>
-        <td style="border: 1px solid black;"><%=empresas.get(i).getPlano()%></td>
-        <td>
-        <form method="POST" action="servletAlterarEmpresa">
-            <label>
-                <select name="altplano" id="altplano">
-                    <option value="10">Quality</option>
-                    <option value="11" <%=(empresas.get(i).getPlanoId() == 11)?"selected":""%>>FullQuality</option>
-                    <option value="12" <%=(empresas.get(i).getPlanoId() == 12)?"selected":""%>>PuraQuality</option>
-                </select>
-            </label>
-            <input type="hidden" name="empId"  value="<%=empresas.get(i).getId()%>">
-            <input type="hidden" name="tabela" value="puraquality">
-            <input type="submit" value="Alterar">
+<!-- Delete Modal -->
+<div id="del-modal" class="modal-del">
+    <div class="del-content">
+        <span class="close" onclick="closeDelModal()">&times;</span>
+        <h1>Você tem certeza?</h1>
+        <p id="del-message">Você tem certeza que quer deletar esta empresa?</p>
+        <form action="servletDeletarEmpresa" method="post" class="delete-form" id="del-form">
+            <input type="hidden" name="idempresa" id="del-id">
+            <div class="flexText">
+                <button type="submit" class="delete-button modal-delbutton">Deletar</button>
+                <div onclick="closeDelModal()" class="delCancel">Cancelar</div>
+            </div>
         </form>
-        </td>
-        <td style="border: 1px solid black;">
-            <form action="servletDeletarEmpresa" method="post">
-                <input type="hidden" name="idempresa" value="<%=empresas.get(i).getId()%>">
-                <button type="submit">Deletar Usuário</button>
-            </form>
-        </td>
-    </tr>
-    <%}%>
-    </tbody>
-</table>
-<form action="#" method="post">
-    <input type="email" name="email" placeholder="Digite o email da empresa" style="width: 250px">
-    <input type="password" name="senha" placeholder="Digite a senha da empresa" style="width: 250px">
-    <input type="text" name="cnpj" placeholder="Digite o cnpj" style="width: 250px">
-    <input type="checkbox" name="permissao">
-    <button type="submit">Inserir Usuário</button>
-</form>
+    </div>
+</div>
+
+<!-- Insert Modal -->
+<div id="insertModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInsertModal()">&times;</span>
+        <h2>Inserir Nova Empresa</h2>
+        <form action="servletInserirEmpresa" method="post">
+            <div class="formCard">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome da empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="setor">Setor:</label>
+                    <input type="text" id="setor" name="setor" placeholder="Digite o setor da empresa" required>
+                </div>
+            </div>
+            <div class="formCard">
+                <div class="form-group">
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ da empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite o email da empresa" required>
+                </div>
+            </div>
+            <div class="formCard">
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite a senha da empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="plano">Plano:</label>
+                    <select id="plano" name="plano" class="plano-select">
+                        <option value="10">Quality</option>
+                        <option value="11">FullQuality</option>
+                        <option value="12">PuraQuality</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button type="submit" class="btn-submit">Inserir Empresa</button>
+                <button type="button" class="btn-cancel" onclick="closeInsertModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // FUNÇÃO PARA ABRIR O MODAL DE INSERÇÃO DE EMPRESA
+    function openInsertModal() {
+        document.getElementById('insertModal').style.display = 'flex';
+    }
+
+    // FUNÇÃO PARA FECHAR O MODAL DE INSERÇÃO DE EMPRESA
+    function closeInsertModal() {
+        document.getElementById('insertModal').style.display = 'none';
+    }
+
+    // FUNÇÃO PARA ABRIR O MODAL DE DELETAR EMPRESA
+    function openDelModal(empresaId) {
+        document.getElementById('del-modal').style.display = 'flex';
+        document.getElementById('del-id').value = empresaId;
+    }
+
+    // FUNÇÃO PARA FECHAR O MODAL DE DELETAR EMPRESA
+    function closeDelModal() {
+        document.getElementById('del-modal').style.display = 'none';
+    }
+
+    // FECHAR O MODAL QUANDO CLICAR FORA DELE
+    window.onclick = function(event) {
+        const insertModal = document.getElementById('insertModal');
+        const delModal = document.getElementById('del-modal');
+
+        if (event.target == insertModal) {
+            insertModal.style.display = 'none';
+        }
+        if (event.target == delModal) {
+            delModal.style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>

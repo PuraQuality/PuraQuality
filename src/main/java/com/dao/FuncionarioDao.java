@@ -117,10 +117,7 @@ public class FuncionarioDao extends Dao<Funcionario> {
         PreparedStatement pstm = null;
         ResultSet rset = null;
 
-        if(coluna.equals("plano")){
-            sql = "SELECT * FROM upper(plano) where nome LIKE upper(?) and empresa_id = ?";
-        }
-        else if(coluna.equals("id")){
+        if(coluna.equals("id")){
             sql = "SELECT * FROM funcionario where id = ?";
         }
         else{

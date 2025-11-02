@@ -187,21 +187,14 @@
             <input type="hidden" name="sobrenome" value="<%=usuario.getSobrenome()%>">
             <input type="hidden" name="telefone" value="<%=usuario.getTelefone()%>">
             <input type="hidden" name="email" value="<%=usuario.getEmail()%>">
-            <input type="hidden" name="permissao" value="<%=usuario.isPrioridade()%>">
-            <input type="hidden" id="senhaat" name="senha" value="<%=usuario.getSenha()%>>">
+            <input type="hidden" name="prioridade" value="<%=usuario.isPrioridade()%>">
             <input type="hidden" name="empresa" value="nao">
-            <div class="form-group">
-                <label for="atSenha">Senha atual:</label>
-                <input type="password" id="atSenha" name="atSenha" placeholder="Digite a senha atual" required>
-            </div>
+
             <div class="form-group">
                 <label for="nvSenha">Senha nova:</label>
-                <input type="password" id="nvSenha" name="nvSenha" placeholder="Digite a senha nova" required>
+                <input type="password" id="nvSenha" name="senha" placeholder="Digite a senha nova" required>
             </div>
-            <div class="form-group">
-                <label for="cfSenha">Confirmar senha:</label>
-                <input type="password" id="cfSenha" name="cfSenha" placeholder="Confirme a senha" required>
-            </div>
+
             <div class="flexText">
                 <button type="submit" class="delete-button modal-trocaButton">Trocar</button>
                 <div onclick="closeTrocaModal()" class="delCancel trCancel">Cancelar</div>
@@ -269,19 +262,6 @@
             botao.textContent = '🙈'; // troca os emojis
         }
     });
-
-    //puxando senhas
-    const senhaat = document.getElementById('senhaat')
-    const senha = document.getElementById('atsenha')
-    // função para verificação da senha
-    function verificacaoDeSenha(senhaat){
-        if(senhaat !== senha){
-            alert("Senha atual incorreta!");
-            return false;
-        }
-        return true;
-    }
-
 </script>
 </body>
 </html>

@@ -27,6 +27,15 @@ public class Funcionario {
         this.prioridade = prioridade;
     }
 
+    public Funcionario(String nome, String sobrenome, String telefone, String email, String senha, boolean prioridade) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.prioridade = prioridade;
+    }
+
     public Funcionario(String nome, String sobrenome, String telefone, String email, String senha, int empresaId, boolean prioridade) {
         this.nome = nome;
         this.sobrenome = sobrenome;

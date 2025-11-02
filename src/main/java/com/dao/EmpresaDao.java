@@ -119,6 +119,13 @@ public class EmpresaDao extends Dao<Empresa> {
         //Comando sql
         String sql = "SELECT * FROM empresa where upper(%s) LIKE upper(?)".formatted(coluna);
 
+        if(coluna.equals("plano")){
+            sql = "SELECT * FROM upper(plano) where nome LIKE upper(?)";
+        }
+        else if(coluna.equals("id")){
+            sql = "SELECT * FROM empresa where id = ?";
+        }
+
         //atribuindo valores null
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -130,6 +137,10 @@ public class EmpresaDao extends Dao<Empresa> {
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1,"%" + filtro + "%");
+
+            if(coluna.equals("id")){
+                pstm.setString(1,filtro);
+            }
 
             rset = pstm.executeQuery();
 

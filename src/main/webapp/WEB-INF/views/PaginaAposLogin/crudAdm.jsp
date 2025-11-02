@@ -4,6 +4,8 @@
 <%@ page import="com.model.Funcionario" %>
 <%@ page import="com.dao.FuncionarioDao" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="com.model.Empresa" %>
+<%@ page import="com.dao.EmpresaDao" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -81,7 +83,6 @@
 
 //            Adquirindo o valor dos parâmetros
             int empresaid = (int) request.getSession().getAttribute("empresaid");
-            int funcionarioid = (int) request.getSession().getAttribute("funcionarioid");
             String coluna = request.getParameter("coluna");
             String filtro = (String) request.getSession().getAttribute("filtro");
 
@@ -199,35 +200,30 @@
     </div>
 </div>
 <%
-    //            Adquirindo os dados do usuário atual
-    funcionarios = fdao.selectFiltro(empresaid,"id",String.valueOf(funcionarioid));
-    Funcionario usuario = funcionarios.get(0);
+//            Adquirindo os dados do usuário atual
+    EmpresaDao edao = new EmpresaDao();
+    Empresa empresa = edao.selectEmpresa(empresaid).get(0);
 %>
 <div id="modal-troca" class="modal modal-troca">
     <div class="del-content troca-content">
         <span class="close" onclick="closeTrocaModal()">&times;</span>
         <h1>Trocar Senha</h1>
         <form action="servletAlterarUsuario" method="post" class="delete-form troca-form">
-            <input type="hidden" name="id" value="<%=funcionarioid%>">
-            <input type="hidden" name="nome" value="<%=usuario.getNome()%>">
-            <input type="hidden" name="sobrenome" value="<%=usuario.getSobrenome()%>">
-            <input type="hidden" name="telefone" value="<%=usuario.getTelefone()%>">
-            <input type="hidden" name="email" value="<%=usuario.getEmail()%>">
-            <input type="hidden" name="permissao" value="<%=usuario.isPrioridade()%>">
-            <input type="hidden" id="senhaat" name="senha" value="<%=usuario.getSenha()%>>">
+            <input type="hidden" name="id" value="<%=empresa.getId()%>">
+            <input type="hidden" name="nome" value="<%=empresa.getNome()%>">
+            <input type="hidden" name="setor" value="<%=empresa.getSetor()%>">
+            <input type="hidden" name="telefone" value="<%=empresa.getTelefone()%>">
+            <input type="hidden" name="cnpj" value="<%=empresa.getCnpj()%>">
+            <input type="hidden" name="email" value="<%=empresa.getEmail()%>">
+            <input type="hidden" name="planoid" value="<%=empresa.getPlanoId()%>">
             <input type="hidden" name="empresa" value="sim">
-            <div class="form-group">
-                <label for="atSenha">Senha atual:</label>
-                <input type="password" id="atSenha" name="atSenha" placeholder="Digite a senha atual" required>
-            </div>
+            <input type="hidden" name="trocarsenha" value="sim">
+
             <div class="form-group">
                 <label for="nvSenha">Senha nova:</label>
-                <input type="password" id="nvSenha" name="nvSenha" placeholder="Digite a senha nova" required>
+                <input type="password" id="nvSenha" name="senha" placeholder="Digite a senha nova" required>
             </div>
-            <div class="form-group">
-                <label for="cfSenha">Confirmar senha:</label>
-                <input type="password" id="cfSenha" name="cfSenha" placeholder="Confirme a senha" required>
-            </div>
+
             <div class="flexText">
                 <button type="submit" class="delete-button modal-trocaButton">Trocar</button>
                 <div onclick="closeTrocaModal()" class="delCancel trCancel">Cancelar</div>
@@ -295,16 +291,6 @@
             botao.textContent = '🙈'; // troca os emojis
         }
     });
-    const senhaat = document.getElementById('senhaat')
-    const senha = document.getElementById('atsenha')
-    // função para verificação da senha
-    function verificacaoDeSenha(senhaat){
-        if(senhaat !== senha){
-            alert("Senha atual incorreta!");
-            return false;
-        }
-        return true;
-    }
 </script>
 </body>
 </html>

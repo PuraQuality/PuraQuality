@@ -55,6 +55,7 @@ public class ServletLogin extends HttpServlet {
                     validarEmpresa = true;
                     posicao = i;
                     request.getSession().setAttribute("empresaid", empresas.get(i).getId());
+                    System.out.println(email);
                     break;
                 }
             }
@@ -85,15 +86,18 @@ public class ServletLogin extends HttpServlet {
                     }
                 }
             }
-
+            System.out.println("chegou");
 //            Encaminhando para a página correspondente
             if (validarSenha) {
+                System.out.println("Senha valida");
                 if (validarEmpresa) {
+                    System.out.println("chegouuuu");
                     request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudAdm.jsp").forward(request, response);
                 } else {
                     if (prioridade) {
                         request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudRH.jsp").forward(request, response);
                     } else {
+                        System.out.println("erro");
                         request.getRequestDispatcher("WEB-INF/error.jsp").forward(request, response);
                     }
                 }

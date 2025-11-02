@@ -10,13 +10,14 @@ public class Empresa {
     private String senha;
     private int planoId;
     private String plano;
+    private String telefone;
 
 
     public Empresa(){
 
     }
 
-    public Empresa(int id,String nome, String setor, String cnpj, String email, String senha, int planoId) {
+    public Empresa(int id,String nome, String setor, String telefone, String cnpj, String email, String senha, int planoId) {
         this.id = id;
         this.nome = nome;
         this.setor = setor;
@@ -24,16 +25,18 @@ public class Empresa {
         this.email = email;
         this.senha = senha;
         this.planoId = planoId;
+        this.telefone = telefone;
         this.plano = (planoId == 10)?"Quality":(planoId==11)?"FullQuality":"PuraQuality";
     }
 
-    public Empresa(String nome, String setor, String cnpj, String email, String senha, int planoId) {
+    public Empresa(String nome, String setor, String telefone, String cnpj, String email, String senha, int planoId) {
         this.nome = nome;
         this.setor = setor;
         this.cnpj = cnpj;
         this.email = email;
         this.senha = senha;
         this.planoId = planoId;
+        this.telefone = telefone;
         this.plano = (planoId == 10)?"Quality":(planoId==11)?"FullQuality":"PuraQuality";
     }
 
@@ -70,6 +73,10 @@ public class Empresa {
         return plano;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
     //Setters
     public void setId(int id) {
         this.id = id;
@@ -103,9 +110,13 @@ public class Empresa {
         this.plano = plano;
     }
 
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     //toString
     public String toString(){
         return "Id: " + id + ", Nome: " + nome + ", Setor: " + setor + ", CNPJ: " + cnpj +
-                ", Email: " + email + ", Senha: " + senha + ", Plano: " + planoId;
+                ", Email: " + email + ", Senha: " + senha + ", Plano: " + planoId + ", Telefone: " + telefone;
     }
 }

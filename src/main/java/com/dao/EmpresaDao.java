@@ -21,7 +21,7 @@ public class EmpresaDao extends Dao<Empresa> {
     public boolean save(Empresa empresa){
 
         //Comando sql
-        String sql = "INSERT INTO empresa (nome, setor, cnpj, email, senha, plano_id) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO empresa (nome, setor, cnpj, email, senha, plano_id, telefone) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -36,9 +36,10 @@ public class EmpresaDao extends Dao<Empresa> {
             pstm.setString(1,empresa.getNome());
             pstm.setString(2,empresa.getSetor());
             pstm.setString(3,empresa.getCnpj());
-            pstm.setString(3,empresa.getEmail());
-            pstm.setString(3,empresa.getSenha());
-            pstm.setInt(3,empresa.getPlanoId());
+            pstm.setString(4,empresa.getEmail());
+            pstm.setString(5,empresa.getSenha());
+            pstm.setInt(6,empresa.getPlanoId());
+            pstm.setString(7,empresa.getTelefone());
 
 
             //Executando
@@ -91,6 +92,7 @@ public class EmpresaDao extends Dao<Empresa> {
                 empresas.setCnpj(rset.getString("cnpj"));
                 empresas.setEmail(rset.getString("email"));
                 empresas.setPlanoId(rset.getInt("plano_id"));
+                empresas.setTelefone(rset.getString("telefone"));
                 empresas.setPlano((empresas.getPlanoId() == 10)?"Quality":(empresas.getPlanoId() == 11)?"FullQuality":"PuraQuality");
 
                 //add na lista
@@ -144,6 +146,7 @@ public class EmpresaDao extends Dao<Empresa> {
                 empresas.setCnpj(rset.getString("cnpj"));
                 empresas.setEmail(rset.getString("email"));
                 empresas.setPlanoId(rset.getInt("plano_id"));
+                empresas.setTelefone(rset.getString("telefone"));
                 empresas.setPlano((empresas.getPlanoId() == 10)?"Quality":(empresas.getPlanoId() == 11)?"FullQuality":"PuraQuality");
 
                 //add na lista
@@ -195,6 +198,7 @@ public class EmpresaDao extends Dao<Empresa> {
                 empresa.setEmail(rset.getString("email"));
                 empresa.setSenha(rset.getString("senha"));
                 empresa.setPlanoId(rset.getInt("plano_id"));
+                empresa.setTelefone(rset.getString("telefone"));
                 empresa.setPlano((empresa.getPlanoId() == 10)?"Quality":(empresa.getPlanoId() == 11)?"FullQuality":"PuraQuality");
 
 
@@ -217,7 +221,7 @@ public class EmpresaDao extends Dao<Empresa> {
     public void update(Empresa empresa){
 
         //String sql
-        String sql = "UPDATE empresa SET nome = ?, setor = ?, email = ?, senha = ?, plano_id = ? WHERE id = ?";
+        String sql = "UPDATE empresa SET nome = ?, setor = ?, email = ?, senha = ?, plano_id = ?, telefone = ? WHERE id = ?";
 
         //Atribuição dos valores null
         Connection conn = null;
@@ -234,7 +238,8 @@ public class EmpresaDao extends Dao<Empresa> {
             pstm.setString(3, empresa.getEmail());
             pstm.setString(4, empresa.getSenha());
             pstm.setInt(5, empresa.getPlanoId());
-            pstm.setInt(6,empresa.getId());
+            pstm.setString(6, empresa.getTelefone());
+            pstm.setInt(7,empresa.getId());
 
 
             //executando

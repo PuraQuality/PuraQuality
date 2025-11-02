@@ -24,7 +24,7 @@ public class ServletAlterarEmpresa extends HttpServlet {
 //        Declarando objetos
         EmpresaDao empresaDao = new EmpresaDao();
         List<Empresa> empresas = empresaDao.selectEmpresa(id);
-        Empresa empresa = new Empresa(empresas.get(0).getId(),empresas.get(0).getNome(),empresas.get(0).getSetor(),empresas.get(0).getCnpj(),empresas.get(0).getEmail(),empresas.get(0).getSenha(),planoId);
+        Empresa empresa = new Empresa(empresas.get(0).getId(),empresas.get(0).getNome(),empresas.get(0).getSetor(),empresas.get(0).getTelefone(),empresas.get(0).getCnpj(),empresas.get(0).getEmail(),empresas.get(0).getSenha(),planoId);
 
 //        Adicionando ao banco de dados
         empresaDao.update(empresa);

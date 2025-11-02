@@ -19,7 +19,7 @@ public class ServletInserirUsuario extends HttpServlet {
         int empresaid = (int) request.getSession().getAttribute("empresaid");
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
-        String telefone = request.getParameter("telefone");
+        String telefone = request.getParameter("telefone").replaceAll("[^0-9]","");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         boolean permissao = request.getParameter("permissao") != null && !request.getParameter("permissao").equals("1");

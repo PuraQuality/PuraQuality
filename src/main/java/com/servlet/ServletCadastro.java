@@ -18,7 +18,7 @@ public class ServletCadastro extends HttpServlet {
         String senha = request.getParameter("senha");
         String nome = request.getParameter("nome");
         String setor = request.getParameter("setor");
-        String telefone = request.getParameter("tel");
+        String telefone = request.getParameter("tel").replaceAll("[^0-9]","");
 
 //        Declarando objeto
         EmpresaDao empresaDao = new EmpresaDao();

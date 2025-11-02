@@ -90,8 +90,8 @@
                 funcionarios = fdao.selectEmpresa(empresaid);
             } else {
 //                Vendo se o filtro é uma permissão para chamar o método correto
-                if (coluna != null && coluna.equals("permissao")) {
-                    funcionarios = fdao.selectFiltro(empresaid, Boolean.parseBoolean(filtro));
+                if (coluna.equals("permissao")) {
+                    funcionarios = fdao.selectFiltro(empresaid, filtro.equals("true"));
                 }
                 else{
                     funcionarios = fdao.selectFiltro(empresaid, coluna, filtro);
@@ -271,10 +271,10 @@
     });
 
     //puxando a senha atual
-    const senha = validacao.getElementById('senhaat')
+    const senha = <%=(request.getParameter("atSenha").strip().equals(usuario.getSenha().strip()))?"sim":"não"%>
     // função para verificação da senha
-    function verificacaoDeSenha(validacao){
-        if(validacao !== 'sim'){
+    function verificacaoDeSenha(){
+        if(senha !== 'sim'){
             alert("Senha atual incorreta!");
             return false;
         }

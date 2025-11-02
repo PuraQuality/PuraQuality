@@ -111,24 +111,33 @@ public class FuncionarioDao extends Dao<Funcionario> {
         //Criando uma lista de usuarios
         List<Funcionario> usuarios = new ArrayList<>();
 
-        //Comando sql
-        String sql = "SELECT * FROM funcionario where upper(%s) LIKE upper(?) and empresa_id = ?".formatted(coluna) ;
-
+        String sql;
         //atribuindo valores null
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
 
         if(coluna.equals("plano")){
-            sql = "SELECT * FROM upper(plano) where nome LIKE upper(?)";
+            sql = "SELECT * FROM upper(plano) where nome LIKE upper(?) and empresa_id = ?";
+        }
+        else if(coluna.equals("id")){
+            sql = "SELECT * FROM funcionario where id = ?";
+        }
+        else{
+            sql = "SELECT * FROM funcionario where upper(%s) LIKE upper(?) and empresa_id = ?".formatted(coluna) ;
         }
 
         try{
             //Conectando e passando o comando sql
             conn = ConnectionFactory.createConnection();
             pstm = conn.prepareStatement(sql);
-            pstm.setString(1,"%" + filtro + "%");
-            pstm.setInt(2,empresaid);
+            if(!coluna.equals("id")) {
+                pstm.setString(1, "%" + filtro + "%");
+                pstm.setInt(2, empresaid);
+            }
+            else{
+                pstm.setInt(1, Integer.parseInt(filtro));
+            }
 
             rset = pstm.executeQuery();
 

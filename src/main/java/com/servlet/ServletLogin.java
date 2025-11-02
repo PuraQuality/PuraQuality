@@ -19,8 +19,8 @@ public class ServletLogin extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 //        Pegando os Parâmetros
-        String email = request.getParameter("emailfuncionario");
-        String senha = request.getParameter("senha");
+        String email = request.getParameter("emailfuncionario").strip();
+        String senha = request.getParameter("senha").strip();
 
 //        Declarando variáveis com valores padrões
         boolean validarEmail = false;
@@ -93,7 +93,7 @@ public class ServletLogin extends HttpServlet {
                     if (prioridade) {
                         request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/crudRH.jsp").forward(request, response);
                     } else {
-                        request.getRequestDispatcher("WEB-INF/views/PaginaAposLogin/home.jsp").forward(request, response);
+                        request.getRequestDispatcher("WEB-INF/error.jsp").forward(request, response);
                     }
                 }
             }

@@ -66,8 +66,8 @@
             <th>CNPJ</th>
             <th>Email</th>
             <th>Plano</th>
-            <th>Alterar Plano</th>
-            <th>Deletar Empresa</th>
+            <th class="action-column">Alterar Plano</th>
+            <th class="action-column">Deletar Empresa</th>
         </tr>
         </thead>
         <tbody>
@@ -89,9 +89,9 @@
             <td><%=empresas.get(i).getCnpj()%></td>
             <td><%=empresas.get(i).getEmail()%></td>
             <td><%=empresas.get(i).getPlano()%></td>
-            <td>
+            <td class="action-column">
                 <form method="POST" action="servletAlterarEmpresa" class="update-form">
-                    <select name="altplano" id="altplano">
+                    <select name="altplano" id="altplano-<%=i%>">
                         <option value="10">Quality</option>
                         <option value="11" <%=(empresas.get(i).getPlanoId() == 11)?"selected":""%>>FullQuality</option>
                         <option value="12" <%=(empresas.get(i).getPlanoId() == 12)?"selected":""%>>PuraQuality</option>
@@ -101,9 +101,9 @@
                     <button type="submit" class="update-button">Alterar</button>
                 </form>
             </td>
-            <td>
+            <td class="action-column">
                 <div class="delete-form">
-                    <div class="delete-button" onclick="openDelModal('<%=empresas.get(i).getId()%>')">Deletar</div>
+                    <button type="button" class="delete-button" onclick="openDelModal('<%=empresas.get(i).getId()%>', '<%=empresas.get(i).getNome()%>')">Deletar</button>
                 </div>
             </td>
         </tr>
@@ -188,9 +188,11 @@
     }
 
     // FUNÇÃO PARA ABRIR O MODAL DE DELETAR EMPRESA
-    function openDelModal(empresaId) {
+    function openDelModal(empresaId, empresaNome) {
         document.getElementById('del-modal').style.display = 'flex';
         document.getElementById('del-id').value = empresaId;
+        document.getElementById('del-message').textContent =
+            'Você tem certeza que quer deletar a empresa ' + empresaNome + '?';
     }
 
     // FUNÇÃO PARA FECHAR O MODAL DE DELETAR EMPRESA

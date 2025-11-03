@@ -50,6 +50,17 @@
                 <div class="input-container">
                     <input type="password" id="senha" name="senha" required placeholder=" " />
                     <label for="senha" class="labelsenha">Senha:</label>
+                    <button id="verSenha" class="ver"
+                    style="width: 25px;
+                      height: 25px;
+                      cursor: pointer;
+                      border: none;
+                      border-radius: 5px;
+                      color: var(--text-muted);
+                      background-color: #bf00ff;
+                      transition: all 0.3s ease;
+                      position:relative;
+                      right: 40px">🙈</button>
                 </div>
             </div>
             <button class="botao" type="submit" id="botao">Cadastrar</button>
@@ -142,6 +153,23 @@
         botao.addEventListener('click', function(e) {
             e.preventDefault(); // Impede o envio automático
             validarEExibirErros();
+        });
+        // FUNÇÃO PARA VER A SENHA
+        // puxando pelo id do botão e fazendo um callback de click
+        document.getElementById('verSenha').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do botão
+            // pega o botao pelo id
+            const botao = document.getElementById('verSenha');
+            // pega o input da senha pelo id
+            const senhaInput = document.getElementById('senha');
+            // verfica o tipo do input
+            if (senhaInput.type === 'password') {
+                senhaInput.type = 'text'; // Mostra a senha
+                botao.textContent = '👁️'; // troca os emojis
+            } else {
+                senhaInput.type = 'password'; // Oculta a senha
+                botao.textContent = '🙈'; // troca os emojis
+            }
         });
       </script>
 </body>

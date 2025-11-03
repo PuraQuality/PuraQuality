@@ -175,7 +175,24 @@ input::-webkit-input-placeholder {
     color: aqua;
     transition: 0.2s ease;
 }
-/* ------------ coisinhas bonitinhas ------------ */
+.verSenha{
+    position: absolute;
+    right: 10px;
+    top: 82.5px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: var(--text-muted);
+    background-color: #bf00ff;
+    transition: all 0.3s ease;
+}
+.verSenha:hover{
+    background-color: #6f0096;
+    transition: all 0.3s ease;
+}
+/* ------------ Assets ------------ */
 .notebook {
     position: absolute;
     width: 50%;

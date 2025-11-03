@@ -24,7 +24,7 @@
         <h1 class="texto_pura">PuraQuality</h1>
       </a>
       <h1 class="texto_bv">Comece agora conosco</h1>
-      <form class="form" action="/servletCadastro" method="post">
+      <form class="form" action="servletCadastro" method="post">
         <div class="form-group">
             <div class="inputs">
                 <div class="input-container">
